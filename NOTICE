@@ -1,0 +1,7 @@
+These Fish Audio Materials are licensed under the Fish Audio Community License, Version 1.0. Copyright © 39 AI, INC. All Rights Reserved.
+
+drama3-mlx is an unofficial port of Fish Audio Drama 3 to Apple MLX. It is not made, sponsored or endorsed by Fish Audio.
+
+Changes to the Fish Audio Materials: the Drama 3 inference code of Fish Speech v3.0.0-beta (fish_speech/models/text2semantic/fish_omni: the configuration checks, codebook tower, prompt template, text chunking, sampling and generation loop) was translated from PyTorch to MLX. The text backbone runs on mlx-lm's Qwen3.5 implementation, and the audio codec on mlx-audio's port of Fish's DAC codec. The converter writes copies of the Drama 3 weights whose routed experts are dequantized from block FP8 and stored in bf16 or re-quantized with MLX affine quantization, with codec.pth re-saved as codec.safetensors.
+
+Built with Fish Audio.

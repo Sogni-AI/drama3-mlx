@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drama3-mlx"
+version = "0.1.0"
+description = "Fish Audio Drama 3 text-to-speech on Apple Silicon with MLX"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+dependencies = [
+    "mlx==0.32.3",
+    "mlx-lm==0.31.3",
+    "mlx-audio==0.5.7",
+    "numpy",
+    "scipy",
+    "soundfile",
+    "tokenizers",
+]
+
+[project.urls]
+Repository = "https://github.com/Sogni-AI/drama3-mlx"
+"Fish Audio Drama 3" = "https://huggingface.co/fishaudio/drama-3"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+drama3-mlx = "drama3_mlx.cli:main"
+
+[tool.setuptools]
+packages = ["drama3_mlx"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
