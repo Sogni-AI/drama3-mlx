@@ -32,7 +32,7 @@ sponsored or endorsed by Fish Audio.
 ## Install
 
 ```bash
-pip install git+https://github.com/Sogni-AI/drama3-mlx
+pip install "git+https://github.com/Sogni-AI/drama3-mlx@v0.1.1"
 hf download fishaudio/drama-3 --local-dir checkpoints/drama-3
 ```
 
@@ -86,7 +86,9 @@ prefill and the codec:
 | `q4` | 27 ms | 0.59 |
 | `fp8` | 133 ms | 2.9 (dequantizes the selected experts every step) |
 
-Loading takes 5–10 s from a warm file cache. A request has about 1 s of fixed cost
+Loading takes 5–10 s from a warm file cache. The experts are re-quantized layer by
+layer as they stream in, so loading never holds the whole FP8 release: memory peaks
+near the final size (28 GB for `q4`, measured including a 264-row generation). A request has about 1 s of fixed cost
 (the reference prefill) on top of the per-frame time.
 
 ## Sampling: stalls at Fish's SDK defaults

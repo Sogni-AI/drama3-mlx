@@ -1,8 +1,9 @@
 """Load Drama 3 weights: Fish's release (block-FP8 experts) or a converted MLX copy.
 
-The release's experts are kept in FP8 or, by default, re-quantized to 8-bit as they
-load. A converted checkpoint's config.json carries {"drama3_mlx": {"version": 1,
-"experts": {"group_size", "bits", "mode"} or null}}: null keeps bf16 experts.
+The release's experts are kept in FP8 or, by default, re-quantized to 8-bit layer by
+layer as they stream in, so memory peaks near the final model size (4-bit loads on a
+64 GB Mac). A converted checkpoint's config.json carries {"drama3_mlx": {"version":
+1, "experts": {"group_size", "bits", "mode"} or null}}: null keeps bf16 experts.
 """
 
 import json
@@ -14,7 +15,7 @@ from pathlib import Path
 import mlx.core as mx
 import mlx.nn as nn
 
-from .backbone import build_backbone, replace_fp8_experts
+from .backbone import GROUP_SIZE, build_backbone, dequantize_fp8_blocks
 from .config import Drama3Config
 from .tower import CodebookTower
 
@@ -63,15 +64,18 @@ def shard_paths(path: Path) -> list[Path]:
 
 
 def iter_release_weights(
-    path: Path, config: Drama3Config, dtype: mx.Dtype
+    path: Path, config: Drama3Config, dtype: mx.Dtype, bits="fp8"
 ) -> Iterator[tuple[str, mx.array]]:
     """(MLX name, array) for Fish's release, stacking per-expert tensors per layer.
 
-    FP8 expert bytes and their fp32 block scales are kept as they are; every other
+    bits "fp8" keeps the expert bytes and their fp32 block scales as published;
+    otherwise each projection's stack is dequantized as soon as both halves are in
+    and stored as bf16 (bits None) or MLX affine-quantized (bits 4 / 8). Every other
     tensor is cast to dtype, as the reference does when it loads the backbone.
     """
     num_experts = config.text["num_experts"]
     pending: dict[tuple[str, str, str], dict[int, mx.array]] = defaultdict(dict)
+    halves: dict[str, dict[str, mx.array]] = defaultdict(dict)
     for shard in shard_paths(path):
         weights = mx.load(str(shard))
         for key in list(weights):
@@ -89,13 +93,41 @@ def iter_release_weights(
                 experts = pending.pop(slot)
                 stacked = mx.stack([experts[e] for e in range(num_experts)])
                 mx.eval(stacked)
-                suffix = "weight" if match["kind"] == "weight" else "scale_inv"
-                yield (
-                    f"backbone.model.layers.{match['layer']}.mlp.switch_mlp."
-                    f"{match['proj']}.{suffix}",
-                    stacked,
-                )
+                stem = f"backbone.model.layers.{match['layer']}.mlp.switch_mlp.{match['proj']}"
+                if bits == "fp8":
+                    suffix = "weight" if match["kind"] == "weight" else "scale_inv"
+                    yield f"{stem}.{suffix}", stacked
+                    continue
+                halves[stem][match["kind"]] = stacked
+                if len(halves[stem]) == 2:
+                    pair = halves.pop(stem)
+                    yield from requantized(stem, pair["weight"], pair["weight_scale_inv"], bits)
         del weights
+
+
+def requantized(stem: str, weight: mx.array, scale_inv: mx.array, bits):
+    """One expert stack, dequantized from block FP8 to bf16 (bits None) or MLX affine."""
+    dense = dequantize_fp8_blocks(weight, scale_inv, mx.bfloat16)
+    if bits is None:
+        mx.eval(dense)
+        yield f"{stem}.weight", dense
+        return
+    quantized, scales, biases = mx.quantize(dense, group_size=GROUP_SIZE, bits=bits)
+    mx.eval(quantized, scales, biases)
+    yield f"{stem}.weight", quantized
+    yield f"{stem}.scales", scales
+    yield f"{stem}.biases", biases
+
+
+def quantize_experts(model: nn.Module, bits: int) -> None:
+    """Swap the model's (bf16) switch_mlp experts for MLX affine-quantized ones."""
+    spec = {"group_size": GROUP_SIZE, "bits": bits, "mode": "affine"}
+    nn.quantize(
+        model,
+        class_predicate=lambda name, module: (
+            ".switch_mlp." in name and hasattr(module, "to_quantized") and spec
+        ),
+    )
 
 
 def load_model(
@@ -109,20 +141,15 @@ def load_model(
     meta = data.get(MLX_CONFIG_KEY)
     if meta is None:
         bits = EXPERT_FORMATS[experts]
-        model = Drama3Model(config, fp8=True)
-        model.load_weights(list(iter_release_weights(path, config, dtype)), strict=True)
-        if bits != "fp8":
-            replace_fp8_experts(model.backbone, bits)
+        model = Drama3Model(config, fp8=bits == "fp8")
+        if isinstance(bits, int):
+            quantize_experts(model, bits)
+        model.load_weights(list(iter_release_weights(path, config, dtype, bits)), strict=True)
         mx.eval(model.parameters())
         return model.eval()
     model = Drama3Model(config, fp8=False)
     if meta["experts"] is not None:
-        nn.quantize(
-            model,
-            class_predicate=lambda name, module: (
-                ".switch_mlp." in name and hasattr(module, "to_quantized") and meta["experts"]
-            ),
-        )
+        quantize_experts(model, meta["experts"]["bits"])
     weights = []
     for shard in shard_paths(path):
         weights.extend(mx.load(str(shard)).items())

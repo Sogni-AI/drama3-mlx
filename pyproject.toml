@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "drama3-mlx"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fish Audio Drama 3 text-to-speech on Apple Silicon with MLX"
 readme = "README.md"
 requires-python = ">=3.10"

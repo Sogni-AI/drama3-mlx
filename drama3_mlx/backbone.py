@@ -17,7 +17,7 @@ import numpy as np
 from mlx_lm.models.gated_delta import gated_delta_update
 from mlx_lm.models.qwen3_5 import GatedDeltaNet, TextModel
 from mlx_lm.models.qwen3_next import Qwen3NextMLP
-from mlx_lm.models.switch_layers import QuantizedSwitchLinear, SwitchGLU, SwitchLinear
+from mlx_lm.models.switch_layers import SwitchGLU, SwitchLinear
 
 from .config import FP8_BLOCK_SIZE, Drama3Config
 
@@ -134,32 +134,6 @@ def dequantize_fp8_blocks(weight: mx.array, scale_inv: mx.array, dtype) -> mx.ar
 
 # MLX affine quantization group of re-quantized experts.
 GROUP_SIZE = 64
-
-
-def replace_fp8_experts(model: TextModel, bits: int | None) -> None:
-    """Swap the block-FP8 experts, layer by layer, for bf16 or MLX affine-quantized ones.
-
-    Running FP8 dequantizes the selected experts on every step (65 ms a frame on an
-    M5 Max); 8-bit affine experts run on gather_qmm (21.5 ms) in the same memory.
-    """
-    for layer in model.model.layers:
-        switch = layer.mlp.switch_mlp
-        for name in ("gate_proj", "up_proj", "down_proj"):
-            fp8 = getattr(switch, name)
-            weight = dequantize_fp8_blocks(fp8.weight, fp8.scale_inv, mx.bfloat16)
-            experts, outputs, inputs = weight.shape
-            if bits is None:
-                replacement = SwitchLinear(inputs, outputs, experts, bias=False)
-                replacement.weight = weight
-            else:
-                replacement = QuantizedSwitchLinear(
-                    inputs, outputs, experts, bias=False, group_size=GROUP_SIZE, bits=bits
-                )
-                replacement.weight, replacement.scales, replacement.biases = mx.quantize(
-                    weight, group_size=GROUP_SIZE, bits=bits
-                )
-            mx.eval(replacement.parameters())
-            setattr(switch, name, replacement)
 
 
 class Drama3MoeBlock(nn.Module):
