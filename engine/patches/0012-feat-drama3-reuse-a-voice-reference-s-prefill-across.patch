@@ -1,0 +1,247 @@
+From ff64370e003f6144167c4f907fc904d3fc4a3b4b Mon Sep 17 00:00:00 2001
+From: build-engine <build-engine@example.invalid>
+Date: Wed, 21 Oct 2026 09:54:14 -0500
+Subject: [PATCH] feat(drama3): reuse a voice reference's prefill across
+ requests
+
+Metal kept no prefix state: every speech request reset the engine and
+re-ran the whole prompt, so a cloned voice paid its reference prefill
+again on each call (measured 3.3 s of a 4.7 s first-audio time here).
+
+The request now carries the number of leading rows that are the voice
+reference. The Metal host prefills that prefix once per lane, snapshots
+the recurrent state and counters, and on a later request with the same
+prefix restores the snapshot and prefills only the per-request rows.
+The snapshot is keyed by the reference rows themselves, so a different
+voice rebuilds it. CUDA keeps the old path.
+
+Audio is unchanged: replies are byte-identical to the uncached engine
+for the same prompt and seed.
+---
+ zig/src/core/speech_api.zig              |  2 +
+ zig/src/families/drama3/drama3_metal.zig |  1 +
+ zig/src/families/drama3/metal/engine.zig | 72 ++++++++++++++++++++++++
+ zig/src/native/drama_host.zig            | 61 +++++++++++++++++---
+ zig/src/server/speech.zig                |  8 +++
+ 5 files changed, 135 insertions(+), 9 deletions(-)
+
+diff --git a/zig/src/core/speech_api.zig b/zig/src/core/speech_api.zig
+index 4839cfee..a201ef4b 100644
+--- a/zig/src/core/speech_api.zig
++++ b/zig/src/core/speech_api.zig
+@@ -14,6 +14,8 @@ pub const SpeechRequest = struct {
+     top_k: u32 = 30,
+     /// Publishes decoded prefixes; whole replies also decode incrementally when a speech guard is enabled.
+     stream: bool = false,
++    /// Leading rows of `frames` that are the voice reference, reusable across requests with the same prefix.
++    reference_rows: u32 = 0,
+ };
+ 
+ pub const SpeechInfo = struct {
+diff --git a/zig/src/families/drama3/drama3_metal.zig b/zig/src/families/drama3/drama3_metal.zig
+index 6ae08662..99af2048 100644
+--- a/zig/src/families/drama3/drama3_metal.zig
++++ b/zig/src/families/drama3/drama3_metal.zig
+@@ -18,6 +18,7 @@ pub const codec = @import("metal/codec.zig");
+ pub const tts = @import("metal/tts.zig");
+ 
+ pub const Engine = engine.Engine;
++pub const Snapshot = engine.Engine.Snapshot;
+ pub const Sampling = engine.Sampling;
+ pub const Options = engine.Options;
+ 
+diff --git a/zig/src/families/drama3/metal/engine.zig b/zig/src/families/drama3/metal/engine.zig
+index 00db2d8a..aab67288 100644
+--- a/zig/src/families/drama3/metal/engine.zig
++++ b/zig/src/families/drama3/metal/engine.zig
+@@ -294,6 +294,78 @@ pub const Engine = struct {
+         e.rows_done = n;
+     }
+ 
++    /// The recurrent state and counters after a prompt prefix, reusable for requests that share it.
++    pub const Snapshot = struct {
++        conv: u64,
++        gdn: u64,
++        pos: i32,
++        pos_bb: i32,
++        step: u64,
++        count: i32,
++        window: [16]i32,
++        cur_input: [W]i32,
++        hlast: [cfg.hidden]u16,
++        rows_done: usize,
++        prompt_rows: usize,
++    };
++
++    /// Copies the prefix's recurrent state into fresh device buffers; the caller owns them until the engine closes.
++    pub fn snapshot(e: *Engine) !Snapshot {
++        try e.flush();
++        const conv = try e.alloc(e.state_bytes[0]);
++        const gdn = try e.alloc(e.state_bytes[1]);
++        e.g.copy(e.state_bufs[0], conv, e.state_bytes[0]);
++        e.g.copy(e.state_bufs[1], gdn, e.state_bytes[1]);
++        var s: Snapshot = .{
++            .conv = conv,
++            .gdn = gdn,
++            .pos = 0,
++            .pos_bb = 0,
++            .step = 0,
++            .count = 0,
++            .window = @splat(0),
++            .cur_input = @splat(0),
++            .hlast = @splat(0),
++            .rows_done = e.rows_done,
++            .prompt_rows = e.prompt_rows,
++        };
++        try e.download(e.pos, std.mem.asBytes(&s.pos));
++        try e.download(e.pos_bb, std.mem.asBytes(&s.pos_bb));
++        try e.download(e.step, std.mem.asBytes(&s.step));
++        try e.download(e.count, std.mem.asBytes(&s.count));
++        try e.download(e.window, std.mem.asBytes(&s.window));
++        try e.download(e.cur_input, std.mem.asBytes(&s.cur_input));
++        try e.download(e.hlast, std.mem.asBytes(&s.hlast));
++        return s;
++    }
++
++    /// Puts a prefix's state back so only the rows after it need preflighting.
++    pub fn restore(e: *Engine, s: Snapshot) !void {
++        e.g.copy(s.conv, e.state_bufs[0], e.state_bytes[0]);
++        e.g.copy(s.gdn, e.state_bufs[1], e.state_bytes[1]);
++        try e.put(e.pos, std.mem.asBytes(&s.pos));
++        try e.put(e.pos_bb, std.mem.asBytes(&s.pos_bb));
++        try e.put(e.step, std.mem.asBytes(&s.step));
++        try e.put(e.count, std.mem.asBytes(&s.count));
++        try e.put(e.window, std.mem.asBytes(&s.window));
++        try e.put(e.cur_input, std.mem.asBytes(&s.cur_input));
++        try e.put(e.hlast, std.mem.asBytes(&s.hlast));
++        e.rows_done = s.rows_done;
++        e.prompt_rows = s.prompt_rows;
++        try e.flush();
++    }
++
++    /// Starts a prompt whose first `start` rows are already in the engine's state; writes the rest, no reset.
++    pub fn beginPromptFrom(e: *Engine, rows: []const [W]i32, start: usize) !void {
++        try model.validate(rows, e.c.ids, e.o.max_ctx, 1);
++        const n = rows.len;
++        if (n < 2 or start == 0 or start >= n) return error.PromptTooShort;
++        if (n + 2 > e.o.max_ctx) return error.PromptTooLong;
++        try e.put(e.pframes, std.mem.sliceAsBytes(rows));
++        e.rows_done = start;
++        e.prompt_rows = start;
++    }
++
+     fn tower(e: *Engine, tt: usize, c0: usize, hfin: u64, probe: ?Probe) !void {
+         var hin = hfin;
+         var nb: [64]u8 = undefined;
+diff --git a/zig/src/native/drama_host.zig b/zig/src/native/drama_host.zig
+index d8b05a7e..5534405b 100644
+--- a/zig/src/native/drama_host.zig
++++ b/zig/src/native/drama_host.zig
+@@ -11,7 +11,19 @@ const Limit = if (is_cuda) @import("drama_limit.zig").Limit else struct {
+     fn init(_: *@This(), _: std.mem.Allocator, _: std.Io, _: u32) !void {}
+     fn deinit(_: *@This()) void {}
+ };
+-const Session = struct { e: *d3.Engine, t: *d3.tts.Tts };
++const Session = struct {
++    e: *d3.Engine,
++    t: *d3.tts.Tts,
++    /// A prefilled voice reference's state, reused by later requests that carry the same prefix.
++    cache: ?Snap = null,
++    cache_key: u64 = 0,
++};
++/// Metal keeps the prefix snapshot in the engine; the CUDA host has no equivalent yet.
++const Snap = if (is_cuda) struct {} else d3.Snapshot;
++/// A stable key for a voice reference: the rows themselves.
++fn prefixKey(rows: []const [11]i32) u64 {
++    return std.hash.Wyhash.hash(0x5eed, std.mem.sliceAsBytes(rows));
++}
+ const Job = struct {
+     id: api.Id,
+     request: *const api.SpeechRequest,
+@@ -166,18 +178,49 @@ const Host = struct {
+     }
+     fn advance(h: *Host, work: rounds.Work) !void {
+         const i = work.lane;
+-        const s = h.sessions[i];
++        const lane = &h.sessions[i];
++        const s = lane.*;
+         const j = &h.jobs[i].?;
+         const r = j.request;
+         if (work.stage == .prompt) {
+-            if (!j.state.started) {
+-                try s.e.startPrompt(r.frames);
+-                if (is_cuda) try s.t.c.reset(s.t.cs) else try s.t.c.reset();
+-                j.state.started = true;
++            if (is_cuda) {
++                if (!j.state.started) {
++                    try s.e.startPrompt(r.frames);
++                    try s.t.c.reset(s.t.cs);
++                    j.state.started = true;
++                }
++                const count = s.e.o.promptRows(r.frames.len - j.state.prompt);
++                try s.e.promptChunk(r.frames.len, j.state.prompt, count, null);
++                j.state.prompt += count;
++            } else {
++                const ref_rows: usize = r.reference_rows;
++                const cacheable = ref_rows >= 2 and ref_rows < r.frames.len;
++                const key = if (cacheable) prefixKey(r.frames[0..ref_rows]) else 0;
++                if (!j.state.started) {
++                    if (cacheable and lane.cache != null and lane.cache_key == key) {
++                        try s.e.restore(lane.cache.?);
++                        try s.e.beginPromptFrom(r.frames, ref_rows);
++                        j.state.prompt = ref_rows;
++                        std.log.info("drama3: reference cache hit ({d} rows restored)", .{ref_rows});
++                    } else {
++                        try s.e.startPrompt(r.frames);
++                        j.state.prompt = 0;
++                    }
++                    try s.t.c.reset();
++                    j.state.started = true;
++                }
++                var count = s.e.o.promptRows(r.frames.len - j.state.prompt);
++                const want_snapshot = cacheable and (lane.cache == null or lane.cache_key != key);
++                if (want_snapshot and j.state.prompt < ref_rows) count = @min(count, ref_rows - j.state.prompt);
++                try s.e.promptChunk(r.frames.len, j.state.prompt, count, null);
++                j.state.prompt += count;
++                if (want_snapshot and j.state.prompt == ref_rows) {
++                    try s.e.finishPrompt(r.frames[0..ref_rows]);
++                    lane.cache = try s.e.snapshot();
++                    lane.cache_key = key;
++                    std.log.info("drama3: reference cache built ({d} rows)", .{ref_rows});
++                }
+             }
+-            const count = s.e.o.promptRows(r.frames.len - j.state.prompt);
+-            try s.e.promptChunk(r.frames.len, j.state.prompt, count, null);
+-            j.state.prompt += count;
+             if (j.state.prompt == r.frames.len) {
+                 try s.e.finishPrompt(r.frames);
+                 h.lock();
+diff --git a/zig/src/server/speech.zig b/zig/src/server/speech.zig
+index c9002e0c..1c6a4205 100644
+--- a/zig/src/server/speech.zig
++++ b/zig/src/server/speech.zig
+@@ -146,6 +146,13 @@ fn promptOf(srv: *Server, cx: *Cx, sp: api.SpeechInfo, input: []const u8, refs:
+     return .{ .prompt = prompt };
+ }
+ 
++/// Rows a voice reference contributes to a prompt; 0 for the built-in voice.
++fn refRows(refs: []const @import("drama_prompt").Reference) u32 {
++    var n: u32 = 0;
++    for (refs) |reference| n += @intCast(reference.codes.len);
++    return n;
++}
++
+ /// One frame row a prompt token, the token in the text column.
+ fn rows(a: Allocator, prompt: []const u32) error{ OutOfMemory, InvalidToken }![]const [11]i32 {
+     const frames = try a.alloc([11]i32, prompt.len);
+@@ -185,6 +192,7 @@ fn synthesize(srv: *Server, c: *Conn, cx: *Cx, id: []const u8, sp: api.SpeechInf
+         .top_p = drama_prompt.top_p,
+         .top_k = drama_prompt.top_k,
+         .stream = plan.stream,
++        .reference_rows = refRows(plan.refs),
+     };
+     var box: Mailbox = .{ .io = srv.io, .gpa = srv.gpa };
+     defer box.deinit();
+-- 
+2.54.0 (Apple Git-157)
+

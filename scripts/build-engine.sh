@@ -56,7 +56,13 @@ fi
 
 command -v git >/dev/null || die "git not found"
 zig=$(command -v "$zig") || die "Zig not found; set ZIG"
-nvcc=$(command -v "$nvcc") || die "nvcc not found; set NVCC"
+# macOS builds the Metal engine; the CUDA option is not declared there, so do not pass it.
+if [[ $(uname -s) == Darwin ]]; then
+  nvcc_args=()
+else
+  nvcc=$(command -v "$nvcc") || die "nvcc not found; set NVCC"
+  nvcc_args=(-Dnvcc="$nvcc")
+fi
 
 if [[ -e $build ]]; then
   git -C "$build" rev-parse --git-dir >/dev/null 2>&1 || die "$build exists and is not a git checkout"
@@ -82,11 +88,15 @@ have=$("$zig" version)
 [[ $have == "$want" ]] || die "Zig $have found; the engine pins $want"
 
 cd "$build"
-"$zig" build "${targets[@]}" -Dnvcc="$nvcc" --summary all ${JOBS:+-j"$JOBS"}
+"$zig" build "${targets[@]}" ${nvcc_args[@]+"${nvcc_args[@]}"} --summary all ${JOBS:+-j"$JOBS"}
 
 echo "engine ($weights weights): $TENSORFOLD_COMMIT + ${#patches[@]} patches = $(git rev-parse HEAD)"
+artifacts=(zig-out/native/bin/tensorfold-native)
 if [[ $weights == full ]]; then
-  sha256sum zig-out/native/bin/tensorfold-native zig-out/bin/drama3-generate
+  artifacts+=(zig-out/bin/drama3-generate)
+fi
+if command -v sha256sum >/dev/null; then
+  sha256sum "${artifacts[@]}"
 else
-  sha256sum zig-out/native/bin/tensorfold-native
+  shasum -a 256 "${artifacts[@]}"
 fi

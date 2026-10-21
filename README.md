@@ -152,6 +152,7 @@ each one's notes are in the engine tree's `CHANGELOG.md` or `docs/`.
 | 0009 (K5) | Whole replies the guard ended are drawn again | `--silence-redraws N`, `--silence-redraw-budget-s`, `--silence-redraw-controls` | [#1160](https://github.com/ashhart/TensorFold/pull/1160) |
 | 0010 (K6) | Whole replies that stopped short of their text are drawn again | `--short-reply-ratio`, `--short-reply-chars-per-s` | [#1161](https://github.com/ashhart/TensorFold/pull/1161) |
 | 0011 (K8) | A whole reply is drawn once more when a phrase opens far above the others | `--register-redraw-st`, `--register-redraw-high`, `--register-high-hz` | [#1162](https://github.com/ashhart/TensorFold/pull/1162) |
+| 0012 | A voice reference's prefill is reused across requests on Metal | none (automatic) | to be proposed |
 
 `drama3-voice`, a tool that writes attested voice files for `--voices`, is proposed upstream in
 [#1153](https://github.com/ashhart/TensorFold/pull/1153); it is not part of this series.
