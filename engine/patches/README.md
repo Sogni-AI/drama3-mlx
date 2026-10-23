@@ -10,3 +10,10 @@ engine loads are under the Fish Audio Community License v1.0 and are downloaded 
 [`NOTICE`](../../NOTICE).
 
 `SHA256SUMS` pins every patch.
+
+Patch 0012 is corrected in place: it owns one reusable Metal recurrent-state snapshot per lane,
+invalidates incompatible live KV before prefill, and uses the prompt builder's exact invariant
+boundary including tower lookahead. It preserves uncached chunk cuts and CUDA execution.
+Its CPU regressions cover identity, cancellation/error invalidation, allocation ownership and
+prompt boundaries; real-model transition/corpus/stream checks are described in
+[`recipe/README-macos.md`](../../recipe/README-macos.md#correctness-gates).

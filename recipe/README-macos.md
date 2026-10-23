@@ -1,202 +1,167 @@
-# macOS: running this recipe on Apple silicon
+# macOS: running the pinned recipe on Apple silicon
 
-The recipe is written for a GB10 host (Linux, user systemd, CUDA 13, `nvcc`). TensorFold itself
-builds Drama 3 for Metal as well, so the same patched engine serves `fishaudio/drama-3` on a Mac
-with three changes: no `nvcc`, no `systemd-run`, and no `/proc/meminfo`. Everything else — the
-pinned engine commit, the patch series, the checkpoint revision and its checksums, the loopback
-port, the HTTP contract — is unchanged.
+The Metal build uses the same pinned TensorFold commit, ordered patch series, checkpoint
+revision and HTTP contract as the Linux recipe. It does not require CUDA, `nvcc`, systemd,
+or `/proc`. Use `recipe/pilot_macos.py`; the Linux launcher remains unchanged.
 
-Verified on: Mac Studio, Apple M5 Ultra, 256 GiB unified memory, macOS 27.0.1, Zig 0.17.0,
-engine `d1018b318fb51981c4a18f12e40269a4d3ee9713` + all 11 patches = `881151ca`.
+This is a local, cooperative pilot—not a production service installer, GPU reservation
+system, memory sandbox, or proof that the whole host is idle. Do not interrupt another
+application to make an admission check pass.
 
-## 1. Prerequisites
+## Prerequisites and build
 
-- Zig 0.17.0 (`https://ziglang.org/download/0.17.0/zig-aarch64-macos-0.17.0.tar.xz`,
-  sha256 `b607e9b9234790a008116ae5bdb71c6243b84b9fb42a53a9e70fde41c06c536a`).
-- Xcode command line tools (the build shells out to `xcrun metal`).
-- ~39 GiB for the checkpoint, a few GiB for the build tree and caches.
-- No CUDA toolkit. `scripts/build-engine.sh` detects Darwin and drops `-Dnvcc`, because the
-  CUDA option is only declared for Linux/Windows targets.
+- Apple silicon with Xcode command-line tools, including `xcrun metal`.
+- Zig **0.17.0**. The official `zig-aarch64-macos-0.17.0.tar.xz` archive has SHA-256
+  `b607e9b9234790a008116ae5bdb71c6243b84b9fb42a53a9e70fde41c06c536a`.
+- Python 3.9 or newer for the stdlib-only launcher and validation tools.
+- Approximately 39 GiB of checkpoint storage plus build/cache space, and sufficient
+  free + inactive memory for admission. Disk size is not a resident-memory prediction.
+- Permission to use the checkpoint under the [pinned model license](https://huggingface.co/fishaudio/drama-3/blob/e0a9218aa48888270f06ef1ed9ea67622c0e17d2/LICENSE).
 
-## 2. Checkpoint
+From the repository root:
 
-```
+```sh
 hf download fishaudio/drama-3 --revision e0a9218aa48888270f06ef1ed9ea67622c0e17d2 --local-dir drama-3
 (cd drama-3 && shasum -a 256 -c ../recipe/checksums/checkpoint.sha256)
+ZIG=/absolute/path/to/zig-0.17.0/zig scripts/build-engine.sh
 ```
 
-All ten files must print `OK`. `shasum` replaces `sha256sum`, which macOS does not ship.
+All ten checkpoint files must report `OK` before a model run. The build script checks the
+ordered patches and omits the Linux/Windows-only `-Dnvcc` option on Darwin. Outputs:
 
-## 3. Build
+- `build/tensorfold/zig-out/native/bin/tensorfold-native`
+- `build/tensorfold/zig-out/bin/drama3-generate`
 
-```
-ZIG=/path/to/zig-0.17.0/zig scripts/build-engine.sh
-```
+Use the installed build's `serve --help` for its supported options; do not assume features
+from newer upstream releases exist in this pinned tree.
 
-Output: `build/tensorfold/zig-out/native/bin/tensorfold-native` and
-`build/tensorfold/zig-out/bin/drama3-generate`. The Metal path is selected by the target OS;
-nothing else changes.
+## Launch and stop
 
-## 4. Launch
+First coordinate with other GPU users. Use the **same agreed lock file** as other cooperating
+launchers; a newly invented private lock does not exclude unrelated workloads. For an otherwise
+unshared local pilot, the following creates its local runtime directory and lock:
 
-`recipe/pilot.py` needs Linux and user systemd, so macOS uses `recipe/pilot_macos.py`. It keeps
-the recipe's guard and evidence layout — shared GPU lock, admission check, port check,
-`DRAMA_PILOT_READY`, `session.json` / `ready.json` / `memory.jsonl` / `server.log` /
-`completion.json` — and replaces the Linux-only parts:
-
-| Linux | macOS replacement |
-|---|---|
-| `systemd-run --user` unit, `MemoryMax=54` | direct child in its own process group, stopped by signal |
-| `/proc/meminfo` `MemAvailable` | `vm_stat` free + inactive + speculative + purgeable |
-| `TENSORFOLD_CUDA_MEMORY_LIMIT_GB=54` cap | none (the Metal path has no such cap) |
-| admission: `max(weights+30, 54+30+4)` | admission: `weights + 30` GiB, or `--min-available-gib` |
-
-```
-touch runtime/gpu.lock          # this host has no pre-existing shared GPU lock
+```sh
+mkdir -p runtime
+touch runtime/gpu.lock
 python3 recipe/pilot_macos.py \
   --native-bin build/tensorfold/zig-out/native/bin/tensorfold-native \
   --checkpoint drama-3 --runtime-dir runtime --gpu-lock runtime/gpu.lock \
-  --evidence-dir runs/pilot-01 [--min-available-gib 60] [-- --max-frames 4096]
+  --evidence-dir runs/macos-pilot-01
 ```
 
-The launcher binds `--host 0.0.0.0` by default (pass `--host 127.0.0.1` for loopback only). The
-recipe's own advice is loopback; on a trusted LAN, exposing it makes the server reachable from
-other hosts. The Fish Audio licence's Hosted Service clause (III(c)) is about third parties
-sending their own text, which a home LAN does not really do, but read Section III before
-exposing it beyond your own machines.
+The default bind address is **127.0.0.1**, port **18793**; `--host` accepts numeric IPv4 addresses. An occupied port or lock is a refusal,
+not permission to displace its owner. This unauthenticated API should not be exposed casually;
+LAN placement does not exempt a hosted service from the model license.
 
-### As a supervised service
+The launcher records `session.json`, `server.log`, `memory.jsonl`, `ready.json` and
+`completion.json`. `DRAMA_PILOT_READY` means the launched server passed its health check, not
+that audio correctness or performance has been verified. Explicit `--evidence-reuse` clears stale
+readiness after acquiring the lock, even when admission then fails. Without it an existing evidence
+directory is refused. Prefer a new evidence directory for each attempt.
 
-`~/Library/LaunchAgents/com.tensorfold.drama3.plist` runs the launcher on port 21793 with
-`RunAtLoad`, `KeepAlive` and a 60 s throttle, logging to `~/Library/Logs/drama3.log`. A killed
-server is recorded as a failure by the launcher, which exits; launchd then re-runs it, and the
-admission check refuses to load again until memory allows it.
+| Guard | macOS behavior |
+|---|---|
+| Admission | max(checkpoint bytes + 30 GiB, 34 GiB) of free + inactive memory |
+| Memory observation | One `vm_stat` snapshot per sample; free + inactive only |
+| Abort floor | 34 GiB; admission overrides cannot be lower |
+| Isolation | Owned child process group and inherited cooperative lock |
+| Memory cap | None: Metal has no equivalent of the Linux cgroup/CUDA cap |
 
+`vm_stat` speculative pages are already included in free pages. Purgeable pages are not added;
+these categories must not be counted twice. `--min-available-gib` is an explicit admission
+override, not a memory cap; it must be finite and at least the abort floor. Other numeric
+controls must also be finite and valid.
+
+Stop the launcher with Ctrl-C or SIGTERM. It settles only its own process group, with bounded
+TERM/KILL cleanup, and retains the unreaped leader identity while checking descendants.
+An unexpected server exit is a failure even when the server's exit status is zero. Observation
+errors fail closed. The server inherits the lock descriptor, so killing only the launcher
+cannot release the lock while that server is still running. This is not an OS sandbox:
+escaped descendants or unkillable processes require operator attention and must not be reported
+as settled. Read `completion.json` before starting another attempt.
+
+No LaunchAgent is installed by this repository. Do not copy unrelated host-specific service
+names or restart commands into an automated setup.
+
+## Speech requests
+
+```sh
+curl --fail-with-body -sS -D headers.txt http://127.0.0.1:18793/v1/audio/speech \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"fishaudio/drama-3","input":"The train leaves at seven fifteen."}' \
+  -o hello.wav
+afplay hello.wav
 ```
-launchctl kickstart -k gui/$(id -u)/com.tensorfold.drama3    # restart
-launchctl bootout gui/$(id -u)/com.tensorfold.drama3         # stop
-```
 
-On this host another model (Ornith-1.5-122B) holds ~67 GiB of wired memory, so `vm_stat`
-reports ~66 GiB available and the default `weights + 30` floor (68.6 GiB) refuses to start.
-`--min-available-gib 60` was used deliberately; the figure is recorded in `session.json` and the
-34 GiB abort threshold still applied. With the other model stopped, the default floor admits.
+For streaming, add `"response_format":"pcm","stream":true` and use `curl -N`. The body is
+mono signed 16-bit little-endian PCM at 44.1 kHz; `afplay` needs a suitable container such as WAV.
+Check the HTTP status and `X-Finish-Reason` rather than treating any saved file as successful audio.
 
-## 5. Synthesize
+## Attested reference voices
 
-```
-curl -sS -D headers.txt http://127.0.0.1:18793/v1/audio/speech -H 'Content-Type: application/json' \
-  -d '{"model": "fishaudio/drama-3", "input": "The train leaves at seven fifteen."}' -o hello.wav
-```
+Use a synthetic voice, your own voice, or a voice for which you have the required permission.
+The caller must attest the source explicitly; the catalog writer does not invent consent.
+Reference audio, codec rows, and generated voice catalogs stay out of Git.
 
-`aplay` does not exist on macOS; use `afplay hello.wav`, or write the stream to a file:
+Encode a matching transcript and a clean single-speaker reference clip:
 
-```
-curl -sSN http://127.0.0.1:18793/v1/audio/speech -H 'Content-Type: application/json' \
-  -d '{"model":"fishaudio/drama-3","input":"The train leaves at seven fifteen.","response_format":"pcm","stream":true}' \
-  -o hello.pcm     # mono s16le 44.1 kHz; afplay needs a WAV header, so convert or use the wav route
-```
-
-## 6. Cloning a voice
-
-The route takes no reference audio per request; only catalog names select a voice, so cloning is
-a build step, not a request field. The catalog format is `drama3-http-voice/1` with a `source`
-attestation (`synthetic`, `self` or `consented`) and up to four `{text, codes}` references, where
-`codes` is the encoded VQ rows of a reference clip. Each catalog file must stay under 256 KB and
-the server loads it with `--voices DIR`; `GET /v1/voices` lists what loaded.
-
-```
-# 1. a clean clip of the target speaker, ~8-10 s, one voice only, 44.1 kHz mono
-ffmpeg -ss 45.88 -to 54.10 -i source.webm -ac 1 -ar 44100 -c:a pcm_s16le clip.wav
-# 2. the transcript must match the clip; it is the conditioning text
-whisper-cli -m ~/models/whisper/ggml-small.en.bin -f clip.wav -nt
-# 3. encode the clip to VQ rows (codec only, no backbone load)
+```sh
 build/tensorfold/zig-out/bin/drama3-generate --codec drama-3/codec.pth \
   --encode clip.codes --ref-audio clip.wav
-# 4. build the catalog into runtime/voices/<name>.json
-python3 recipe/build_voice.py NAME "note" "TRANSCRIPT:clip.codes"
+python3 recipe/build_voice.py --source self my-voice \
+  "My own recording; permission retained locally." "Exact transcript of clip.wav:clip.codes"
 ```
 
-Then serve with `-- --voices /abs/path/to/runtime/voices` (absolute: the launcher runs with the
-runtime directory as cwd) and request `{"voice":"NAME"}`. Without `--default-voice`, `default`
-stays the built-in voice. On this host the service runs `--default-voice jones`, so a request
-that omits `voice` (or sends `default`) is spoken in the Jones clone; the built-in voice is then
-reachable only by adding another catalog name.
+`--source` is required and accepts `synthetic`, `self`, or `consented`. `--output-dir` defaults
+to `runtime/voices`. The tool refuses to overwrite an existing catalog and validates the server's
+contract before publishing a file:
 
-Measured here (2026-10-21): Morgan Freeman and James Earl Jones catalogs. Freeman uses an 8.2 s
-interview clip; Jones uses a 10.3 s silence-trimmed cut of his 1993 Fresh Air interview (the
-14.3 s source carried 6.5 s of pauses, so trimming cut prefill without losing any speech). Same
-sentence across voices: default, freeman and jones all returned complete audio with
-`finish=stop`, and Whisper transcribed each back correctly.
+- ASCII name of 1–64 bytes, beginning with a letter/digit, then letters/digits/`-`/`_`;
+  `default` is reserved, case-insensitively.
+- Nonblank UTF-8 source note and transcripts, each at most 4096 bytes. Transcripts cannot
+  contain structural prompt tokens or unsupported/malformed speaker tags.
+- One to four references; each has 1–646 complete rows of ten little-endian int32 codes.
+- Codebook zero: 0–4095; codebooks one through nine: 0–1023; catalog at most 256 KiB.
 
-Latency is dominated by reference prefill, not decoding. Measured on this host: decode runs at
-about 0.46x realtime, while time to first audio scales with the reference at roughly 3 s per 220
-frames — 0.40 s for the built-in voice, 3.26 s for the 10.3 s Jones reference, 4.57 s for the
-untrimmed 14.3 s source, 7.90 s for a 27.4 s source. Drama refuses cache modifiers ("needs
-context 1025..8192, 1..8 frame lanes and no text, vision, TP or cache modifiers"), so
-`--prompt-cache-gib` cannot be used; `--keep-warm` made no measurable difference; `--parallel 4`
-stops overlapping requests from being refused (three concurrent calls all returned 200 instead of
-503) but they serialize on the GPU, so it buys throughput, not single-request latency.
+Start a new coordinated pilot with `-- --voices /absolute/path/to/runtime/voices`, then request
+`"voice":"my-voice"`. Paths after `--` are server arguments and are resolved from its runtime
+directory. `GET /v1/voices` lists loaded voices. Without `--default-voice`, omitted/default
+requests use the builtin voice. Setting `--default-voice NAME` changes both cases.
 
-The series here carries `engine/patches/0012`, which caches the reference prefill in the Metal
-host: the first request for a voice prefills the reference and snapshots the recurrent state, and
-later requests with the same reference restore it and prefill only their own text. Measured after
-the patch, same service: first request 3.59 s to first audio, subsequent ones 1.37-1.41 s, and the
-replies are byte-identical to the uncached engine (same SHA-256 for the same prompt and seed). The
-snapshot is about 66 MB per lane and is rebuilt when the reference rows change, so a different
-voice pays one uncached request. The full Genesis paragraph went from 4.56 s to 2.27 s to first
-audio, 20.63 s to 18.32 s total, with identical audio.
+Patch 0012 reuses one reference-prefix snapshot per Metal lane. A different or absent prefix
+invalidates the live cache before prefill overwrites it; switching voices reuses the allocated
+snapshot buffers rather than retaining a new allocation per switch. Prefix identity includes
+the prompt boundary and the audio tower's lookahead dependency. Generation settings and
+sampling are unchanged. This is an output-preserving optimization, not a multi-voice cache.
 
-Lessons from building them:
+## Correctness gates
 
-- Reference noise carries into the output. A 1970s TV interview reference (-42.6 dBFS quiet
-  floor) cloned to -49.3 dBFS; the Fresh Air reference (-57.1 dBFS) cloned to -56.3 dBFS.
-  Measure the quietest-10% RMS of a candidate clip before encoding it; anything above about
-  -50 dBFS is too noisy for a clean clone. Studio narration and NPR interviews are the clean
-  sources; film dialogue carries a music bed (the Vader attempt measured -30 dBFS and was
-  rejected on sound, not on noise alone).
-- Trim silence before encoding. Removing pauses from a reference keeps every spoken word and
-  cuts prefill proportionally; on the Jones clip that was 14.3 s down to 10.3 s.
-- One short, clean, single-speaker reference is the reliable shape. A two-reference catalog
-  (10.6 s + 16.4 s) made the engine return `500 ... finished without complete audio` on one
-  text, reproducibly; the single-reference rebuild served the same text fine.
-- Cloned voices stall more than the default voice on multi-sentence input. With no guard, a
-  three-sentence text produced "This is CNN." followed by 18-27 s of near-silence before EOS.
-  `--silence-floor-dbfs -40 --silence-seconds 4 --silence-redraws 1 --silence-redraw-budget-s 60`
-  bounds that: the reply ends with `X-Finish-Reason: silence` after 4 s, and the redraw recovered
-  the full sentence in most cases. The service runs with those flags.
-- Cloning costs latency: measured wall time per request was 3.6-6.1 s for freeman and 4.5-6.3 s
-  for jones on 34-79 character texts, versus ~3 s for the default voice. The prompt carries
-  hundreds of frames of reference, so prefill dominates.
-- The reference clips and the `.codes` files are local only (the repo's CONTRIBUTING keeps audio
-  and voice files out of git); only the derived JSON catalogs are needed to serve.
+CPU tests and bounded subprocess smoke are separate from model work. See the test modules for
+the exact invocations; never run GPU checks without a coordinated compute window.
 
+For a freshly started single-lane server with builtin default and two attested catalog voices:
 
-## Measured on this host (2026-10-21)
+```sh
+python3 bench/reference_cache_test.py --base http://127.0.0.1:18793 \
+  --voice synthetic-a --other-voice synthetic-b --out cache-transitions.json
+python3 bench/stream_check.py --base http://127.0.0.1:18793 --model fishaudio/drama-3 \
+  --voice synthetic-a --input "The train leaves at seven fifteen." --out cached-stream.json
+```
 
-Same server flags as the recipe (`--context 8192 --parallel 1 --no-drafts
---prompt-cache-gib 0 --keep-warm 0`), three English texts from `bench/corpus`, one request each:
+The transition check compares actual PCM across same-voice, builtin-default, other-voice and
+changed-text requests; it does not accept a log message as correctness proof. The stream check
+also abandons a cached-reference stream and verifies that the next reply is unchanged.
 
-| | result |
-|---|---|
-| load to `DRAMA_PILOT_READY` | 4.73 s from launcher start to `GET /health` 200 |
-| WAV, "The train leaves at seven fifteen." | 2.69 s audio, 237 612 B, `X-Finish-Reason: stop` |
-| Whisper `base.en` on that WAV | "The train leaves at 7.15." |
-| RTF (39 / 38 / 19 chars) | 0.638 / 0.596 / 0.625 |
-| first streamed PCM | 0.328 s |
-| peak RSS while serving | ~14.5 GiB resident; 32.2 GB of FP8 experts read in place |
-| minimum available memory during the run | 37.6 GiB |
-| shutdown | clean, lock released, `completion.json` failures `[]` |
+Capture the full corpus twice against the uncached baseline, then twice against the candidate,
+using the same reference voice and unchanged server settings:
 
-The GB10 reference in the README reports RTF 0.634 and 0.141 s to first audio. RTF matches; first
-audio is slower here, and the two numbers come from different hosts, so they are not a
-like-for-like comparison.
+```sh
+python3 bench/corpus_capture.py http://127.0.0.1:18793 base-capture --passes 2 --voice synthetic-a
+# Stop and settle the baseline; start the candidate in a fresh coordinated window.
+python3 bench/corpus_capture.py http://127.0.0.1:18793 new-capture --passes 2 --voice synthetic-a
+python3 bench/compare_gate.py base-capture base-capture new-capture gate.json
+```
 
-## Not available on this commit
-
-`--long-form` / `--long-form-chars` are described in the top-level README but are not in the
-pinned patch series; `tensorfold-native serve --help` does not list them. `--max-frames`,
-`--voices` and `--default-voice` are present and parse. The README's long-reply advice therefore
-applies here only through `--max-frames` (up to 8190).
-
-`--backend sglang-omni` is CUDA-only; `pilot_macos.py` refuses it.
+All requests must succeed and the complete corpus must be present before interpreting the gate.
+Do not turn a correctness run, component timing, or cross-host comparison into a speed claim.

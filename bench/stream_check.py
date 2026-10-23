@@ -208,6 +208,7 @@ def main():
     parser.add_argument('--base', help='http://HOST:PORT of the running server')
     parser.add_argument('--model')
     parser.add_argument('--input')
+    parser.add_argument('--voice', help='Explicit catalog voice, including cached-reference abandonment')
     parser.add_argument('--out', type=Path, help='new JSON report path (must not exist)')
     parser.add_argument('--self-test', action='store_true')
     args = parser.parse_args()
@@ -216,6 +217,8 @@ def main():
     if not (args.base and args.model and args.input and args.out):
         parser.error('--base, --model, --input and --out are required')
     base = {'model': args.model, 'input': args.input}
+    if args.voice is not None:
+        base['voice'] = args.voice
     wav = whole(args.base, {**base, 'response_format': 'wav'})
     pcm = whole(args.base, {**base, 'response_format': 'pcm'})
     stream = streamed(args.base, {**base, 'response_format': 'pcm', 'stream': True})
@@ -237,7 +240,7 @@ def main():
         'slot_free_after_abandon': again['status'] == 200,
         'repeat_whole_unchanged': again['bytes'] == pcm['bytes'],
     }
-    report = {'input': args.input, 'checks': checks, 'passed': all(checks.values()),
+    report = {'input': args.input, 'voice': args.voice, 'checks': checks, 'passed': all(checks.values()),
               'samples': len(pcm['bytes']) // 2, 'pcm_sha256': hashlib.sha256(pcm['bytes']).hexdigest(),
               'stream_chunk_bytes': stream['chunk_bytes'], 'moments': stream['moments'],
               'whole_pcm_seconds': pcm['seconds'], 'abandoned_audio_received_bytes': left['audio_received'],

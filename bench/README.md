@@ -3,7 +3,7 @@
 Speed and audio-identity tools for any server that implements the OpenAI-style `POST /v1/audio/speech` route
 and returns mono PCM16. All of them use only the Python 3 standard library (tested with 3.12) plus `git`;
 `admit.py` also needs the CUDA driver (`libcuda.so.1`). None of them starts a model: point them at a server
-started by `recipe/pilot.py`.
+started by `recipe/pilot.py` on Linux or `recipe/pilot_macos.py` on macOS.
 
 | Tool | What it does |
 |---|---|
@@ -14,6 +14,7 @@ started by `recipe/pilot.py`.
 | `corpus_capture.py` | Whole-PCM replies for every corpus item, for byte comparison between builds |
 | `compare_gate.py` | The audio-identity gate for a speed change: every normal reply byte-identical to the baseline capture |
 | `stream_check.py` | Streamed PCM against the whole reply of the same server: byte identity, framing, abandonment, timing |
+| `reference_cache_test.py` | PCM identity across reference/default/other-voice/text transitions on one lane |
 | `corpus/drama-bench-en-v1.jsonl` | The 24-item corpus |
 
 ## Corpus
@@ -52,6 +53,14 @@ python3 bench/stream_check.py --base http://127.0.0.1:18793 --model fishaudio/dr
 `compare_gate.py BASE CLIPPED NEW OUT` takes the clipped long-05 reply from `CLIPPED`; it is the same capture as
 `BASE` when the base build already returns clipped replies. Native sampling is seeded from the prompt, so the same
 build gives the same bytes for the same text.
+
+For reference-prefill changes, pass the same `--voice NAME` to both `corpus_capture.py` calls and
+to `stream_check.py`; this includes cached-reference stream abandonment. Also run
+`reference_cache_test.py --base URL --voice A --other-voice B --out transitions.json` against
+a single-lane server whose default voice remains builtin. Use attested references only.
+This check compares actual audio, not cache-log wording. It is a correctness gate, not a speed
+measurement; a separate cross-build corpus gate remains necessary.
+
 
 ## drama_bench.py
 

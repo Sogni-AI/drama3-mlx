@@ -40,6 +40,9 @@ OpenAI-style `/v1/audio/speech` route, whole or streamed.
 
 ## Quickstart
 
+Apple silicon: use the [macOS/Metal instructions](recipe/README-macos.md). The Linux
+requirements and cgroup cap below do not apply to that launcher.
+
 You need Linux with user systemd, CUDA 13, [Zig 0.17.0](https://ziglang.org/download/), the `hf` command
 (`python3 -m pip install -U huggingface_hub`) and 88 GiB of free memory at load (the server is capped at 54 GiB).
 The NVFP4 weights take about 21 GiB of disk, the full model about 39 GiB; the engine checkout, build and runtime
@@ -152,7 +155,7 @@ each one's notes are in the engine tree's `CHANGELOG.md` or `docs/`.
 | 0009 (K5) | Whole replies the guard ended are drawn again | `--silence-redraws N`, `--silence-redraw-budget-s`, `--silence-redraw-controls` | [#1160](https://github.com/ashhart/TensorFold/pull/1160) |
 | 0010 (K6) | Whole replies that stopped short of their text are drawn again | `--short-reply-ratio`, `--short-reply-chars-per-s` | [#1161](https://github.com/ashhart/TensorFold/pull/1161) |
 | 0011 (K8) | A whole reply is drawn once more when a phrase opens far above the others | `--register-redraw-st`, `--register-redraw-high`, `--register-high-hz` | [#1162](https://github.com/ashhart/TensorFold/pull/1162) |
-| 0012 | A voice reference's prefill is reused across requests on Metal | none (automatic) | to be proposed |
+| 0012 | One bounded reference-prefix snapshot per Metal lane, with exact identity and safe invalidation | none (automatic) | to be proposed |
 
 `drama3-voice`, a tool that writes attested voice files for `--voices`, is proposed upstream in
 [#1153](https://github.com/ashhart/TensorFold/pull/1153); it is not part of this series.
