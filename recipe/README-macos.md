@@ -138,8 +138,16 @@ sampling are unchanged. This is an output-preserving optimization, not a multi-v
 
 ## Correctness gates
 
-CPU tests and bounded subprocess smoke are separate from model work. See the test modules for
-the exact invocations; never run GPU checks without a coordinated compute window.
+CPU tests and bounded subprocess smoke are separate from model work:
+
+```sh
+python3 -m unittest discover -s recipe -p 'test_*.py'
+PILOT_MACOS_INTEGRATION=1 python3 -m unittest discover -s recipe -p test_pilot_macos.py
+```
+
+The opt-in lifecycle cases use harmless short-lived subprocesses and dummy checkpoint files,
+not model weights. They exercise real process groups, locks, loopback HTTP and cancellation.
+Never run the following model checks without a coordinated compute window.
 
 For a freshly started single-lane server with builtin default and two attested catalog voices:
 
@@ -166,3 +174,14 @@ python3 bench/compare_gate.py base-capture base-capture new-capture gate.json
 
 All requests must succeed and the complete corpus must be present before interpreting the gate.
 Do not turn a correctness run, component timing, or cross-host comparison into a speed claim.
+
+### Recorded repair verification
+
+[`results/macos-pr17-repair.json`](../results/macos-pr17-repair.json) records the corrected
+patch-0012 engine `c265ca2fc4b9b54ba75b6780e110c566483c93d2`, its binary hashes, CPU checks and
+the full-model live comparison against the 11-patch uncached baseline. All 48 paired corpus
+captures matched; voice/default/text transitions, builtin and cached streaming abandonment,
+reference-boundary variants and two-lane parity passed. Eight warmed voice switches showed
+0 KiB process-RSS spread on each build. RSS is not direct Metal allocation telemetry.
+All three servers and their owned helpers settled; production Studio was not changed.
+This correctness evidence makes no speed, CUDA-runtime or NVFP4-Mac claim.

@@ -40,8 +40,9 @@ OpenAI-style `/v1/audio/speech` route, whole or streamed.
 
 ## Quickstart
 
-Apple silicon: use the [macOS/Metal instructions](recipe/README-macos.md). The Linux
-requirements and cgroup cap below do not apply to that launcher.
+Apple silicon: use the [full-model macOS/Metal instructions](recipe/README-macos.md). The NVFP4
+comparison is on GB10; it does not qualify that engine on Mac. The Linux requirements and
+cgroup cap below do not apply to the Mac launcher.
 
 You need Linux with user systemd, CUDA 13, [Zig 0.17.0](https://ziglang.org/download/), the `hf` command
 (`python3 -m pip install -U huggingface_hub`) and 88 GiB of free memory at load (the server is capped at 54 GiB).

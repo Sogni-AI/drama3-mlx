@@ -1,0 +1,1374 @@
+{
+  "scope": "PR17 macOS correctness and lifecycle repair, not a speed benchmark or production deployment",
+  "pr": "https://github.com/plotarmordev/drama-tensorfold/pull/17",
+  "original_pr_head": "e77d80a91e1cdb393238eb059a6d9339eff67bce",
+  "integrated_main": "844d0eab755d0bebab5cef3aad34d596ccb229e2",
+  "platform": "macOS Apple silicon, native Metal",
+  "checkpoint": "fishaudio/drama-3@e0a9218aa48888270f06ef1ed9ea67622c0e17d2",
+  "checkpoint_verification": "Reused accepted ten-payload SHA256 verification; no re-download, conversion or weight changes",
+  "compiler": {
+    "version": "Zig 0.17.0",
+    "archive_sha256": "b607e9b9234790a008116ae5bdb71c6243b84b9fb42a53a9e70fde41c06c536a"
+  },
+  "baseline_engine": "881151ca8b83605c38a99f26fc8a94a92a6a51d7",
+  "candidate_engine": "c265ca2fc4b9b54ba75b6780e110c566483c93d2",
+  "candidate_native_sha256": "918200d05465f99daa08da6475a80d365d75c8e00edb482abbcac116bce19a6b",
+  "candidate_generator_sha256": "21af71578f0ca46364161b3fbf6ccfa4754a80a0422dd8e43f0df7a21a84d44e",
+  "patch_0012_sha256": "562b63cbae92fe004ad1ab07ea791e1f3b212c2d7d71df40898257df7ad829f8",
+  "cpu_verification": {
+    "native_build_steps": {
+      "passed": 66,
+      "total": 66
+    },
+    "python_unit_and_actual_lifecycle_smoke": {
+      "passed": 32,
+      "failed": 0
+    },
+    "engine_host_and_server_cpu_tests": {
+      "passed": 610,
+      "failed": 0
+    },
+    "metal_host_checks": {
+      "passed": 3,
+      "skipped": 1,
+      "failed": 0
+    },
+    "cuda_host_compile": "passed; CUDA runtime not exercised",
+    "catalog_cli_cases": 5,
+    "merged_full_model_build_entry": "passed, same engine and artifact hashes"
+  },
+  "live": {
+    "passed": true,
+    "failures": [],
+    "elapsed_seconds": 858.158551625,
+    "activations": 3,
+    "default_frame_budget": 1024,
+    "sampling": "unchanged HTTP prompt-seeded defaults",
+    "corpus": {
+      "items": 24,
+      "passes_per_build": 2,
+      "pairs": 48,
+      "identical_pairs": 48,
+      "all_http_200": true,
+      "rows": [
+        {
+          "pass": 0,
+          "item": "long-01",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1437696,
+          "candidate_bytes": 1437696,
+          "baseline_sha256": "5b6235c9b46775e2c272ea4b4d1f59a3b6a5b00b668872f04cf642548a05bbf6",
+          "candidate_sha256": "5b6235c9b46775e2c272ea4b4d1f59a3b6a5b00b668872f04cf642548a05bbf6",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "long-02",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1454080,
+          "candidate_bytes": 1454080,
+          "baseline_sha256": "505b14e0efc37d65d80ea48ccf316bd91f395c830dd9caa29a4437b7e1f01a34",
+          "candidate_sha256": "505b14e0efc37d65d80ea48ccf316bd91f395c830dd9caa29a4437b7e1f01a34",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "long-03",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1359872,
+          "candidate_bytes": 1359872,
+          "baseline_sha256": "9d2bf02e6e77d78aa529f766e9cc0e704066ed8afb484a42a68f2b23fc2f1fc7",
+          "candidate_sha256": "9d2bf02e6e77d78aa529f766e9cc0e704066ed8afb484a42a68f2b23fc2f1fc7",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "long-04",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1515520,
+          "candidate_bytes": 1515520,
+          "baseline_sha256": "67581e3cfb044876cfad020e8fb6843857709e0cf340c29a983de6320c32611d",
+          "candidate_sha256": "67581e3cfb044876cfad020e8fb6843857709e0cf340c29a983de6320c32611d",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "long-05",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1433600,
+          "candidate_bytes": 1433600,
+          "baseline_sha256": "e81caaa4bd60dcb7b5e4a3205cbe6c16edde4c23030c666e625f116fc78446b8",
+          "candidate_sha256": "e81caaa4bd60dcb7b5e4a3205cbe6c16edde4c23030c666e625f116fc78446b8",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "long-06",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1507328,
+          "candidate_bytes": 1507328,
+          "baseline_sha256": "7e2a6facbcea81378a240e4a8aaf26026a6e4ba55b721d0363f59183bc020393",
+          "candidate_sha256": "7e2a6facbcea81378a240e4a8aaf26026a6e4ba55b721d0363f59183bc020393",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "long-07",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1449984,
+          "candidate_bytes": 1449984,
+          "baseline_sha256": "c0d03d4fa3b17d9940accaf2f5080663cc5ed7f62e3da96503fab032e74fc30e",
+          "candidate_sha256": "c0d03d4fa3b17d9940accaf2f5080663cc5ed7f62e3da96503fab032e74fc30e",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "long-08",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1568768,
+          "candidate_bytes": 1568768,
+          "baseline_sha256": "95b57f81016fa8cff2d6acb0a2fcc87e468f1f6a955cf524f8364a86bbf69cc5",
+          "candidate_sha256": "95b57f81016fa8cff2d6acb0a2fcc87e468f1f6a955cf524f8364a86bbf69cc5",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-01",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 692224,
+          "candidate_bytes": 692224,
+          "baseline_sha256": "d244a111610b68eeb37644c481894a9aa1334fe4def1a93955e5bc68c5a5b885",
+          "candidate_sha256": "d244a111610b68eeb37644c481894a9aa1334fe4def1a93955e5bc68c5a5b885",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-02",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 761856,
+          "candidate_bytes": 761856,
+          "baseline_sha256": "ea7357ff28559ec67a47bafda42226eb559c64ee79b535939c44d02277dc81d8",
+          "candidate_sha256": "ea7357ff28559ec67a47bafda42226eb559c64ee79b535939c44d02277dc81d8",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-03",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 643072,
+          "candidate_bytes": 643072,
+          "baseline_sha256": "c3fabfd0b19891c1f7a7a99fa78bfc28738d8fd76f380116e4aa0e2ffcf68ea7",
+          "candidate_sha256": "c3fabfd0b19891c1f7a7a99fa78bfc28738d8fd76f380116e4aa0e2ffcf68ea7",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-04",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 655360,
+          "candidate_bytes": 655360,
+          "baseline_sha256": "f6591f6428495783da3a4a3f0fa2ba5e913200c26da8a004e1c262f18d2aaf3e",
+          "candidate_sha256": "f6591f6428495783da3a4a3f0fa2ba5e913200c26da8a004e1c262f18d2aaf3e",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-05",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 708608,
+          "candidate_bytes": 708608,
+          "baseline_sha256": "2ff43bc5ee7a52d40acdfa18d32fe345a33a1be9d7b3763fc4b9e03d91415a03",
+          "candidate_sha256": "2ff43bc5ee7a52d40acdfa18d32fe345a33a1be9d7b3763fc4b9e03d91415a03",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-06",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 720896,
+          "candidate_bytes": 720896,
+          "baseline_sha256": "cc4e761baf3a206e3b2fd39728e0e33715d3112baf4717d0482be2a633afe75a",
+          "candidate_sha256": "cc4e761baf3a206e3b2fd39728e0e33715d3112baf4717d0482be2a633afe75a",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-07",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 663552,
+          "candidate_bytes": 663552,
+          "baseline_sha256": "2232e2871c14ff327c5d13554f9ac4edbd5b004426e7ff98d979cd0e2667cd6d",
+          "candidate_sha256": "2232e2871c14ff327c5d13554f9ac4edbd5b004426e7ff98d979cd0e2667cd6d",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "medium-08",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 614400,
+          "candidate_bytes": 614400,
+          "baseline_sha256": "9f65ca758b4815354a8cac5df3c32c267827b4c6e92556348b5de0f85aeb35e8",
+          "candidate_sha256": "9f65ca758b4815354a8cac5df3c32c267827b4c6e92556348b5de0f85aeb35e8",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-01",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 221184,
+          "candidate_bytes": 221184,
+          "baseline_sha256": "1a3f736dc64cee8f997393f636666217c0cb8e1d28c8701b7fe2da2a24b2c4af",
+          "candidate_sha256": "1a3f736dc64cee8f997393f636666217c0cb8e1d28c8701b7fe2da2a24b2c4af",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-02",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 184320,
+          "candidate_bytes": 184320,
+          "baseline_sha256": "e9b25ca2feb2d284e3c2c166ab77a230925045cd1549f283a7611b6cb2c9fd96",
+          "candidate_sha256": "e9b25ca2feb2d284e3c2c166ab77a230925045cd1549f283a7611b6cb2c9fd96",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-03",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 110592,
+          "candidate_bytes": 110592,
+          "baseline_sha256": "5833bd9ce5425060328a65a5ec7f251fc3705b5d461758a6f197d01da6fee2cb",
+          "candidate_sha256": "5833bd9ce5425060328a65a5ec7f251fc3705b5d461758a6f197d01da6fee2cb",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-04",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 176128,
+          "candidate_bytes": 176128,
+          "baseline_sha256": "a0398cab273c0b8b97820c89b28f6f10ac482a15017c1fbb89f38bb62fecd2f4",
+          "candidate_sha256": "a0398cab273c0b8b97820c89b28f6f10ac482a15017c1fbb89f38bb62fecd2f4",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-05",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 200704,
+          "candidate_bytes": 200704,
+          "baseline_sha256": "60b5d8f482956f3e0ec70eeb063320b79dc3e92204312ff46953138a0730e9e8",
+          "candidate_sha256": "60b5d8f482956f3e0ec70eeb063320b79dc3e92204312ff46953138a0730e9e8",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-06",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 167936,
+          "candidate_bytes": 167936,
+          "baseline_sha256": "47849fce8c83671ef98933169e1b4873fca0c955819ef8880419252a9b25d995",
+          "candidate_sha256": "47849fce8c83671ef98933169e1b4873fca0c955819ef8880419252a9b25d995",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-07",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 225280,
+          "candidate_bytes": 225280,
+          "baseline_sha256": "b9602ce06ece1006678ae5c8374dfa75d1194567294dfe8a3fc763fd3ddbbb79",
+          "candidate_sha256": "b9602ce06ece1006678ae5c8374dfa75d1194567294dfe8a3fc763fd3ddbbb79",
+          "identical": true
+        },
+        {
+          "pass": 0,
+          "item": "short-08",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 229376,
+          "candidate_bytes": 229376,
+          "baseline_sha256": "02b85df253b46f066d4755e715eb136eba89e49473267ca084c97620a4a56056",
+          "candidate_sha256": "02b85df253b46f066d4755e715eb136eba89e49473267ca084c97620a4a56056",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-01",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1437696,
+          "candidate_bytes": 1437696,
+          "baseline_sha256": "5b6235c9b46775e2c272ea4b4d1f59a3b6a5b00b668872f04cf642548a05bbf6",
+          "candidate_sha256": "5b6235c9b46775e2c272ea4b4d1f59a3b6a5b00b668872f04cf642548a05bbf6",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-02",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1454080,
+          "candidate_bytes": 1454080,
+          "baseline_sha256": "505b14e0efc37d65d80ea48ccf316bd91f395c830dd9caa29a4437b7e1f01a34",
+          "candidate_sha256": "505b14e0efc37d65d80ea48ccf316bd91f395c830dd9caa29a4437b7e1f01a34",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-03",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1359872,
+          "candidate_bytes": 1359872,
+          "baseline_sha256": "9d2bf02e6e77d78aa529f766e9cc0e704066ed8afb484a42a68f2b23fc2f1fc7",
+          "candidate_sha256": "9d2bf02e6e77d78aa529f766e9cc0e704066ed8afb484a42a68f2b23fc2f1fc7",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-04",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1515520,
+          "candidate_bytes": 1515520,
+          "baseline_sha256": "67581e3cfb044876cfad020e8fb6843857709e0cf340c29a983de6320c32611d",
+          "candidate_sha256": "67581e3cfb044876cfad020e8fb6843857709e0cf340c29a983de6320c32611d",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-05",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1433600,
+          "candidate_bytes": 1433600,
+          "baseline_sha256": "e81caaa4bd60dcb7b5e4a3205cbe6c16edde4c23030c666e625f116fc78446b8",
+          "candidate_sha256": "e81caaa4bd60dcb7b5e4a3205cbe6c16edde4c23030c666e625f116fc78446b8",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-06",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1507328,
+          "candidate_bytes": 1507328,
+          "baseline_sha256": "7e2a6facbcea81378a240e4a8aaf26026a6e4ba55b721d0363f59183bc020393",
+          "candidate_sha256": "7e2a6facbcea81378a240e4a8aaf26026a6e4ba55b721d0363f59183bc020393",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-07",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1449984,
+          "candidate_bytes": 1449984,
+          "baseline_sha256": "c0d03d4fa3b17d9940accaf2f5080663cc5ed7f62e3da96503fab032e74fc30e",
+          "candidate_sha256": "c0d03d4fa3b17d9940accaf2f5080663cc5ed7f62e3da96503fab032e74fc30e",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "long-08",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 1568768,
+          "candidate_bytes": 1568768,
+          "baseline_sha256": "95b57f81016fa8cff2d6acb0a2fcc87e468f1f6a955cf524f8364a86bbf69cc5",
+          "candidate_sha256": "95b57f81016fa8cff2d6acb0a2fcc87e468f1f6a955cf524f8364a86bbf69cc5",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-01",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 692224,
+          "candidate_bytes": 692224,
+          "baseline_sha256": "d244a111610b68eeb37644c481894a9aa1334fe4def1a93955e5bc68c5a5b885",
+          "candidate_sha256": "d244a111610b68eeb37644c481894a9aa1334fe4def1a93955e5bc68c5a5b885",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-02",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 761856,
+          "candidate_bytes": 761856,
+          "baseline_sha256": "ea7357ff28559ec67a47bafda42226eb559c64ee79b535939c44d02277dc81d8",
+          "candidate_sha256": "ea7357ff28559ec67a47bafda42226eb559c64ee79b535939c44d02277dc81d8",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-03",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 643072,
+          "candidate_bytes": 643072,
+          "baseline_sha256": "c3fabfd0b19891c1f7a7a99fa78bfc28738d8fd76f380116e4aa0e2ffcf68ea7",
+          "candidate_sha256": "c3fabfd0b19891c1f7a7a99fa78bfc28738d8fd76f380116e4aa0e2ffcf68ea7",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-04",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 655360,
+          "candidate_bytes": 655360,
+          "baseline_sha256": "f6591f6428495783da3a4a3f0fa2ba5e913200c26da8a004e1c262f18d2aaf3e",
+          "candidate_sha256": "f6591f6428495783da3a4a3f0fa2ba5e913200c26da8a004e1c262f18d2aaf3e",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-05",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 708608,
+          "candidate_bytes": 708608,
+          "baseline_sha256": "2ff43bc5ee7a52d40acdfa18d32fe345a33a1be9d7b3763fc4b9e03d91415a03",
+          "candidate_sha256": "2ff43bc5ee7a52d40acdfa18d32fe345a33a1be9d7b3763fc4b9e03d91415a03",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-06",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 720896,
+          "candidate_bytes": 720896,
+          "baseline_sha256": "cc4e761baf3a206e3b2fd39728e0e33715d3112baf4717d0482be2a633afe75a",
+          "candidate_sha256": "cc4e761baf3a206e3b2fd39728e0e33715d3112baf4717d0482be2a633afe75a",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-07",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 663552,
+          "candidate_bytes": 663552,
+          "baseline_sha256": "2232e2871c14ff327c5d13554f9ac4edbd5b004426e7ff98d979cd0e2667cd6d",
+          "candidate_sha256": "2232e2871c14ff327c5d13554f9ac4edbd5b004426e7ff98d979cd0e2667cd6d",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "medium-08",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 614400,
+          "candidate_bytes": 614400,
+          "baseline_sha256": "9f65ca758b4815354a8cac5df3c32c267827b4c6e92556348b5de0f85aeb35e8",
+          "candidate_sha256": "9f65ca758b4815354a8cac5df3c32c267827b4c6e92556348b5de0f85aeb35e8",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-01",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 221184,
+          "candidate_bytes": 221184,
+          "baseline_sha256": "1a3f736dc64cee8f997393f636666217c0cb8e1d28c8701b7fe2da2a24b2c4af",
+          "candidate_sha256": "1a3f736dc64cee8f997393f636666217c0cb8e1d28c8701b7fe2da2a24b2c4af",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-02",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 184320,
+          "candidate_bytes": 184320,
+          "baseline_sha256": "e9b25ca2feb2d284e3c2c166ab77a230925045cd1549f283a7611b6cb2c9fd96",
+          "candidate_sha256": "e9b25ca2feb2d284e3c2c166ab77a230925045cd1549f283a7611b6cb2c9fd96",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-03",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 110592,
+          "candidate_bytes": 110592,
+          "baseline_sha256": "5833bd9ce5425060328a65a5ec7f251fc3705b5d461758a6f197d01da6fee2cb",
+          "candidate_sha256": "5833bd9ce5425060328a65a5ec7f251fc3705b5d461758a6f197d01da6fee2cb",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-04",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 176128,
+          "candidate_bytes": 176128,
+          "baseline_sha256": "a0398cab273c0b8b97820c89b28f6f10ac482a15017c1fbb89f38bb62fecd2f4",
+          "candidate_sha256": "a0398cab273c0b8b97820c89b28f6f10ac482a15017c1fbb89f38bb62fecd2f4",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-05",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 200704,
+          "candidate_bytes": 200704,
+          "baseline_sha256": "60b5d8f482956f3e0ec70eeb063320b79dc3e92204312ff46953138a0730e9e8",
+          "candidate_sha256": "60b5d8f482956f3e0ec70eeb063320b79dc3e92204312ff46953138a0730e9e8",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-06",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 167936,
+          "candidate_bytes": 167936,
+          "baseline_sha256": "47849fce8c83671ef98933169e1b4873fca0c955819ef8880419252a9b25d995",
+          "candidate_sha256": "47849fce8c83671ef98933169e1b4873fca0c955819ef8880419252a9b25d995",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-07",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 225280,
+          "candidate_bytes": 225280,
+          "baseline_sha256": "b9602ce06ece1006678ae5c8374dfa75d1194567294dfe8a3fc763fd3ddbbb79",
+          "candidate_sha256": "b9602ce06ece1006678ae5c8374dfa75d1194567294dfe8a3fc763fd3ddbbb79",
+          "identical": true
+        },
+        {
+          "pass": 1,
+          "item": "short-08",
+          "baseline_status": 200,
+          "candidate_status": 200,
+          "baseline_bytes": 229376,
+          "candidate_bytes": 229376,
+          "baseline_sha256": "02b85df253b46f066d4755e715eb136eba89e49473267ca084c97620a4a56056",
+          "candidate_sha256": "02b85df253b46f066d4755e715eb136eba89e49473267ca084c97620a4a56056",
+          "identical": true
+        }
+      ]
+    },
+    "transitions": {
+      "baseline": {
+        "voices": [
+          "synthetic-a",
+          "synthetic-b"
+        ],
+        "requests": [
+          {
+            "label": "first",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "repeat",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "builtin-default",
+            "voice": "default",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 360448,
+            "sha256": "af74f49414eae193c8cd3899b3908aba661a47999633545485bea39ff447b525"
+          },
+          {
+            "label": "after-default",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-first",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "after-other",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "varied-text",
+            "voice": "synthetic-a",
+            "input": "The library opens at nine. Please bring the blue notebook tomorrow.",
+            "bytes": 368640,
+            "sha256": "17ad2362d07eb4e4e2bfefe813b8d4f64ffd500eee01671bfa2061f265cfebd9"
+          },
+          {
+            "label": "after-varied-text",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "varied-text-repeat",
+            "voice": "synthetic-a",
+            "input": "The library opens at nine. Please bring the blue notebook tomorrow.",
+            "bytes": 368640,
+            "sha256": "17ad2362d07eb4e4e2bfefe813b8d4f64ffd500eee01671bfa2061f265cfebd9"
+          },
+          {
+            "label": "other-0",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-0",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-1",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-1",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-2",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-2",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-3",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-3",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          }
+        ],
+        "checks": {
+          "repeat": true,
+          "builtin_is_distinct": true,
+          "after_default": true,
+          "other_voice_is_distinct": true,
+          "after_other": true,
+          "varied_text_is_distinct": true,
+          "after_varied_text": true,
+          "varied_text_repeat": true,
+          "other_0": true,
+          "first_0": true,
+          "other_1": true,
+          "first_1": true,
+          "other_2": true,
+          "first_2": true,
+          "other_3": true,
+          "first_3": true
+        },
+        "errors": [],
+        "passed": true
+      },
+      "repaired": {
+        "voices": [
+          "synthetic-a",
+          "synthetic-b"
+        ],
+        "requests": [
+          {
+            "label": "first",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "repeat",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "builtin-default",
+            "voice": "default",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 360448,
+            "sha256": "af74f49414eae193c8cd3899b3908aba661a47999633545485bea39ff447b525"
+          },
+          {
+            "label": "after-default",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-first",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "after-other",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "varied-text",
+            "voice": "synthetic-a",
+            "input": "The library opens at nine. Please bring the blue notebook tomorrow.",
+            "bytes": 368640,
+            "sha256": "17ad2362d07eb4e4e2bfefe813b8d4f64ffd500eee01671bfa2061f265cfebd9"
+          },
+          {
+            "label": "after-varied-text",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "varied-text-repeat",
+            "voice": "synthetic-a",
+            "input": "The library opens at nine. Please bring the blue notebook tomorrow.",
+            "bytes": 368640,
+            "sha256": "17ad2362d07eb4e4e2bfefe813b8d4f64ffd500eee01671bfa2061f265cfebd9"
+          },
+          {
+            "label": "other-0",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-0",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-1",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-1",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-2",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-2",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          },
+          {
+            "label": "other-3",
+            "voice": "synthetic-b",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 344064,
+            "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1"
+          },
+          {
+            "label": "first-3",
+            "voice": "synthetic-a",
+            "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+            "bytes": 323584,
+            "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da"
+          }
+        ],
+        "checks": {
+          "repeat": true,
+          "builtin_is_distinct": true,
+          "after_default": true,
+          "other_voice_is_distinct": true,
+          "after_other": true,
+          "varied_text_is_distinct": true,
+          "after_varied_text": true,
+          "varied_text_repeat": true,
+          "other_0": true,
+          "first_0": true,
+          "other_1": true,
+          "first_1": true,
+          "other_2": true,
+          "first_2": true,
+          "other_3": true,
+          "first_3": true
+        },
+        "errors": [],
+        "passed": true
+      }
+    },
+    "streaming": {
+      "baseline-stream-default": {
+        "passed": true,
+        "checks": {
+          "whole_wav_200": true,
+          "whole_pcm_equals_wav_data": true,
+          "stream_head": true,
+          "stream_complete": true,
+          "stream_whole_frames": true,
+          "stream_equals_whole_pcm": true,
+          "abandoned_stream_incomplete": true,
+          "slot_free_after_abandon": true,
+          "repeat_whole_unchanged": true
+        },
+        "pcm_sha256": "af74f49414eae193c8cd3899b3908aba661a47999633545485bea39ff447b525",
+        "samples": 180224,
+        "voice": "default"
+      },
+      "baseline-stream-synthetic-a": {
+        "passed": true,
+        "checks": {
+          "whole_wav_200": true,
+          "whole_pcm_equals_wav_data": true,
+          "stream_head": true,
+          "stream_complete": true,
+          "stream_whole_frames": true,
+          "stream_equals_whole_pcm": true,
+          "abandoned_stream_incomplete": true,
+          "slot_free_after_abandon": true,
+          "repeat_whole_unchanged": true
+        },
+        "pcm_sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "samples": 161792,
+        "voice": "synthetic-a"
+      },
+      "repaired-stream-default": {
+        "passed": true,
+        "checks": {
+          "whole_wav_200": true,
+          "whole_pcm_equals_wav_data": true,
+          "stream_head": true,
+          "stream_complete": true,
+          "stream_whole_frames": true,
+          "stream_equals_whole_pcm": true,
+          "abandoned_stream_incomplete": true,
+          "slot_free_after_abandon": true,
+          "repeat_whole_unchanged": true
+        },
+        "pcm_sha256": "af74f49414eae193c8cd3899b3908aba661a47999633545485bea39ff447b525",
+        "samples": 180224,
+        "voice": "default"
+      },
+      "repaired-stream-synthetic-a": {
+        "passed": true,
+        "checks": {
+          "whole_wav_200": true,
+          "whole_pcm_equals_wav_data": true,
+          "stream_head": true,
+          "stream_complete": true,
+          "stream_whole_frames": true,
+          "stream_equals_whole_pcm": true,
+          "abandoned_stream_incomplete": true,
+          "slot_free_after_abandon": true,
+          "repeat_whole_unchanged": true
+        },
+        "pcm_sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "samples": 161792,
+        "voice": "synthetic-a"
+      }
+    },
+    "reference_variants": {
+      "synthetic-a": true,
+      "synthetic-b": true,
+      "synthetic-last-row": true,
+      "synthetic-transcript": true,
+      "synthetic-two-refs": true,
+      "default": true,
+      "after-cancellation": true
+    },
+    "allocation": {
+      "metric": "process RSS, not direct Metal allocation telemetry",
+      "switches_after_warmup_per_build": 8,
+      "predeclared_max_spread_kib": 16384,
+      "baseline_spread_kib": 0,
+      "candidate_spread_kib": 0
+    },
+    "multilane": {
+      "lanes": 2,
+      "requests": 8,
+      "matched_serial_baseline": true
+    },
+    "request_hashes": [
+      {
+        "label": "baseline-synthetic-a",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15231168
+      },
+      {
+        "label": "baseline-synthetic-b",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15231168
+      },
+      {
+        "label": "baseline-synthetic-last-row",
+        "voice": "synthetic-last-row",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 348160,
+        "sha256": "0bab3a6c58ec7b46dabe1cf7fbd3ca71c3010a56be21b74ac28a9e50e49c2f4b",
+        "rss_kib": 15231168
+      },
+      {
+        "label": "baseline-synthetic-transcript",
+        "voice": "synthetic-transcript",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 315392,
+        "sha256": "349a2d78a261e81bc2587b56af84b405147e23b403583da99f119f7624ad60da",
+        "rss_kib": 15231168
+      },
+      {
+        "label": "baseline-synthetic-two-refs",
+        "voice": "synthetic-two-refs",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 327680,
+        "sha256": "bbc5bebdc14215f1354def7621e8ea20a50aa48ef7b892cade49877436396df3",
+        "rss_kib": 15231184
+      },
+      {
+        "label": "baseline-default",
+        "voice": "default",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 360448,
+        "sha256": "af74f49414eae193c8cd3899b3908aba661a47999633545485bea39ff447b525",
+        "rss_kib": 15231184
+      },
+      {
+        "label": "baseline-after-cancellation",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-warm-b",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-warm-a",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-0",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-1",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-2",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-3",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-4",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-5",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-6",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "baseline-allocation-7",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15231376
+      },
+      {
+        "label": "repaired-synthetic-a",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15293984
+      },
+      {
+        "label": "repaired-synthetic-b",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15293984
+      },
+      {
+        "label": "repaired-synthetic-last-row",
+        "voice": "synthetic-last-row",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 348160,
+        "sha256": "0bab3a6c58ec7b46dabe1cf7fbd3ca71c3010a56be21b74ac28a9e50e49c2f4b",
+        "rss_kib": 15293984
+      },
+      {
+        "label": "repaired-synthetic-transcript",
+        "voice": "synthetic-transcript",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 315392,
+        "sha256": "349a2d78a261e81bc2587b56af84b405147e23b403583da99f119f7624ad60da",
+        "rss_kib": 15293984
+      },
+      {
+        "label": "repaired-synthetic-two-refs",
+        "voice": "synthetic-two-refs",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 327680,
+        "sha256": "bbc5bebdc14215f1354def7621e8ea20a50aa48ef7b892cade49877436396df3",
+        "rss_kib": 15294000
+      },
+      {
+        "label": "repaired-default",
+        "voice": "default",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 360448,
+        "sha256": "af74f49414eae193c8cd3899b3908aba661a47999633545485bea39ff447b525",
+        "rss_kib": 15294000
+      },
+      {
+        "label": "repaired-after-cancellation",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15294112
+      },
+      {
+        "label": "repaired-allocation-warm-b",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-warm-a",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-0",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-1",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-2",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-3",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-4",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-5",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-6",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "repaired-allocation-7",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 15294080
+      },
+      {
+        "label": "multilane-0-0",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 16198432
+      },
+      {
+        "label": "multilane-0-1",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 16189808
+      },
+      {
+        "label": "multilane-1-1",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 16198464
+      },
+      {
+        "label": "multilane-1-0",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 16189872
+      },
+      {
+        "label": "multilane-2-0",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 16198480
+      },
+      {
+        "label": "multilane-2-1",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 16189872
+      },
+      {
+        "label": "multilane-3-1",
+        "voice": "synthetic-a",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 323584,
+        "sha256": "78888f5b1e001ab82317c7bbe32dac536259f42a3f1f5d46e02018577d5ac8da",
+        "rss_kib": 16198448
+      },
+      {
+        "label": "multilane-3-0",
+        "voice": "synthetic-b",
+        "input": "The train leaves at seven fifteen, and this is the voice you came for.",
+        "status": 200,
+        "bytes": 344064,
+        "sha256": "b1b4b1a8150d55fa0a7fd739b298f2601b21978e3b89a5194da43708cea8ccd1",
+        "rss_kib": 16189904
+      }
+    ]
+  },
+  "settlement": {
+    "command_owners": 12,
+    "all_exit_zero": true,
+    "all_reaped": true,
+    "all_groups_absent": true,
+    "native_groups_absent": true,
+    "monitor_settled": true,
+    "cooperative_window_released": true,
+    "production_changes": false
+  },
+  "resolved_preparation_failures": [
+    "Fresh no-checkout mirror was refused as dirty; initialized its checkout before running the build.",
+    "Metal host-check target lacked Metal/Foundation/Objective-C linkage; corrected linkage and reran only that failing target."
+  ],
+  "limitations": [
+    "No CUDA runtime or NVFP4 Mac qualification.",
+    "No end-to-end speed claim.",
+    "No whole-host GPU exclusivity claim; production generation retained priority.",
+    "Process RSS plateau is not direct device-memory telemetry.",
+    "Live references were synthetic only; no natural-person voice or quality claim.",
+    "Original PR head is not changed by these results; repair commits must be applied before merging PR17."
+  ]
+}
