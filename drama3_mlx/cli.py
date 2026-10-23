@@ -34,6 +34,7 @@ def generate(args: argparse.Namespace) -> None:
         max_new_tokens=args.max_new_tokens,
         single_chunk=args.single_chunk,
         seed=args.seed,
+        cfg_gamma=args.cfg_gamma,
     ):
         seconds = len(segment.audio) / tts.sample_rate
         print(
@@ -72,6 +73,8 @@ def main() -> None:
     gen.add_argument("--max-new-tokens", type=int, default=0, help="frames per chunk")
     gen.add_argument("--single-chunk", action="store_true", help="no long-text chunking")
     gen.add_argument("--seed", type=int)
+    gen.add_argument("--cfg-gamma", type=float, default=1.0,
+                     help="reference-voice semantic guidance (1: off; NVFP4 recipe: 1.5)")
     gen.set_defaults(handler=generate)
 
     conv = commands.add_parser("convert", help="convert Fish's release for MLX")
