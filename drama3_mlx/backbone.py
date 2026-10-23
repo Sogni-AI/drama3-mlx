@@ -14,12 +14,14 @@ pieces are swapped in to match the fish_omni reference exactly:
 import mlx.core as mx
 import mlx.nn as nn
 import numpy as np
+from dataclasses import replace
 from mlx_lm.models.gated_delta import gated_delta_update
 from mlx_lm.models.qwen3_5 import GatedDeltaNet, TextModel
 from mlx_lm.models.qwen3_next import Qwen3NextMLP
 from mlx_lm.models.switch_layers import SwitchGLU, SwitchLinear
 
 from .config import FP8_BLOCK_SIZE, Drama3Config
+from .nvfp4 import NVFP4SwitchGLU
 
 
 class ZeroCenteredRMSNorm(nn.Module):
@@ -139,13 +141,14 @@ GROUP_SIZE = 64
 class Drama3MoeBlock(nn.Module):
     """Top-k routed experts (fp32 router) plus a sigmoid-gated shared expert."""
 
-    def __init__(self, args, *, fp8: bool):
+    def __init__(self, args, *, fp8: bool, nvfp4: bool = False):
         super().__init__()
         dim = args.hidden_size
         self.norm_topk_prob = args.norm_topk_prob
         self.top_k = args.num_experts_per_tok
+        self.nvfp4 = nvfp4
         self.gate = nn.Linear(dim, args.num_experts, bias=False)
-        switch = FP8SwitchGLU if fp8 else SwitchGLU
+        switch = NVFP4SwitchGLU if nvfp4 else FP8SwitchGLU if fp8 else SwitchGLU
         self.switch_mlp = switch(dim, args.moe_intermediate_size, args.num_experts)
         self.shared_expert = Qwen3NextMLP(dim, args.shared_expert_intermediate_size)
         self.shared_expert_gate = nn.Linear(dim, 1, bias=False)
@@ -153,23 +156,32 @@ class Drama3MoeBlock(nn.Module):
     def __call__(self, x: mx.array) -> mx.array:
         probabilities = mx.softmax(self.gate(x).astype(mx.float32), axis=-1)
         k = self.top_k
-        indices = mx.argpartition(-probabilities, kth=k - 1, axis=-1)[..., :k]
+        # Native NVFP4 selects descending probabilities, breaking ties by the
+        # original expert ID. The compact gate keeps those IDs in ascending order.
+        indices = (mx.argsort(-probabilities, axis=-1) if self.nvfp4 else
+                   mx.argpartition(-probabilities, kth=k - 1, axis=-1))[..., :k]
         weights = mx.take_along_axis(probabilities, indices, axis=-1)
         if self.norm_topk_prob:
             weights = weights / weights.sum(axis=-1, keepdims=True)
-        # The reference hands the experts weights rounded to the compute dtype.
-        weights = weights.astype(x.dtype).astype(mx.float32)
         experts = self.switch_mlp(x, indices).astype(mx.float32)
-        routed = (experts * weights[..., None]).sum(axis=-2).astype(x.dtype)
+        if self.nvfp4:
+            # TensorFold down_f32 + drama_moe_combine_f32: keep down and route
+            # weights FP32, round each weighted pair, sum in FP32, round the sum.
+            weighted = (experts * weights[..., None]).astype(x.dtype).astype(mx.float32)
+        else:
+            # The original Fish reference hands experts compute-dtype weights.
+            weights = weights.astype(x.dtype).astype(mx.float32)
+            weighted = experts * weights[..., None]
+        routed = weighted.sum(axis=-2).astype(x.dtype)
         shared = mx.sigmoid(self.shared_expert_gate(x)) * self.shared_expert(x)
         return routed + shared
 
 
-def build_backbone(config: Drama3Config, *, fp8: bool) -> TextModel:
+def build_backbone(config: Drama3Config, *, fp8: bool, held_experts=None) -> TextModel:
     args = config.text_args()
     model = TextModel(args)
     eps = args.rms_norm_eps
-    for layer in model.model.layers:
+    for index, layer in enumerate(model.model.layers):
         layer.input_layernorm = ZeroCenteredRMSNorm(args.hidden_size, eps)
         layer.post_attention_layernorm = ZeroCenteredRMSNorm(args.hidden_size, eps)
         if layer.is_linear:
@@ -177,6 +189,11 @@ def build_backbone(config: Drama3Config, *, fp8: bool) -> TextModel:
         else:
             layer.self_attn.q_norm = ZeroCenteredRMSNorm(args.head_dim, eps)
             layer.self_attn.k_norm = ZeroCenteredRMSNorm(args.head_dim, eps)
-        layer.mlp = Drama3MoeBlock(args, fp8=fp8)
+        # Compact the gate to the same ascending original IDs as its expert
+        # tensors. Softmax/top-k then cannot select a pruned expert.
+        layer_args = args if held_experts is None else replace(
+            args, num_experts=len(held_experts[str(index)])
+        )
+        layer.mlp = Drama3MoeBlock(layer_args, fp8=fp8, nvfp4=held_experts is not None)
     model.model.norm = ZeroCenteredRMSNorm(args.hidden_size, eps)
     return model

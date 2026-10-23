@@ -17,7 +17,7 @@ from mlx.utils import tree_flatten
 
 from .codec import read_torch_state_dict
 from .backbone import GROUP_SIZE
-from .loading import MLX_CONFIG_KEY, MLX_FORMAT_VERSION, load_model
+from .loading import MLX_CONFIG_KEY, MLX_FORMAT_VERSION, load_model, nvfp4_expert_map
 
 SHARD_BYTES = 5 * 1024**3
 COPIED_FILES = ("tokenizer.json", "tokenizer_config.json", "special_tokens_map.json",
@@ -44,6 +44,8 @@ def save_shard(dst: Path, number: int, tensors: dict) -> tuple[str, list[str]]:
 
 def convert(src: Path, dst: Path, *, bits: int | None) -> None:
     """bits None keeps the experts in bf16."""
+    if nvfp4_expert_map(src) is not None:
+        raise ValueError("NVFP4 pruned checkpoints load directly; affine conversion is not supported")
     data = json.loads((src / "config.json").read_text())
     experts = None if bits is None else {"group_size": GROUP_SIZE, "bits": bits, "mode": "affine"}
     model = load_model(src, experts="bf16" if bits is None else f"q{bits}")

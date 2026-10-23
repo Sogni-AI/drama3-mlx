@@ -11,6 +11,10 @@ sponsored or endorsed by Fish Audio.
 - Loads Fish's release as published (block-FP8 experts, 41.5 GB) and, by default,
   re-quantizes the experts to 8-bit as it loads: same memory, three times faster,
   as close to the full-precision model as Fish's own bf16 runtime. 4-bit fits 64 GB Macs.
+- Loads [plotarmordev's pruned NVFP4 checkpoint](https://huggingface.co/plotarmordev/drama-3-NVFP4-Pruned)
+  with its original packed 4-bit experts and scales, through MLX's native NVFP4
+  matrix multiplication. The per-layer kept expert IDs control both routing and
+  compact weight storage; no affine re-quantization is applied.
 - Everything the open-source runtime does: `[direction]` tags, paired tags such as
   `<whisper>…</whisper>`, `<|speaker:0|>`…`<|speaker:15|>` multi-character scenes,
   zero-shot voice cloning from a clip and its transcript, long text chunked like
@@ -74,6 +78,41 @@ edit = next(tts.generate("It's due on Thursday.", references=[voice],
 
 Sampling defaults are Fish's (temperature 0.7, top-p 0.7, top-k 30), with the same
 repetition-aware resampling of the main token.
+
+## Pruned NVFP4 checkpoint
+
+Install this checkout (`pip install .`) for the NVFP4 loader and reference-voice
+guidance. Download the exact author revision, then use it directly:
+
+```bash
+hf download plotarmordev/drama-3-NVFP4-Pruned \
+  --revision 494db08481db952f834b2241bce63fb3dfa72554 \
+  --local-dir checkpoints/drama-3-NVFP4-Pruned
+drama3-mlx generate --model checkpoints/drama-3-NVFP4-Pruned \
+  --text "The lighthouse keeper climbed the stairs as the storm rolled in." \
+  --temperature 1 --top-p 0.9 --top-k 30 --max-new-tokens 1024 \
+  --single-chunk --seed 0 --out lighthouse.wav
+```
+
+The checkpoint's index identifies its format; `--experts` only controls the
+original FP8 release and does not convert these NVFP4 weights. Keep its original
+`NOTICE` and `LICENSE` alongside the weights. The affine `convert` command does
+not accept this already packed checkpoint.
+
+For cloning, use the original reference clip/transcript and `--cfg-gamma 1.5`
+(Python: `tts.generate(..., references=[voice], cfg_gamma=1.5)`). This matches the
+guidance equation in the author's pinned TensorFold engine: semantic logits are
+`conditioned + (gamma - 1) * (conditioned - unconditioned)`, where the second
+backbone sequence sees the same text without reference audio and then the same
+generated frames. The codebook tower remains conditioned. The default gamma is
+1, preserving existing generation; without reference/history audio guidance is
+inactive even when 1.5 is requested.
+
+This is an Apple MLX execution of the author's exact quantized weights, not the
+CUDA TensorFold runtime. It retains Fish's repetition-aware sampling. CUDA and
+Metal output tokens, performance, and the author's published quality scores are
+not assumed to match. The quant prunes experts using English calibration; other
+languages and unusual styles require separate listening tests.
 
 ## Speed
 

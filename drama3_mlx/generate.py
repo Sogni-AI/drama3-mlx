@@ -36,6 +36,8 @@ def generate_frames(
     top_k: int = DEFAULT_TOP_K,
     top_p: float = DEFAULT_TOP_P,
     prefill_chunk_size: int = PREFILL_CHUNK_SIZE,
+    unconditioned_prompt: np.ndarray | None = None,
+    cfg_gamma: float = 1.0,
 ) -> tuple[np.ndarray, str]:
     """Sample frames after the prompt rows: ([frames, 1 + N] without eos, finish reason).
 
@@ -68,11 +70,28 @@ def generate_frames(
         mx.eval(hidden, [c.state for c in caches], [c.state for c in tower_caches])
 
     hidden = hidden[-1:]
+    # TensorFold b1f4b9b4 drama_guide.zig: a second backbone sequence sees the
+    # same text without voice references, then every generated frame. Only the
+    # semantic logits are guided; the codebook tower stays conditioned.
+    unconditioned_hidden = None
+    if unconditioned_prompt is not None and cfg_gamma != 1.0:
+        unconditioned_caches = model.backbone.make_cache()
+        plain = mx.array(unconditioned_prompt.astype(np.int32))
+        for start in range(0, len(plain), prefill_chunk_size):
+            unconditioned_hidden = run_backbone(
+                model, plain[start:start + prefill_chunk_size], unconditioned_caches
+            )
+            mx.eval(unconditioned_hidden, [c.state for c in unconditioned_caches])
+        unconditioned_hidden = unconditioned_hidden[-1:]
     frame = rows[-1:]
     history = rows[-RAS_WINDOW_FRAMES:, 0]
     produced, finish_reason = [], "length"
     for step in range(max_new_tokens):
         logits = model.backbone.lm_head(hidden)
+        if unconditioned_hidden is not None:
+            plain_logits = model.backbone.lm_head(unconditioned_hidden).astype(mx.float32)
+            logits = logits.astype(mx.float32)
+            logits = logits + (cfg_gamma - 1.0) * (logits - plain_logits)
         frame = tower.decode_step(
             logits,
             hidden,
@@ -89,6 +108,9 @@ def generate_frames(
         if step + 1 < max_new_tokens:
             hidden = run_backbone(model, frame, caches)
             mx.async_eval(hidden, history)
+            if unconditioned_hidden is not None:
+                unconditioned_hidden = run_backbone(model, frame, unconditioned_caches)
+                mx.async_eval(unconditioned_hidden)
         main, finite = mx.stack(
             [frame[0, 0], mx.isfinite(logits).all().astype(frame.dtype)]
         ).tolist()

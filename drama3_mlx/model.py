@@ -58,7 +58,9 @@ class Drama3:
         experts sets how the release's experts are held: fp8 as published (exact,
         three times slower), q8 (default: 8-bit, same memory, as close to the fp32
         model as Fish's own bf16 runtime), q4 (25 GB) or bf16 (70 GB). A converted
-        checkpoint keeps its own format. The codec is codec.pth (release) or
+        checkpoint keeps its own format. A pruned NVFP4 checkpoint is detected
+        from its index and keeps its original packed experts, ignoring experts.
+        The codec is codec.pth (release) or
         codec.safetensors (converted) next to the weights unless codec_path is given.
         """
         path = Path(path)
@@ -88,6 +90,7 @@ class Drama3:
         seed: int | None = None,
         accept: Callable[[Segment], bool] | None = None,
         attempts: int = 1,
+        cfg_gamma: float = 1.0,
     ) -> Iterator[Segment]:
         """Speech for text, one Segment per chunk as soon as it is done.
 
@@ -99,6 +102,10 @@ class Drama3:
         chunk (2048 with single_chunk). With accept, a chunk is sampled again, up
         to attempts times in all, until accept(segment) holds; the last take is
         kept if none does.
+
+        cfg_gamma > 1 guides semantic logits using the same text without voice
+        references (TensorFold's classifier-free guidance). It only acts on
+        prompts containing reference/history audio; 1 preserves ordinary sampling.
         """
         if seed is not None:
             mx.random.seed(seed)
@@ -121,6 +128,12 @@ class Drama3:
             prompt = self._chunk_prompt(
                 chunk, prompt_texts, prompt_codes, previous_takes, history
             )
+            unconditioned = None
+            if cfg_gamma != 1.0 and np.any(
+                (prompt[:, 0] >= config.semantic_start_token_id)
+                & (prompt[:, 0] <= config.semantic_end_token_id)
+            ):
+                unconditioned = build_prompt(chunk, self.tokenizer, config)
             started = time.perf_counter()
             segment = None
             for _ in range(max(1, attempts)):
@@ -131,6 +144,8 @@ class Drama3:
                     temperature=temperature,
                     top_k=top_k,
                     top_p=top_p,
+                    unconditioned_prompt=unconditioned,
+                    cfg_gamma=cfg_gamma,
                 )
                 if not len(frames):
                     continue

@@ -41,10 +41,10 @@ RELEASE_PREFIXES = (
 
 
 class Drama3Model(nn.Module):
-    def __init__(self, config: Drama3Config, *, fp8: bool):
+    def __init__(self, config: Drama3Config, *, fp8: bool, held_experts=None):
         super().__init__()
         self.config = config
-        self.backbone = build_backbone(config, fp8=fp8)
+        self.backbone = build_backbone(config, fp8=fp8, held_experts=held_experts)
         self.tower = CodebookTower(config)
 
 
@@ -130,6 +130,58 @@ def quantize_experts(model: nn.Module, bits: int) -> None:
     )
 
 
+NVFP4_EXPERT_KEY = re.compile(
+    r"model\.language_model\.layers\.(?P<layer>\d+)\.mlp\.experts\.(?P<expert>\d+)\."
+    r"(?P<proj>gate_proj|up_proj|down_proj)\.(?P<kind>weight|weight_scale|weight_scale_2)"
+)
+
+
+def nvfp4_expert_map(path: Path):
+    """The original expert IDs retained by the published pruned checkpoint.
+
+    Its config is deliberately byte-identical to the FP8 release, so the
+    safetensors index's compact-expert metadata identifies this format.
+    """
+    index = path / "model.safetensors.index.json"
+    if not index.exists():
+        return None
+    return json.loads(index.read_text()).get("metadata", {}).get("drama_experts")
+
+
+def iter_nvfp4_weights(path: Path, held_experts, dtype):
+    """Stack retained original expert IDs without dequantization/requantization."""
+    pending = defaultdict(dict)
+    suffixes = {"weight": "weight", "weight_scale": "scales", "weight_scale_2": "global_scales"}
+    for shard in shard_paths(path):
+        weights = mx.load(str(shard))
+        for key in list(weights):
+            value = weights.pop(key)
+            match = NVFP4_EXPERT_KEY.fullmatch(key)
+            if match is None:
+                name = release_name(key)
+                if name.endswith("conv1d.weight"):
+                    value = value.moveaxis(2, 1)
+                gate = re.fullmatch(r"backbone.model.layers.(\d+).mlp.gate.weight", name)
+                if gate:
+                    value = value[mx.array(held_experts[gate[1]])]
+                yield name, value.astype(dtype)
+                continue
+            layer, proj, kind = match["layer"], match["proj"], match["kind"]
+            slot = (layer, proj, kind)
+            pending[slot][int(match["expert"])] = value
+            ids = held_experts[layer]
+            if len(pending[slot]) == len(ids):
+                values = pending.pop(slot)
+                stacked = mx.stack([values[e] for e in ids])
+                if kind == "weight":
+                    # Four little-endian bytes hold eight consecutive E2M1 codes.
+                    stacked = mx.contiguous(stacked).view(mx.uint32)
+                mx.eval(stacked)
+                stem = f"backbone.model.layers.{layer}.mlp.switch_mlp.{proj}"
+                yield f"{stem}.{suffixes[kind]}", stacked
+        del weights
+
+
 def load_model(
     path: str | Path, *, dtype: mx.Dtype = mx.bfloat16, experts: str = "q8"
 ) -> Drama3Model:
@@ -138,16 +190,25 @@ def load_model(
     path = Path(path)
     data = json.loads((path / "config.json").read_text())
     config = Drama3Config.from_dict(data)
+    held_experts = nvfp4_expert_map(path)
+    if held_experts is not None:
+        model = Drama3Model(config, fp8=False, held_experts=held_experts)
+        model.expert_format = "nvfp4"
+        model.load_weights(list(iter_nvfp4_weights(path, held_experts, dtype)), strict=True)
+        mx.eval(model.parameters())
+        return model.eval()
     meta = data.get(MLX_CONFIG_KEY)
     if meta is None:
         bits = EXPERT_FORMATS[experts]
         model = Drama3Model(config, fp8=bits == "fp8")
+        model.expert_format = experts
         if isinstance(bits, int):
             quantize_experts(model, bits)
         model.load_weights(list(iter_release_weights(path, config, dtype, bits)), strict=True)
         mx.eval(model.parameters())
         return model.eval()
     model = Drama3Model(config, fp8=False)
+    model.expert_format = "bf16" if meta["experts"] is None else f"q{meta['experts']['bits']}"
     if meta["experts"] is not None:
         quantize_experts(model, meta["experts"]["bits"])
     weights = []
