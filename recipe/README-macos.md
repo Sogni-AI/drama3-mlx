@@ -1,8 +1,9 @@
 # macOS: running the pinned recipe on Apple silicon
 
-The Metal build uses the same pinned TensorFold commit, ordered patch series, checkpoint
-revision and HTTP contract as the Linux recipe. It does not require CUDA, `nvcc`, systemd,
-or `/proc`. Use `recipe/pilot_macos.py`; the Linux launcher remains unchanged.
+The full-model Metal build uses the same pinned TensorFold commit, ordered patch series,
+checkpoint revision and HTTP contract as the Linux recipe. It does not require CUDA,
+`nvcc`, systemd, or `/proc`. Use `recipe/pilot_macos.py`; the Linux launcher remains unchanged.
+The separate NVFP4 engine/weights are not qualified by this Mac guide.
 
 This is a local, cooperative pilot—not a production service installer, GPU reservation
 system, memory sandbox, or proof that the whole host is idle. Do not interrupt another
@@ -23,7 +24,7 @@ From the repository root:
 ```sh
 hf download fishaudio/drama-3 --revision e0a9218aa48888270f06ef1ed9ea67622c0e17d2 --local-dir drama-3
 (cd drama-3 && shasum -a 256 -c ../recipe/checksums/checkpoint.sha256)
-ZIG=/absolute/path/to/zig-0.17.0/zig scripts/build-engine.sh
+ZIG=/absolute/path/to/zig-0.17.0/zig scripts/build-engine.sh --weights full
 ```
 
 All ten checkpoint files must report `OK` before a model run. The build script checks the
