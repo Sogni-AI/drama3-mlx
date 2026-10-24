@@ -183,5 +183,5 @@ the full-model live comparison against the 11-patch uncached baseline. All 48 pa
 captures matched; voice/default/text transitions, builtin and cached streaming abandonment,
 reference-boundary variants and two-lane parity passed. Eight warmed voice switches showed
 0 KiB process-RSS spread on each build. RSS is not direct Metal allocation telemetry.
-All three servers and their owned helpers settled; production Studio was not changed.
+All three servers and their owned helpers settled.
 This correctness evidence makes no speed, CUDA-runtime or NVFP4-Mac claim.
