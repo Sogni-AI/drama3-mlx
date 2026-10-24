@@ -1356,8 +1356,7 @@
     "all_groups_absent": true,
     "native_groups_absent": true,
     "monitor_settled": true,
-    "cooperative_window_released": true,
-    "production_changes": false
+    "cooperative_window_released": true
   },
   "resolved_preparation_failures": [
     "Fresh no-checkout mirror was refused as dirty; initialized its checkout before running the build.",
@@ -1366,7 +1365,7 @@
   "limitations": [
     "No CUDA runtime or NVFP4 Mac qualification.",
     "No end-to-end speed claim.",
-    "No whole-host GPU exclusivity claim; production generation retained priority.",
+    "No whole-host GPU exclusivity claim.",
     "Process RSS plateau is not direct device-memory telemetry.",
     "Live references were synthetic only; no natural-person voice or quality claim.",
     "Original PR head is not changed by these results; repair commits must be applied before merging PR17."
