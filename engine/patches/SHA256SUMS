@@ -9,3 +9,4 @@ a1289601a1aeccd57354320f55d6563108d40a5a048596760f8498b0cc375773  0008-feat-spee
 53234cfe2699f9962c800dc9e60fd162a681599b8b9bf2b4762016c209cd037e  0009-feat-speech-redraw-whole-replies-the-silence-guard-e.patch
 db1a8e4bdf817ab7d92e4635453075d8ea31a0d40537dcda8ccc9bec456a69cf  0010-feat-speech-redraw-whole-replies-that-stopped-short-.patch
 0bb2318e54fe7df3355b981b08c4098b3185c58a955366dccf530f93e21a11a8  0011-feat-speech-redraw-a-whole-reply-once-when-a-phrase-.patch
+562b63cbae92fe004ad1ab07ea791e1f3b212c2d7d71df40898257df7ad829f8  0012-feat-drama3-reuse-a-voice-reference-s-prefill-across.patch

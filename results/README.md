@@ -1,13 +1,15 @@
 # Results
 
-> **Legacy:** these numbers measure the old patched engine (commit `0f54000`, 59 patches on TensorFold
-> `c7137bb3`), not the upstream base with opt-in patches.
+> **Legacy:** the speed-stage and qualification sections below measure the old patched engine
+> (commit `0f54000`, 59 patches on TensorFold `c7137bb3`), not the current opt-in recipe.
+> Each newer result identifies its own pinned source and platform.
 
-Summaries of the measurements behind this recipe, all on GB10. Raw audio, request bodies and weights are not
-published; the JSON files keep the numbers exactly as measured.
+Summaries of the measurements and correctness checks behind this recipe. Raw audio and weights are not
+published; the JSON files retain the measured results and synthetic-input hashes.
 
 | File | What it holds |
 |---|---|
+| [`macos-pr17-repair.json`](macos-pr17-repair.json) | Current full-model Metal cache/lifecycle repair: 48/48 paired corpus captures identical, transition/cancellation/multilane parity, bounded voice-switch RSS; no speed claim |
 | [`before-after-02/`](before-after-02/README.md) | Reference against native: latency, RTF, first audio, cold start, frame-cap replies |
 | [`speed-stages.json`](speed-stages.json) | Warm RTF and load time through the five speed stages, with the audio-identity gate |
 | [`qualification.json`](qualification.json) | Numerical gate status, the reference self-control, the revised worst-row bar, clipped replies and the listening test |

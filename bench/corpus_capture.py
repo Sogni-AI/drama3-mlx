@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Whole-PCM replies for every corpus item against a running server (stdlib only), for byte comparison and timing.
 
-Usage: corpus_capture.py BASE OUT_DIR [--passes N]. OUT_DIR must not exist. Writes one body per item and pass
+Usage: corpus_capture.py BASE OUT_DIR [--passes N] [--voice NAME]. OUT_DIR must not exist. Writes one body per item and pass
 (pass-N/ITEM.pcm) and capture.json: per request status, bytes, sha256, seconds, audio seconds and RTF. A non-200
 reply keeps its status and error text; it is a recorded outcome, not an exception. Pass 0 also warms the engine.
 """
@@ -17,8 +17,11 @@ CORPUS = Path(__file__).resolve().parent / 'corpus/drama-bench-en-v1.jsonl'
 SAMPLE_RATE = 44100
 
 
-def request(base, text):
-    body = json.dumps({'model': 'fishaudio/drama-3', 'input': text, 'response_format': 'pcm'}).encode()
+def request(base, text, voice=None):
+    payload = {'model': 'fishaudio/drama-3', 'input': text, 'response_format': 'pcm'}
+    if voice is not None:
+        payload['voice'] = voice
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(base + '/v1/audio/speech', data=body, method='POST',
                                  headers={'Content-Type': 'application/json'})
     started = time.monotonic()
@@ -34,6 +37,7 @@ def main():
     parser.add_argument('base')
     parser.add_argument('out', type=Path)
     parser.add_argument('--passes', type=int, default=1)
+    parser.add_argument('--voice', help='Explicit catalog voice for reference-cache identity gates')
     args = parser.parse_args()
     items = [json.loads(line) for line in CORPUS.read_text().splitlines() if line.strip()]
     args.out.mkdir(parents=True, exist_ok=False)
@@ -42,7 +46,7 @@ def main():
         directory = args.out / f'pass-{p}'
         directory.mkdir()
         for item in items:
-            status, body, seconds = request(args.base, item['text'])
+            status, body, seconds = request(args.base, item['text'], args.voice)
             row = {'pass': p, 'item': item['id'], 'status': status, 'seconds': seconds, 'bytes': len(body),
                    'sha256': hashlib.sha256(body).hexdigest()}
             if status == 200:
@@ -53,8 +57,8 @@ def main():
                 row['error'] = body.decode('utf-8', 'replace')[:500]
             rows.append(row)
             print(json.dumps({k: row.get(k) for k in ('pass', 'item', 'status', 'seconds', 'rtf')}), flush=True)
-    (args.out / 'capture.json').write_text(json.dumps({'corpus': str(CORPUS), 'passes': args.passes, 'rows': rows},
-                                                      indent=1) + '\n')
+    (args.out / 'capture.json').write_text(json.dumps(
+        {'corpus': str(CORPUS), 'passes': args.passes, 'voice': args.voice, 'rows': rows}, indent=1) + '\n')
 
 
 if __name__ == '__main__':
