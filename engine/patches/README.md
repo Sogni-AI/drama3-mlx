@@ -17,3 +17,18 @@ boundary including tower lookahead. It preserves uncached chunk cuts and CUDA ex
 Its CPU regressions cover identity, cancellation/error invalidation, allocation ownership and
 prompt boundaries; real-model transition/corpus/stream checks are described in
 [`recipe/README-macos.md`](../../recipe/README-macos.md#correctness-gates).
+
+## Native macOS NVFP4 series
+
+On Darwin, `--weights nvfp4` uses the separate pin in
+[`../nvfp4/macos/UPSTREAM`](../nvfp4/macos/UPSTREAM) and the ordered, checksummed series below.
+It does not change the full-model series above or the CUDA NVFP4 pin.
+
+| Patch | Scope | Upstream |
+|---|---|---|
+| [`0001-drama3-metal-nvfp4-cfg.patch`](../nvfp4/macos/patches/0001-drama3-metal-nvfp4-cfg.patch) | Packed NVFP4 experts, compact routing, native reference CFG and registered numerical contracts | [TensorFold #1268](https://github.com/ashhart/TensorFold/pull/1268) |
+| [`0002-shared-gate-stress-regression.patch`](../nvfp4/macos/patches/0002-shared-gate-stress-regression.patch) | Test-only correction that distinguishes reduced-precision accumulation after sigmoid; no kernel or tolerance change | [TensorFold #1268](https://github.com/ashhart/TensorFold/pull/1268) |
+| [`0003-shared-cli-extension-point.patch`](../nvfp4/macos/patches/0003-shared-cli-extension-point.patch) | Group CFG flags beside voice selection without occupying shared CLI-table extension points; no parsing or numerical change | [TensorFold #1268](https://github.com/ashhart/TensorFold/pull/1268) |
+
+The [Mac qualification receipt](../../results/macos-nvfp4.json) separates observed GPU/model results,
+the initial failed fixture and focused correction, and the final CPU-only CLI integration build.
