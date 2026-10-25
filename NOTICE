@@ -5,3 +5,25 @@ drama3-mlx is an unofficial port of Fish Audio Drama 3 to Apple MLX. It is not m
 Changes to the Fish Audio Materials: the Drama 3 inference code of Fish Speech v3.0.0-beta (fish_speech/models/text2semantic/fish_omni: the configuration checks, codebook tower, prompt template, text chunking, sampling and generation loop) was translated from PyTorch to MLX. The text backbone runs on mlx-lm's Qwen3.5 implementation, and the audio codec on mlx-audio's port of Fish's DAC codec. The converter writes copies of the Drama 3 weights whose routed experts are dequantized from block FP8 and stored in bf16 or re-quantized with MLX affine quantization, with codec.pth re-saved as codec.safetensors.
 
 Built with Fish Audio.
+
+TensorFold implementation (tensorfold/)
+---------------------------------------
+Drama 3 on TensorFold: recipe and engine patches
+Copyright 2026 plotarmordev
+
+The tensorfold/ directory is imported from https://github.com/plotarmordev/drama-tensorfold
+at commit a7752b4591da9b33bf6e7f8f2b478a638bc64bd1, preserving its Git history and original files.
+Credit: netrunner (@plotarmordev) and the drama-tensorfold contributors, including @jerryfane
+and @BobClawblaw. This separate implementation retains the Apache License, Version 2.0,
+in tensorfold/LICENSE. Its complete original attribution notices are in tensorfold/NOTICE.
+
+Its native engine is TensorFold (https://github.com/ashhart/TensorFold),
+Copyright 2026 TensorFold contributors, with the CUDA fork at
+https://github.com/plotarmordev/TensorFold. Engine builds retain their own LICENSES/
+and THIRD_PARTY_NOTICES.md. The pruned NVFP4 checkpoint is by plotarmordev:
+https://huggingface.co/plotarmordev/drama-3-NVFP4-Pruned.
+
+Sogni's integration adds the separate tensorfold/ source tree and documentation for choosing
+between the implementations. The imported TensorFold files are unchanged. The MLX port and
+Fish Audio model/codec materials retain the Fish Audio Community License described above;
+the TensorFold code license does not replace it. See CREDITS.md and docs/tensorfold.md.

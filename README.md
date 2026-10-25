@@ -1,6 +1,21 @@
 # drama3-mlx
 
-**Fish Audio Drama 3 text-to-speech on Apple Silicon, with MLX.** Built with Fish Audio.
+**Fish Audio Drama 3 text-to-speech with Apple MLX and native TensorFold (CUDA/Metal).** Built with Fish Audio.
+
+This repository includes both implementations:
+
+| Implementation | Platform and interface | Start here |
+|---|---|---|
+| MLX | Apple Silicon; Python API and `drama3-mlx` CLI | [Install](#install) and [Use](#use) below |
+| TensorFold | Linux/CUDA (GB10) or Apple Silicon/Metal; native HTTP speech server | [TensorFold setup](docs/tensorfold.md) and [original recipe](tensorfold/README.md) |
+
+The TensorFold recipe and engine patches are by **[netrunner (@plotarmordev)](https://github.com/plotarmordev)**
+and the [drama-tensorfold contributors](https://github.com/plotarmordev/drama-tensorfold/graphs/contributors).
+Their implementation is included under [`tensorfold/`](tensorfold/) with its original Git history,
+license, notices and benchmark evidence. See [Credits](CREDITS.md) for the upstream projects and contributors.
+
+The instructions below describe the MLX package. Clone this repository and follow
+the [TensorFold guide](docs/tensorfold.md) to use the native version; `pip install` installs the MLX package.
 
 An unofficial port of [Fish Audio Drama 3](https://huggingface.co/fishaudio/drama-3)
 (35B parameters, 3B active per token) from Fish Speech v3.0.0-beta's PyTorch code to
@@ -208,8 +223,14 @@ tests run MLX on the CPU.
 
 ## License
 
+The MLX port and the imported TensorFold implementation retain their separate licenses.
+[`tensorfold/`](tensorfold/) is Apache-2.0 code from
+[plotarmordev/drama-tensorfold](https://github.com/plotarmordev/drama-tensorfold), with its original
+[LICENSE](tensorfold/LICENSE) and [NOTICE](tensorfold/NOTICE). Its engine dependencies retain their own
+notices. [Credits](CREDITS.md) and the [integration guide](docs/tensorfold.md) record the source revision.
+
 The Drama 3 weights, the codec and Fish Speech are Fish Audio Materials under the
-[Fish Audio Community License, Version 1.0](LICENSE), and this port is a Derivative
+[Fish Audio Community License, Version 1.0](LICENSE), and the MLX port is a Derivative
 Work under the same license (see [NOTICE](NOTICE)). In short: research and
 non-commercial use are free; commercial use is licensed only while your annual
 revenue (with affiliates) is under USD 500,000; offering Drama 3 as a hosted
