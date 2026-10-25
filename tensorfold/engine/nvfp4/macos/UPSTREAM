@@ -1,0 +1,4 @@
+# Native Metal base for the NVFP4 checkpoint; patches/ adds its packed experts, compaction and guidance.
+# The CUDA NVFP4 pin at ../UPSTREAM and the full-model pin at ../../UPSTREAM remain unchanged.
+TENSORFOLD_REPOSITORY=https://github.com/ashhart/TensorFold.git
+TENSORFOLD_COMMIT=3d219d2156d4c25dcfb74370c8703cd89e58aa49

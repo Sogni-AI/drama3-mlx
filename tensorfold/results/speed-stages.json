@@ -1,0 +1,55 @@
+{
+ "schema": "drama-speed-stages/1",
+ "scope": "Speed only. Rule for every patch: normal-reply audio stays byte-identical (the same float operations in the same order); gains come from memory, launch and latency structure only.",
+ "host": "GB10 host (CUDA 13 libraries identical to the before/after host)",
+ "gate_method": "recipe/pilot.py; bench/corpus_capture.py --passes 2 (48 captures: 46 normal requests and 2 long-05); bench/compare_gate.py: the 46 normal audio bodies byte-identical to the pre-speed build, the 2 long-05 replies identical to the reviewed clipped capture; RTF over the final pass of the 23 normal items; bench/stream_check.py 9/9",
+ "stages": [
+  {
+   "stage": "pre-speed build",
+   "adds": "streaming",
+   "warm_rtf": 1.0866567150770123,
+   "load_s": 53.3
+  },
+  {
+   "stage": "01",
+   "adds": "backbone one-row GEMM stages its weights"
+  },
+  {
+   "stage": "02",
+   "adds": "clipped replies at max_frames with X-Finish-Reason; one-row GEMV swizzled ring; add-norm, SwiGLU, MoE combine and attention glue fused or pipelined; tower decode attention cluster kernel (rows == 1 only); tower radix sampler",
+   "warm_rtf": 0.741
+  },
+  {
+   "stage": "03",
+   "adds": "direct-read weight stager; codec initializes on its own thread",
+   "load_s": 6.2
+  },
+  {
+   "stage": "04",
+   "adds": "tower one-row GEMV reproducing the cuBLASLt gemv summation, checked per projection at init (fail-closed)",
+   "warm_rtf": 0.678
+  },
+  {
+   "stage": "05",
+   "adds": "backbone programmatic dependent launch, only when both embedded kernel images carry the drama_pdl marker",
+   "warm_rtf": 0.6552404579748853,
+   "load_s": 5.9
+  }
+ ],
+ "promoted_binary": {
+  "warm_rtf": 0.6362240122557923,
+  "load_s": 6.2,
+  "audio_identical": true,
+  "long05_clipped_identical": [
+   true,
+   true
+  ],
+  "stream_check": "9/9",
+  "streaming_moments_s": {
+   "first_audio": 0.132,
+   "gap_free_playback_start": 0.207,
+   "complete_4_18_s_utterance": 2.857
+  }
+ },
+ "note": "No warm RTF is recorded for stages 01 and 03; stage 03 changes only loading."
+}

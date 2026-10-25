@@ -1,0 +1,417 @@
+{
+ "schema": "drama-silence-guard-floor/1",
+ "scope": "The silence guard's -40 dBFS floor (engine patches 0055-0057), replayed offline on the CPU over captured renders of the built-in voice and model-invented voices, and checked on whispered and soft speech rendered on our GB10. Neutralized: no audio, texts or file names.",
+ "rule": "10 s of 2048-sample frames in a row whose mean power is below the floor ends the reply at the frame that completes it.",
+ "replay": {
+  "renders": 278,
+  "sets": {
+   "test replies, model-invented test voice, engine before patch 0040 (40)": {
+    "renders": 40,
+    "trips_at_minus60": 2,
+    "trips_at_minus40": 2
+   },
+   "the same test replies, engine with patches 0040-0043 (40)": {
+    "renders": 40,
+    "trips_at_minus60": 0,
+    "trips_at_minus40": 0
+   },
+   "long replies, model-invented test voice (22)": {
+    "renders": 22,
+    "trips_at_minus60": 0,
+    "trips_at_minus40": 0
+   },
+   "default-voice corpus captures, 6 gates x 24 texts (144)": {
+    "renders": 144,
+    "trips_at_minus60": 5,
+    "trips_at_minus40": 5
+   },
+   "model-invented voices, short and long text (6)": {
+    "renders": 6,
+    "trips_at_minus60": 1,
+    "trips_at_minus40": 1
+   },
+   "model-invented voices and shortened clips of them (26)": {
+    "renders": 26,
+    "trips_at_minus60": 2,
+    "trips_at_minus40": 3
+   }
+  },
+  "collapses": [
+   {
+    "render": "model-invented test voice, test reply with expression cues",
+    "seconds": 44.6,
+    "run_from_s": 34.1,
+    "trip_at_minus40_s": 44.2,
+    "trip_at_minus60_s": 44.4
+   },
+   {
+    "render": "model-invented test voice, test reply with expression cues",
+    "seconds": 47.6,
+    "run_from_s": 22.0,
+    "trip_at_minus40_s": 32.0,
+    "trip_at_minus60_s": 47.4
+   },
+   {
+    "render": "default voice, corpus long-05",
+    "seconds": 47.6,
+    "run_from_s": 10.2,
+    "trip_at_minus40_s": 20.2,
+    "trip_at_minus60_s": 20.2
+   },
+   {
+    "render": "default voice, corpus long-05",
+    "seconds": 47.6,
+    "run_from_s": 10.2,
+    "trip_at_minus40_s": 20.2,
+    "trip_at_minus60_s": 20.2
+   },
+   {
+    "render": "default voice, corpus long-05",
+    "seconds": 47.6,
+    "run_from_s": 10.2,
+    "trip_at_minus40_s": 20.2,
+    "trip_at_minus60_s": 20.2
+   },
+   {
+    "render": "default voice, corpus long-05",
+    "seconds": 47.6,
+    "run_from_s": 10.2,
+    "trip_at_minus40_s": 20.2,
+    "trip_at_minus60_s": 20.2
+   },
+   {
+    "render": "default voice, corpus long-05",
+    "seconds": 20.8,
+    "run_from_s": 10.2,
+    "trip_at_minus40_s": 20.2,
+    "trip_at_minus60_s": 20.2
+   },
+   {
+    "render": "model-invented voice, long text",
+    "seconds": 71.4,
+    "run_from_s": 6.5,
+    "trip_at_minus40_s": 16.5,
+    "trip_at_minus60_s": 16.6
+   },
+   {
+    "render": "model-invented voice, short text",
+    "seconds": 45.2,
+    "run_from_s": 1.5,
+    "trip_at_minus40_s": 11.5,
+    "trip_at_minus60_s": null
+   },
+   {
+    "render": "model-invented voice, long text",
+    "seconds": 30.7,
+    "run_from_s": 20.6,
+    "trip_at_minus40_s": 30.7,
+    "trip_at_minus60_s": 30.7
+   },
+   {
+    "render": "model-invented voice, long text",
+    "seconds": 32.1,
+    "run_from_s": 22.1,
+    "trip_at_minus40_s": 32.1,
+    "trip_at_minus60_s": 32.1
+   }
+  ],
+  "collapses_tripped_at_minus40": 11,
+  "collapses_missed_at_minus60": 1,
+  "spared": 267,
+  "false_trips_at_minus40": 0,
+  "longest_spared_run_below_minus40_s": 7.48,
+  "longest_spared_run_note": "the recovering stall of corpus long-02, the same in all five captures",
+  "collapses_quietest_10s_loudest_frame_max_dbfs": -51.7,
+  "spared_quietest_10s_loudest_frame_min_dbfs": -18.5,
+  "floor_sweep_unique_collapses": {
+   "unique_collapses": 7,
+   "note": "the five captures of corpus long-05 count once",
+   "by_floor_dbfs": {
+    "-60": {
+     "collapses_tripped": 6,
+     "false_trips": 0
+    },
+    "-55": {
+     "collapses_tripped": 6,
+     "false_trips": 0
+    },
+    "-52": {
+     "collapses_tripped": 6,
+     "false_trips": 0
+    },
+    "-50": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    },
+    "-45": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    },
+    "-40": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    },
+    "-35": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    },
+    "-30": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    },
+    "-25": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    },
+    "-22": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    },
+    "-20": {
+     "collapses_tripped": 7,
+     "false_trips": 0
+    }
+   }
+  }
+ },
+ "quiet_speech": {
+  "method": "Six texts (whispered, soft, a [quietly, almost whispering] prefix, sighs, a bedtime story, speech turning into a whisper) rendered on our GB10 in a model-invented test voice and the built-in voice with the -40 dBFS build; word peaks from Whisper word times; trips replayed at four floors.",
+  "renders": [
+   {
+    "voice": "model-invented test voice",
+    "style": "bedtime",
+    "finish": "stop",
+    "seconds": 26.8,
+    "words_matched": "62/62",
+    "min_word_peak_dbfs": -24.5,
+    "p5_word_peak_dbfs": -23.8,
+    "longest_run_below_minus40_in_speech_s": 0.88,
+    "quietest_10s_loudest_frame_dbfs": -17.7,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "model-invented test voice",
+    "style": "mixed",
+    "finish": "stop",
+    "seconds": 18.53,
+    "words_matched": "53/53",
+    "min_word_peak_dbfs": -28.7,
+    "p5_word_peak_dbfs": -22.5,
+    "longest_run_below_minus40_in_speech_s": 0.93,
+    "quietest_10s_loudest_frame_dbfs": -16.3,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "model-invented test voice",
+    "style": "quietly",
+    "finish": "stop",
+    "seconds": 21.73,
+    "words_matched": "44/45",
+    "min_word_peak_dbfs": -50.8,
+    "p5_word_peak_dbfs": -48.3,
+    "longest_run_below_minus40_in_speech_s": 2.09,
+    "quietest_10s_loudest_frame_dbfs": -34.8,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "model-invented test voice",
+    "style": "sighs",
+    "finish": "stop",
+    "seconds": 35.06,
+    "words_matched": "48/50",
+    "min_word_peak_dbfs": -27.0,
+    "p5_word_peak_dbfs": -23.4,
+    "longest_run_below_minus40_in_speech_s": 2.28,
+    "quietest_10s_loudest_frame_dbfs": -17.6,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "model-invented test voice",
+    "style": "soft",
+    "finish": "stop",
+    "seconds": 18.48,
+    "words_matched": "51/51",
+    "min_word_peak_dbfs": -30.1,
+    "p5_word_peak_dbfs": -23.3,
+    "longest_run_below_minus40_in_speech_s": 0.88,
+    "quietest_10s_loudest_frame_dbfs": -16.6,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "model-invented test voice",
+    "style": "whisper",
+    "finish": "stop",
+    "seconds": 17.04,
+    "words_matched": "48/48",
+    "min_word_peak_dbfs": -50.5,
+    "p5_word_peak_dbfs": -43.1,
+    "longest_run_below_minus40_in_speech_s": 1.21,
+    "quietest_10s_loudest_frame_dbfs": -31.8,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "built-in voice",
+    "style": "bedtime",
+    "finish": "stop",
+    "seconds": 35.11,
+    "words_matched": "62/62",
+    "min_word_peak_dbfs": -22.5,
+    "p5_word_peak_dbfs": -21.1,
+    "longest_run_below_minus40_in_speech_s": 1.86,
+    "quietest_10s_loudest_frame_dbfs": -13.1,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "built-in voice",
+    "style": "mixed",
+    "finish": "stop",
+    "seconds": 23.82,
+    "words_matched": "53/53",
+    "min_word_peak_dbfs": -32.4,
+    "p5_word_peak_dbfs": -29.5,
+    "longest_run_below_minus40_in_speech_s": 1.81,
+    "quietest_10s_loudest_frame_dbfs": -21.8,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "built-in voice",
+    "style": "quietly",
+    "finish": "silence",
+    "seconds": 10.63,
+    "words_matched": "1/45",
+    "min_word_peak_dbfs": -20.8,
+    "p5_word_peak_dbfs": -20.8,
+    "longest_run_below_minus40_in_speech_s": 2.69,
+    "quietest_10s_loudest_frame_dbfs": -48.0,
+    "trips": {
+     "-60": null,
+     "-45": 10.63,
+     "-40": 10.63,
+     "-35": 10.59
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "built-in voice",
+    "style": "sighs",
+    "finish": "stop",
+    "seconds": 27.4,
+    "words_matched": "48/50",
+    "min_word_peak_dbfs": -30.3,
+    "p5_word_peak_dbfs": -27.3,
+    "longest_run_below_minus40_in_speech_s": 2.51,
+    "quietest_10s_loudest_frame_dbfs": -13.9,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "built-in voice",
+    "style": "soft",
+    "finish": "stop",
+    "seconds": 21.59,
+    "words_matched": "51/51",
+    "min_word_peak_dbfs": -32.3,
+    "p5_word_peak_dbfs": -31.6,
+    "longest_run_below_minus40_in_speech_s": 1.58,
+    "quietest_10s_loudest_frame_dbfs": -24.2,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "built-in voice",
+    "style": "whisper",
+    "finish": "stop",
+    "seconds": 17.18,
+    "words_matched": "48/48",
+    "min_word_peak_dbfs": -47.3,
+    "p5_word_peak_dbfs": -40.2,
+    "longest_run_below_minus40_in_speech_s": 0.88,
+    "quietest_10s_loudest_frame_dbfs": -23.1,
+    "trips": {
+     "-60": null,
+     "-45": null,
+     "-40": null,
+     "-35": null
+    },
+    "build": "-40 dBFS floor"
+   },
+   {
+    "voice": "built-in voice",
+    "style": "quietly",
+    "finish": "stop",
+    "seconds": 97.85,
+    "words_matched": "2/45",
+    "min_word_peak_dbfs": -51.9,
+    "p5_word_peak_dbfs": -50.3,
+    "longest_run_below_minus40_in_speech_s": 97.2,
+    "quietest_10s_loudest_frame_dbfs": -53.2,
+    "trips": {
+     "-60": null,
+     "-45": 10.63,
+     "-40": 10.63,
+     "-35": 10.59
+    },
+    "build": "previous build, -60 dBFS floor"
+   }
+  ],
+  "notes": "built-in voice, quietly: a collapse into a hum after one word, cut at 10.63 s; the previous -60 dBFS build rendered the same request to 97.85 s and ended stop, and the cut audio is a byte-identical prefix of it. Its word and run figures come from the collapse, not from speech. Over the other 11 renders: longest run below -40 dBFS inside speech 2.51 s, quietest word peak -50.8 dBFS, every 10 s holds a frame at -34.8 dBFS or louder."
+ }
+}

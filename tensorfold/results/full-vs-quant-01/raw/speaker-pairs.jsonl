@@ -1,0 +1,576 @@
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-01", "cosine": 0.8285975456237793}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-02", "cosine": 0.8119140863418579}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-03", "cosine": 0.7927877902984619}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-04", "cosine": 0.7888567447662354}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-05", "cosine": 0.824995756149292}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-06", "cosine": 0.8820592164993286}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-07", "cosine": 0.82574063539505}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "short-08", "cosine": 0.8343397974967957}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-01", "cosine": 0.9322286248207092}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-02", "cosine": 0.9398956298828125}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-03", "cosine": 0.9128699898719788}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-04", "cosine": 0.9254367351531982}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-05", "cosine": 0.9257567524909973}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-06", "cosine": 0.9476684927940369}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-07", "cosine": 0.9233881831169128}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "medium-08", "cosine": 0.9113893508911133}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-01", "cosine": 0.9487513303756714}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-02", "cosine": 0.9563978910446167}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-03", "cosine": 0.947808563709259}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-04", "cosine": 0.9626809358596802}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-05", "cosine": 0.9581383466720581}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-06", "cosine": 0.9631919264793396}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-07", "cosine": 0.9613122940063477}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 0, "item": "long-08", "cosine": 0.9702186584472656}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-01", "cosine": 0.8514955043792725}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-02", "cosine": 0.8619816899299622}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-03", "cosine": 0.6625014543533325}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-04", "cosine": 0.6380807757377625}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-05", "cosine": 0.8111425042152405}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-06", "cosine": 0.8507049083709717}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-07", "cosine": 0.8283681869506836}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "short-08", "cosine": 0.8496756553649902}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-01", "cosine": 0.8683826923370361}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-02", "cosine": 0.9556634426116943}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-03", "cosine": 0.9272148013114929}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-04", "cosine": 0.9155684113502502}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-05", "cosine": 0.9459623694419861}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-06", "cosine": 0.9106869697570801}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-07", "cosine": 0.9518225193023682}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "medium-08", "cosine": 0.9235843420028687}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-01", "cosine": 0.9712393283843994}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-02", "cosine": 0.9554581046104431}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-03", "cosine": 0.9580764770507812}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-04", "cosine": 0.9704654216766357}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-05", "cosine": 0.9605048298835754}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-06", "cosine": 0.9717109799385071}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-07", "cosine": 0.9609078764915466}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 1, "item": "long-08", "cosine": 0.9544634222984314}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-01", "cosine": 0.8032208681106567}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-02", "cosine": 0.8234314918518066}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-03", "cosine": 0.7095161080360413}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-04", "cosine": 0.8184022903442383}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-05", "cosine": 0.7680380344390869}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-06", "cosine": 0.7644931077957153}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-07", "cosine": 0.822232723236084}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "short-08", "cosine": 0.8249279260635376}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-01", "cosine": 0.9306981563568115}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-02", "cosine": 0.9323480725288391}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-03", "cosine": 0.9288026094436646}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-04", "cosine": 0.9536480903625488}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-05", "cosine": 0.8971059322357178}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-06", "cosine": 0.9553508162498474}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-07", "cosine": 0.939342737197876}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "medium-08", "cosine": 0.9343898892402649}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-01", "cosine": 0.9673554301261902}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-02", "cosine": 0.9694047570228577}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-03", "cosine": 0.9608201384544373}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-04", "cosine": 0.9607890248298645}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-05", "cosine": 0.9519028663635254}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-06", "cosine": 0.9412900805473328}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-07", "cosine": 0.958820104598999}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 2, "item": "long-08", "cosine": 0.9649078845977783}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-01", "cosine": 0.8101811408996582}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-02", "cosine": 0.7922393083572388}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-03", "cosine": 0.7144337296485901}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-04", "cosine": 0.8549237251281738}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-05", "cosine": 0.8191403150558472}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-06", "cosine": 0.8149749040603638}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-07", "cosine": 0.8220047950744629}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "short-08", "cosine": 0.8810198307037354}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-01", "cosine": 0.9301300048828125}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-02", "cosine": 0.9263733625411987}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-03", "cosine": 0.9476163387298584}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-04", "cosine": 0.9390318393707275}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-05", "cosine": 0.9225447773933411}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-06", "cosine": 0.9370869994163513}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-07", "cosine": 0.9429441690444946}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "medium-08", "cosine": 0.9047948122024536}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-01", "cosine": 0.9627628326416016}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-02", "cosine": 0.9627209305763245}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-03", "cosine": 0.9646496772766113}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-04", "cosine": 0.969096839427948}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-05", "cosine": 0.9606471061706543}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-06", "cosine": 0.959043025970459}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-07", "cosine": 0.9615801572799683}
+{"kind": "arm_vs_full", "arm": "FG", "baseline": "F", "salt": 3, "item": "long-08", "cosine": 0.9611984491348267}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-01", "cosine": 0.7255669832229614}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-02", "cosine": 0.8630937933921814}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-03", "cosine": 0.8051989078521729}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-04", "cosine": 0.8488847017288208}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-05", "cosine": 0.7757896184921265}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-06", "cosine": 0.8280532956123352}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-07", "cosine": 0.8461147546768188}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "short-08", "cosine": 0.8449009656906128}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-01", "cosine": 0.9302091598510742}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-02", "cosine": 0.9256596565246582}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-03", "cosine": 0.9295274615287781}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-04", "cosine": 0.9345647096633911}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-05", "cosine": 0.9337122440338135}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-06", "cosine": 0.9533689022064209}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-07", "cosine": 0.9116909503936768}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "medium-08", "cosine": 0.9230690002441406}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-01", "cosine": 0.9477736949920654}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-02", "cosine": 0.9659464359283447}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-03", "cosine": 0.9537717700004578}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-04", "cosine": 0.9622926712036133}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-05", "cosine": 0.9640827178955078}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-06", "cosine": 0.9644097089767456}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-07", "cosine": 0.9744937419891357}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 0, "item": "long-08", "cosine": 0.969322144985199}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-01", "cosine": 0.7731516361236572}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-02", "cosine": 0.8482128381729126}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-03", "cosine": 0.7979338765144348}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-04", "cosine": 0.7227266430854797}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-05", "cosine": 0.7907946109771729}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-06", "cosine": 0.8386448621749878}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-07", "cosine": 0.8037135601043701}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "short-08", "cosine": 0.8836144804954529}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-01", "cosine": 0.9056483507156372}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-02", "cosine": 0.9210705757141113}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-03", "cosine": 0.8991079330444336}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-04", "cosine": 0.91995769739151}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-05", "cosine": 0.9164379835128784}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-06", "cosine": 0.9429783821105957}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-07", "cosine": 0.9323405027389526}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "medium-08", "cosine": 0.9238495826721191}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-01", "cosine": 0.9597275257110596}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-02", "cosine": 0.9553141593933105}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-03", "cosine": 0.946418285369873}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-04", "cosine": 0.9691780805587769}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-05", "cosine": 0.9634294509887695}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-06", "cosine": 0.9664365649223328}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-07", "cosine": 0.9498788118362427}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 1, "item": "long-08", "cosine": 0.9549533128738403}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-01", "cosine": 0.8392619490623474}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-02", "cosine": 0.8135517835617065}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-03", "cosine": 0.7624576687812805}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-04", "cosine": 0.8694640398025513}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-05", "cosine": 0.7752271890640259}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-06", "cosine": 0.7852107286453247}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-07", "cosine": 0.8602598905563354}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "short-08", "cosine": 0.8220951557159424}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-01", "cosine": 0.936557412147522}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-02", "cosine": 0.9487690925598145}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-03", "cosine": 0.923092246055603}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-04", "cosine": 0.9507343173027039}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-05", "cosine": 0.9261471629142761}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-06", "cosine": 0.9077927470207214}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-07", "cosine": 0.9263015389442444}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "medium-08", "cosine": 0.9282774925231934}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-01", "cosine": 0.9595763087272644}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-02", "cosine": 0.9642106294631958}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-03", "cosine": 0.9540759325027466}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-04", "cosine": 0.9650384783744812}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-05", "cosine": 0.9601971507072449}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-06", "cosine": 0.962904691696167}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-07", "cosine": 0.9674715995788574}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 2, "item": "long-08", "cosine": 0.9590147733688354}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-01", "cosine": 0.7142969369888306}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-02", "cosine": 0.8765153288841248}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-03", "cosine": 0.7194398641586304}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-04", "cosine": 0.8414911031723022}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-05", "cosine": 0.803612232208252}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-06", "cosine": 0.8150650858879089}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-07", "cosine": 0.8256052732467651}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "short-08", "cosine": 0.8595855832099915}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-01", "cosine": 0.9155393838882446}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-02", "cosine": 0.9168428182601929}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-03", "cosine": 0.934105396270752}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-04", "cosine": 0.8981506824493408}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-05", "cosine": 0.9429355263710022}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-06", "cosine": 0.9380152821540833}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-07", "cosine": 0.9216719269752502}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "medium-08", "cosine": 0.9286981225013733}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-01", "cosine": 0.9579955339431763}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-02", "cosine": 0.9561748504638672}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-03", "cosine": 0.964149534702301}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-04", "cosine": 0.9593226313591003}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-05", "cosine": 0.9606015682220459}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-06", "cosine": 0.9655092358589172}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-07", "cosine": 0.9656458497047424}
+{"kind": "arm_vs_full", "arm": "Q", "baseline": "F", "salt": 3, "item": "long-08", "cosine": 0.9531556963920593}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-01", "cosine": 0.9537693858146667}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-01", "cosine": 0.9633157849311829}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-01", "cosine": 0.9592400193214417}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-01", "cosine": 0.9641259908676147}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-01", "cosine": 0.9652657508850098}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-01", "cosine": 0.9619171619415283}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-02", "cosine": 0.9526056051254272}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-02", "cosine": 0.9592564105987549}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-02", "cosine": 0.9540021419525146}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-02", "cosine": 0.9540191888809204}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-02", "cosine": 0.950242280960083}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-02", "cosine": 0.9547030925750732}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-03", "cosine": 0.9420188665390015}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-03", "cosine": 0.9501074552536011}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-03", "cosine": 0.9457827210426331}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-03", "cosine": 0.9429870843887329}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-03", "cosine": 0.9437614679336548}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-03", "cosine": 0.9568462371826172}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-04", "cosine": 0.9698154926300049}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-04", "cosine": 0.9699532985687256}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-04", "cosine": 0.9575294256210327}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-04", "cosine": 0.9753494262695312}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-04", "cosine": 0.9689027070999146}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-04", "cosine": 0.9707515835762024}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-05", "cosine": 0.9641822576522827}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-05", "cosine": 0.9673628211021423}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-05", "cosine": 0.9700304269790649}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-05", "cosine": 0.9549878835678101}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-05", "cosine": 0.967934250831604}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-05", "cosine": 0.9535780549049377}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-06", "cosine": 0.9744604825973511}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-06", "cosine": 0.9620105028152466}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-06", "cosine": 0.9674676656723022}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-06", "cosine": 0.9558820724487305}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-06", "cosine": 0.9584078788757324}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-06", "cosine": 0.9603084325790405}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-07", "cosine": 0.951337456703186}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-07", "cosine": 0.9639550447463989}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-07", "cosine": 0.9627630710601807}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-07", "cosine": 0.9679763317108154}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-07", "cosine": 0.9604789018630981}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-07", "cosine": 0.9660473465919495}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "long-08", "cosine": 0.9573644399642944}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "long-08", "cosine": 0.9703858494758606}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "long-08", "cosine": 0.9653080701828003}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "long-08", "cosine": 0.9674542546272278}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "long-08", "cosine": 0.9604024291038513}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "long-08", "cosine": 0.9554890394210815}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-01", "cosine": 0.912146270275116}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-01", "cosine": 0.930401086807251}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-01", "cosine": 0.9383529424667358}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-01", "cosine": 0.930060863494873}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-01", "cosine": 0.8950590491294861}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-01", "cosine": 0.929567813873291}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-02", "cosine": 0.9331035614013672}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-02", "cosine": 0.9203876852989197}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-02", "cosine": 0.9243735074996948}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-02", "cosine": 0.9398776292800903}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-02", "cosine": 0.9331077337265015}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-02", "cosine": 0.9431825876235962}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-03", "cosine": 0.942974328994751}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-03", "cosine": 0.9251843690872192}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-03", "cosine": 0.9120950102806091}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-03", "cosine": 0.9279652833938599}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-03", "cosine": 0.9145565032958984}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-03", "cosine": 0.9366919994354248}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-04", "cosine": 0.9478620886802673}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-04", "cosine": 0.9514478445053101}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-04", "cosine": 0.9376035928726196}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-04", "cosine": 0.9412350654602051}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-04", "cosine": 0.9340060353279114}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-04", "cosine": 0.9035748839378357}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-05", "cosine": 0.915992796421051}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-05", "cosine": 0.9243959188461304}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-05", "cosine": 0.9380409717559814}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-05", "cosine": 0.9015963077545166}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-05", "cosine": 0.9282543659210205}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-05", "cosine": 0.9116805791854858}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-06", "cosine": 0.9412923455238342}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-06", "cosine": 0.9349669218063354}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-06", "cosine": 0.9594439268112183}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-06", "cosine": 0.9388392567634583}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-06", "cosine": 0.938686728477478}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-06", "cosine": 0.9234146475791931}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-07", "cosine": 0.9240669012069702}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-07", "cosine": 0.9302090406417847}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-07", "cosine": 0.9312024712562561}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-07", "cosine": 0.9475509524345398}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-07", "cosine": 0.9547158479690552}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-07", "cosine": 0.9369957447052002}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "medium-08", "cosine": 0.9222434163093567}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "medium-08", "cosine": 0.9291427135467529}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "medium-08", "cosine": 0.9112855195999146}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "medium-08", "cosine": 0.9185485243797302}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "medium-08", "cosine": 0.906471848487854}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "medium-08", "cosine": 0.9165017604827881}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-01", "cosine": 0.8490996360778809}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-01", "cosine": 0.8045366406440735}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-01", "cosine": 0.783100962638855}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-01", "cosine": 0.8326918482780457}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-01", "cosine": 0.8466867208480835}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-01", "cosine": 0.8122315406799316}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-02", "cosine": 0.8541886806488037}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-02", "cosine": 0.821995735168457}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-02", "cosine": 0.837510347366333}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-02", "cosine": 0.7951139211654663}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-02", "cosine": 0.8336913585662842}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-02", "cosine": 0.8322309851646423}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-03", "cosine": 0.8194230794906616}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-03", "cosine": 0.766007125377655}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-03", "cosine": 0.844058632850647}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-03", "cosine": 0.7164461612701416}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-03", "cosine": 0.8300502896308899}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-03", "cosine": 0.7906824350357056}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-04", "cosine": 0.7559404969215393}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-04", "cosine": 0.8694890141487122}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-04", "cosine": 0.8154890537261963}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-04", "cosine": 0.7993238568305969}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-04", "cosine": 0.7025302648544312}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-04", "cosine": 0.848779559135437}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-05", "cosine": 0.853101909160614}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-05", "cosine": 0.7746335864067078}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-05", "cosine": 0.8048062324523926}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-05", "cosine": 0.7685360312461853}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-05", "cosine": 0.8012054562568665}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-05", "cosine": 0.8147827386856079}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-06", "cosine": 0.8277472853660583}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-06", "cosine": 0.7876478433609009}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-06", "cosine": 0.7798008918762207}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-06", "cosine": 0.7553277611732483}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-06", "cosine": 0.8158344626426697}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-06", "cosine": 0.7659195065498352}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-07", "cosine": 0.8346201777458191}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-07", "cosine": 0.8295602798461914}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-07", "cosine": 0.8233639001846313}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-07", "cosine": 0.7967746257781982}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-07", "cosine": 0.7768849730491638}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-07", "cosine": 0.8062219619750977}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 1], "item": "short-08", "cosine": 0.8357388973236084}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 2], "item": "short-08", "cosine": 0.8648529052734375}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [0, 3], "item": "short-08", "cosine": 0.8272914886474609}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 2], "item": "short-08", "cosine": 0.8600066900253296}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [1, 3], "item": "short-08", "cosine": 0.8917453289031982}
+{"kind": "full_across_salts", "arm": "F", "baseline": "F", "salt": [2, 3], "item": "short-08", "cosine": 0.8830095529556274}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-01", "cosine": 0.2105216681957245}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-02", "cosine": 0.6272321343421936}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-03", "cosine": 0.38185352087020874}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-04", "cosine": 0.4185721278190613}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-05", "cosine": 0.4114234149456024}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-06", "cosine": 0.15954706072807312}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-07", "cosine": 0.5063287019729614}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "short-08", "cosine": 0.1535317301750183}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-01", "cosine": 0.29058778285980225}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-02", "cosine": 0.4661434292793274}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-03", "cosine": 0.17737862467765808}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-04", "cosine": 0.4331190288066864}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-05", "cosine": 0.4451640844345093}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-06", "cosine": 0.4515454173088074}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-07", "cosine": 0.036997392773628235}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "medium-08", "cosine": 0.2463727444410324}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-01", "cosine": 0.2364652156829834}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-02", "cosine": 0.47341737151145935}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-03", "cosine": 0.2626442611217499}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-04", "cosine": 0.22382625937461853}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-05", "cosine": 0.3741603493690491}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-06", "cosine": 0.28220051527023315}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-07", "cosine": 0.2715378403663635}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 0, "item": "long-08", "cosine": 0.5292448997497559}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-01", "cosine": 0.05144701153039932}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-02", "cosine": 0.2914126515388489}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-03", "cosine": 0.16364282369613647}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-04", "cosine": 0.2824893593788147}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-05", "cosine": 0.2613733112812042}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-06", "cosine": 0.5487725734710693}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-07", "cosine": 0.4218447804450989}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "short-08", "cosine": 0.2254716157913208}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-01", "cosine": 0.3572922348976135}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-02", "cosine": 0.48271504044532776}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-03", "cosine": 0.49303969740867615}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-04", "cosine": 0.162247434258461}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-05", "cosine": 0.2730408310890198}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-06", "cosine": 0.23889970779418945}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-07", "cosine": 0.13153059780597687}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "medium-08", "cosine": 0.17100486159324646}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-01", "cosine": 0.3299470841884613}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-02", "cosine": 0.7257071733474731}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-03", "cosine": 0.31067711114883423}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-04", "cosine": 0.1977865993976593}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-05", "cosine": 0.5339450836181641}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-06", "cosine": 0.2109643518924713}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-07", "cosine": 0.3902011811733246}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 1, "item": "long-08", "cosine": 0.6747992038726807}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-01", "cosine": -0.008510831743478775}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-02", "cosine": 0.22498853504657745}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-03", "cosine": 0.11436629295349121}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-04", "cosine": 0.1892014741897583}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-05", "cosine": 0.3799562454223633}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-06", "cosine": 0.5186583995819092}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-07", "cosine": 0.5771988034248352}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "short-08", "cosine": 0.2722858190536499}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-01", "cosine": 0.40102913975715637}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-02", "cosine": 0.3411545157432556}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-03", "cosine": 0.047902148216962814}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-04", "cosine": 0.5165099501609802}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-05", "cosine": 0.1393854320049286}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-06", "cosine": 0.2633506953716278}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-07", "cosine": 0.3524751365184784}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "medium-08", "cosine": 0.04813649505376816}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-01", "cosine": 0.42947685718536377}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-02", "cosine": 0.30033573508262634}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-03", "cosine": 0.30401545763015747}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-04", "cosine": 0.3747059106826782}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-05", "cosine": 0.14313432574272156}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-06", "cosine": 0.21825656294822693}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-07", "cosine": 0.21387264132499695}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 2, "item": "long-08", "cosine": 0.5215502977371216}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-01", "cosine": -0.014310788363218307}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-02", "cosine": 0.27623629570007324}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-03", "cosine": 0.1989334225654602}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-04", "cosine": 0.15206703543663025}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-05", "cosine": 0.46442508697509766}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-06", "cosine": 0.17357447743415833}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-07", "cosine": 0.19184783101081848}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "short-08", "cosine": 0.559647798538208}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-01", "cosine": 0.5127582550048828}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-02", "cosine": 0.3548421263694763}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-03", "cosine": 0.1501888632774353}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-04", "cosine": 0.20944339036941528}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-05", "cosine": 0.19584563374519348}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-06", "cosine": 0.4443889260292053}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-07", "cosine": 0.18332898616790771}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "medium-08", "cosine": 0.21470776200294495}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-01", "cosine": 0.16162970662117004}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-02", "cosine": 0.3042687177658081}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-03", "cosine": 0.30824366211891174}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-04", "cosine": 0.44455718994140625}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-05", "cosine": 0.3170795142650604}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-06", "cosine": 0.17654907703399658}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-07", "cosine": 0.2533233165740967}
+{"kind": "arm_vs_full", "arm": "QB", "baseline": "FB", "salt": 3, "item": "long-08", "cosine": 0.42172399163246155}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-01", "cosine": 0.2403458207845688}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-01", "cosine": 0.17113055288791656}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-01", "cosine": 0.08510076999664307}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-01", "cosine": 0.1893630176782608}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-01", "cosine": 0.18558357656002045}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-01", "cosine": 0.37267741560935974}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-02", "cosine": 0.6451917886734009}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-02", "cosine": 0.5083411335945129}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-02", "cosine": 0.19131946563720703}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-02", "cosine": 0.5335376858711243}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-02", "cosine": 0.30764275789260864}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-02", "cosine": 0.3166835606098175}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-03", "cosine": 0.1810559183359146}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-03", "cosine": 0.4903516471385956}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-03", "cosine": 0.23519733548164368}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-03", "cosine": 0.22835984826087952}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-03", "cosine": 0.17333529889583588}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-03", "cosine": 0.25941890478134155}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-04", "cosine": 0.5424684286117554}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-04", "cosine": 0.38152068853378296}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-04", "cosine": 0.3824329376220703}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-04", "cosine": 0.31526604294776917}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-04", "cosine": 0.3634217381477356}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-04", "cosine": 0.3494826555252075}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-05", "cosine": 0.4059762954711914}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-05", "cosine": 0.16281256079673767}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-05", "cosine": 0.4342310428619385}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-05", "cosine": 0.19062180817127228}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-05", "cosine": 0.6259130239486694}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-05", "cosine": 0.22285819053649902}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-06", "cosine": 0.3114420473575592}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-06", "cosine": 0.21331411600112915}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-06", "cosine": 0.42691224813461304}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-06", "cosine": 0.2288733273744583}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-06", "cosine": 0.21286951005458832}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-06", "cosine": 0.23591704666614532}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-07", "cosine": 0.37337419390678406}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-07", "cosine": 0.1863754838705063}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-07", "cosine": 0.16689734160900116}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-07", "cosine": 0.2007666826248169}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-07", "cosine": 0.23887841403484344}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-07", "cosine": 0.12284328043460846}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "long-08", "cosine": 0.5235992670059204}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "long-08", "cosine": 0.5657534599304199}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "long-08", "cosine": 0.28158941864967346}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "long-08", "cosine": 0.5977522134780884}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "long-08", "cosine": 0.5146202445030212}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "long-08", "cosine": 0.43736541271209717}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-01", "cosine": 0.47425490617752075}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-01", "cosine": 0.64309161901474}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-01", "cosine": 0.5433456897735596}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-01", "cosine": 0.37366199493408203}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-01", "cosine": 0.43616533279418945}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-01", "cosine": 0.447578102350235}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-02", "cosine": 0.29443615674972534}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-02", "cosine": 0.5608254671096802}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-02", "cosine": 0.6340111494064331}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-02", "cosine": 0.2893734574317932}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-02", "cosine": 0.28517675399780273}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-02", "cosine": 0.5213255286216736}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-03", "cosine": 0.2048521637916565}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-03", "cosine": 0.16248303651809692}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-03", "cosine": 0.18839049339294434}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-03", "cosine": 0.6270569562911987}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-03", "cosine": 0.6081089973449707}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-03", "cosine": 0.5187413096427917}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-04", "cosine": 0.18615418672561646}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-04", "cosine": 0.5451900959014893}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-04", "cosine": 0.2481212019920349}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-04", "cosine": 0.24088869988918304}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-04", "cosine": 0.560122013092041}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-04", "cosine": 0.31138134002685547}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-05", "cosine": 0.4800257086753845}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-05", "cosine": 0.14430522918701172}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-05", "cosine": 0.10104449093341827}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-05", "cosine": 0.21111086010932922}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-05", "cosine": 0.239795982837677}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-05", "cosine": 0.5250370502471924}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-06", "cosine": 0.3891875743865967}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-06", "cosine": 0.44222432374954224}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-06", "cosine": 0.15684789419174194}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-06", "cosine": 0.32168251276016235}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-06", "cosine": 0.30687960982322693}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-06", "cosine": 0.21548016369342804}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-07", "cosine": 0.3741162121295929}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-07", "cosine": 0.2838507890701294}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-07", "cosine": 0.19829055666923523}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-07", "cosine": 0.1451520174741745}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-07", "cosine": 0.5147061347961426}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-07", "cosine": 0.12700077891349792}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "medium-08", "cosine": 0.07219818979501724}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "medium-08", "cosine": 0.21447618305683136}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "medium-08", "cosine": 0.4807717502117157}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "medium-08", "cosine": 0.3500877022743225}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "medium-08", "cosine": 0.13867507874965668}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "medium-08", "cosine": 0.09240131080150604}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-01", "cosine": 0.11149222403764725}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-01", "cosine": -0.06765678524971008}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-01", "cosine": 0.14862561225891113}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-01", "cosine": 0.16477394104003906}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-01", "cosine": 0.057627540081739426}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-01", "cosine": -0.05231596156954765}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-02", "cosine": 0.2234480381011963}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-02", "cosine": 0.5189235210418701}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-02", "cosine": 0.1640762984752655}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-02", "cosine": 0.3451598286628723}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-02", "cosine": 0.1328001618385315}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-02", "cosine": 0.15286268293857574}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-03", "cosine": 0.2021312117576599}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-03", "cosine": 0.22272159159183502}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-03", "cosine": 0.4002441465854645}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-03", "cosine": 0.4331739544868469}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-03", "cosine": 0.22063368558883667}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-03", "cosine": 0.18898987770080566}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-04", "cosine": 0.16657039523124695}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-04", "cosine": 0.40958231687545776}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-04", "cosine": 0.3399982452392578}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-04", "cosine": 0.12085546553134918}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-04", "cosine": 0.1000271886587143}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-04", "cosine": 0.13919809460639954}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-05", "cosine": 0.5006223320960999}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-05", "cosine": 0.2942032217979431}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-05", "cosine": 0.4536818265914917}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-05", "cosine": 0.3783382177352905}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-05", "cosine": 0.6137251853942871}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-05", "cosine": 0.40063032507896423}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-06", "cosine": 0.3272402286529541}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-06", "cosine": 0.2951316833496094}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-06", "cosine": 0.26882970333099365}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-06", "cosine": 0.5006995797157288}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-06", "cosine": 0.3994162976741791}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-06", "cosine": 0.5889641046524048}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-07", "cosine": 0.38496649265289307}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-07", "cosine": 0.43405139446258545}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-07", "cosine": 0.1393032968044281}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-07", "cosine": 0.4663027226924896}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-07", "cosine": 0.18512405455112457}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-07", "cosine": 0.1308252513408661}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 1], "item": "short-08", "cosine": 0.20918899774551392}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 2], "item": "short-08", "cosine": 0.20762690901756287}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [0, 3], "item": "short-08", "cosine": 0.04214523732662201}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 2], "item": "short-08", "cosine": 0.2580118775367737}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [1, 3], "item": "short-08", "cosine": 0.07907229661941528}
+{"kind": "full_across_salts", "arm": "FB", "baseline": "FB", "salt": [2, 3], "item": "short-08", "cosine": 0.11301705241203308}

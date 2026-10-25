@@ -1,0 +1,47 @@
+{
+ "schema": "drama-stream-silence-cut/1",
+ "scope": "Engine patches 0041-0043: a stream's silence guard hears each chunk before it is handed over, and a stream and a whole reply cut at the frame that completes 10 s of silence. On our GB10, our corpus. Measured on f5c11dea plus the same three changes, built before they were stacked on patch 0040; their code diff is identical. Neutralized from the captures; numbers unchanged.",
+ "pcm": "mono 16-bit at 44.1 kHz; a whole reply's samples are its WAV data",
+ "collapsing_reply": {
+  "voice": "model-invented test voice",
+  "serve_flags": "--long-form --long-form-chars 2400 --max-frames 4096",
+  "before": {
+   "engine": "f5c11dea",
+   "whole_s": 17.09,
+   "whole_finish": "silence",
+   "stream_s": 29.77
+  },
+  "after": {
+   "whole_samples": 731136,
+   "whole_s": 16.579,
+   "whole_finish": "silence",
+   "stream_samples": 731136,
+   "stream_s": 16.579,
+   "stream_pcm_equals_whole": true
+  }
+ },
+ "normal_reply": {
+  "voice": "a second test voice",
+  "serve_flags": "--long-form --long-form-chars 2400 --max-frames 4096",
+  "whole_samples": 1859584,
+  "whole_s": 42.167,
+  "whole_finish": "stop",
+  "stream_samples": 1859584,
+  "stream_pcm_equals_whole": true
+ },
+ "default_voice_corpus": {
+  "method": "recipe/pilot.py without serve flags; bench/corpus_capture.py --passes 2 over the 24-text corpus (48 requests); bench/compare_gate.py against the baseline capture every earlier gate used; bench/stream_check.py",
+  "requests": 48,
+  "status_200": 48,
+  "normal_replies": 46,
+  "normal_replies_byte_identical": 46,
+  "long05_s": [
+   20.201,
+   20.201
+  ],
+  "long05_note": "Cut at the frame that completes 10 s of silence, in both passes; the previous build cut it at the end of a 16-frame decode chunk, 20.8 s.",
+  "stream_check_passed": 9,
+  "stream_check_total": 9,
+  "warm_rtf": 0.647
+ }
+}

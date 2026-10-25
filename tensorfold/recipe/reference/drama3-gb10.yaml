@@ -1,0 +1,31 @@
+config_cls: Drama3PipelineConfig
+# Override both model_path and vocoder.factory.codec_path with the downloaded directory.
+model_path: drama3-checkpoint
+stages:
+  preprocessing:
+    total_reserve_bytes: 4GiB
+    factory:
+      max_concurrency: 1
+  tts_engine:
+    gpu_memory_fraction: null
+    total_reserve_bytes: 44GiB
+    engine:
+      attention_backend: triton
+      # Hybrid DeltaNet rejects byte-sized KV pools. Keep the token limit
+      # alongside the unchanged 44 GiB stage allocator cap.
+      max_total_tokens: 8192
+      cuda_graph_max_bs: 1
+      cuda_graph_max_bs_prefill: 512
+    factory:
+      context_length: 8192
+      max_running_requests: 1
+      max_prompt_rows: 4096
+      max_new_tokens: 1024
+      first_frame_cuda_graph_max_requests: 1
+  vocoder:
+    gpu_memory_fraction: null
+    total_reserve_bytes: 6GiB
+    factory:
+      codec_path: drama3-checkpoint
+      max_batch_size: 1
+      decode_dtype: float16

@@ -1,0 +1,801 @@
+{
+ "schema": "drama-clip-speaker-check/1",
+ "scope": "Calibration of the clip preparation speaker check (engine patch 0054), offline on the CPU, on model-invented voices and synthetic mixes of them only. Neutralized: clips and voices are numbered; no audio is published.",
+ "method": "Each case goes through drama_voice_clip.py prepare() with the speaker threshold disabled; no other gate refused a case. split is sqrt(T^2 / rank) of the weighted two-means split; decision applies the threshold.",
+ "threshold": 5.6,
+ "one_voice": {
+  "clips": 17,
+  "cases": 51,
+  "max_split": 4.87,
+  "refused": 0
+ },
+ "two_voices": {
+  "voices": 4,
+  "full_band": {
+   "cases": 18,
+   "min_split": 6.4,
+   "refused": 18
+  },
+  "interjections": {
+   "cases": 6,
+   "min_split": 6.87,
+   "refused": 6
+  },
+  "low_passed_8khz": {
+   "cases": 12,
+   "min_split": 5.05,
+   "kept": 2
+  }
+ },
+ "margins": {
+  "below_threshold": 0.73,
+  "above_threshold": 0.8
+ },
+ "synthetic_probes": [
+  {
+   "probe": "synthetic voice: formant-shaped harmonics, six sentences at f0 110-190 Hz, pauses at digital silence, low-passed at 2 kHz (test_a_take_with_nothing_above_2_khz_is_measured_on_the_directions_it_has)",
+   "seconds": 14.21,
+   "directions_kept": 27,
+   "directions_total": 36,
+   "directions_needed": 12,
+   "split": 3.99,
+   "decision": "kept",
+   "measured": "rerun on the CPU with drama_voice_clip.py at engine commit 6eedbde9 (patch 0054)"
+  }
+ ],
+ "cases": [
+  {
+   "kind": "one voice",
+   "source": "clip 01",
+   "variant": "whole",
+   "split": 2.95,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 01",
+   "variant": "cut to 10-16 s",
+   "split": 2.87,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 01",
+   "variant": "low-passed at 8 kHz",
+   "split": 2.75,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 02",
+   "variant": "whole",
+   "split": 2.77,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 02",
+   "variant": "cut to 10-16 s",
+   "split": 2.65,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 02",
+   "variant": "low-passed at 8 kHz",
+   "split": 2.56,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 03",
+   "variant": "whole",
+   "split": 2.58,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 03",
+   "variant": "cut to 10-16 s",
+   "split": 2.81,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 03",
+   "variant": "low-passed at 8 kHz",
+   "split": 2.96,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 04",
+   "variant": "whole",
+   "split": 3.31,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 04",
+   "variant": "cut to 10-16 s",
+   "split": 2.96,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 04",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.43,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 05",
+   "variant": "whole",
+   "split": 4.87,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 05",
+   "variant": "cut to 10-16 s",
+   "split": 3.77,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 05",
+   "variant": "low-passed at 8 kHz",
+   "split": 2.77,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 06",
+   "variant": "whole",
+   "split": 3.87,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 06",
+   "variant": "cut to 10-16 s",
+   "split": 3.61,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 06",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.6,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 07",
+   "variant": "whole",
+   "split": 2.71,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 07",
+   "variant": "cut to 10-16 s",
+   "split": 2.45,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 07",
+   "variant": "low-passed at 8 kHz",
+   "split": 2.49,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 08",
+   "variant": "whole",
+   "split": 2.95,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 08",
+   "variant": "cut to 10-16 s",
+   "split": 2.97,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 08",
+   "variant": "low-passed at 8 kHz",
+   "split": 2.76,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 09",
+   "variant": "whole",
+   "split": 3.31,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 09",
+   "variant": "cut to 10-16 s",
+   "split": 2.51,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 09",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.18,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 10",
+   "variant": "whole",
+   "split": 3.59,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 10",
+   "variant": "cut to 10-16 s",
+   "split": 3.15,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 10",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.21,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 11",
+   "variant": "whole",
+   "split": 3.64,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 11",
+   "variant": "cut to 10-16 s",
+   "split": 3.15,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 11",
+   "variant": "low-passed at 8 kHz",
+   "split": 4.03,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 12",
+   "variant": "whole",
+   "split": 3.32,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 12",
+   "variant": "cut to 10-16 s",
+   "split": 2.51,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 12",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.19,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 13",
+   "variant": "whole",
+   "split": 4.31,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 13",
+   "variant": "cut to 10-16 s",
+   "split": 3.86,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 13",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.79,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 14",
+   "variant": "whole",
+   "split": 3.69,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 14",
+   "variant": "cut to 10-16 s",
+   "split": 2.62,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 14",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.58,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 15",
+   "variant": "whole",
+   "split": 3.59,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 15",
+   "variant": "cut to 10-16 s",
+   "split": 2.62,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 15",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.2,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 16",
+   "variant": "whole",
+   "split": 4.19,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 16",
+   "variant": "cut to 10-16 s",
+   "split": 4.28,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 16",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.44,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 17",
+   "variant": "whole",
+   "split": 4.2,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 17",
+   "variant": "cut to 10-16 s",
+   "split": 3.8,
+   "decision": "kept"
+  },
+  {
+   "kind": "one voice",
+   "source": "clip 17",
+   "variant": "low-passed at 8 kHz",
+   "split": 3.89,
+   "decision": "kept"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v3"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "full band",
+   "split": 16.27,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v3"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "low-passed at 8 kHz",
+   "split": 15.13,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v3"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "full band",
+   "split": 16.92,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v3"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "low-passed at 8 kHz",
+   "split": 15.39,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v1"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "full band",
+   "split": 11.3,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v1"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "low-passed at 8 kHz",
+   "split": 5.43,
+   "decision": "kept"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v1"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "full band",
+   "split": 12.84,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v1"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "low-passed at 8 kHz",
+   "split": 6.0,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v1"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "full band",
+   "split": 16.66,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v1"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "low-passed at 8 kHz",
+   "split": 16.7,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v1"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "full band",
+   "split": 18.89,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v1"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "low-passed at 8 kHz",
+   "split": 17.85,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v4"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "full band",
+   "split": 16.44,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v4"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "low-passed at 8 kHz",
+   "split": 16.79,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v4"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "full band",
+   "split": 17.78,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v4"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "low-passed at 8 kHz",
+   "split": 18.27,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v4"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "full band",
+   "split": 10.01,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v4"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "low-passed at 8 kHz",
+   "split": 6.66,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v4"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "full band",
+   "split": 11.01,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v4"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "low-passed at 8 kHz",
+   "split": 7.2,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v1",
+    "v4"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "full band",
+   "split": 8.54,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v1",
+    "v4"
+   ],
+   "form": "one after the other, about 10 s each",
+   "variant": "low-passed at 8 kHz",
+   "split": 5.05,
+   "decision": "kept"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v1",
+    "v4"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "full band",
+   "split": 10.27,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v1",
+    "v4"
+   ],
+   "form": "alternating 3 s turns",
+   "variant": "low-passed at 8 kHz",
+   "split": 6.03,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v3"
+   ],
+   "form": "one after the other, 6 s each",
+   "variant": "full band",
+   "split": 13.05,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v3"
+   ],
+   "form": "a 3 s interjection",
+   "variant": "full band",
+   "split": 13.91,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v1"
+   ],
+   "form": "one after the other, 6 s each",
+   "variant": "full band",
+   "split": 9.63,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v1"
+   ],
+   "form": "a 3 s interjection",
+   "variant": "full band",
+   "split": 9.97,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v1"
+   ],
+   "form": "one after the other, 6 s each",
+   "variant": "full band",
+   "split": 12.68,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v1"
+   ],
+   "form": "a 3 s interjection",
+   "variant": "full band",
+   "split": 16.83,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v4"
+   ],
+   "form": "one after the other, 6 s each",
+   "variant": "full band",
+   "split": 12.7,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v3",
+    "v4"
+   ],
+   "form": "a 3 s interjection",
+   "variant": "full band",
+   "split": 15.03,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v4"
+   ],
+   "form": "one after the other, 6 s each",
+   "variant": "full band",
+   "split": 8.14,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v2",
+    "v4"
+   ],
+   "form": "a 3 s interjection",
+   "variant": "full band",
+   "split": 8.09,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v1",
+    "v4"
+   ],
+   "form": "one after the other, 6 s each",
+   "variant": "full band",
+   "split": 6.4,
+   "decision": "refused"
+  },
+  {
+   "kind": "two voices",
+   "voices": [
+    "v1",
+    "v4"
+   ],
+   "form": "a 3 s interjection",
+   "variant": "full band",
+   "split": 6.87,
+   "decision": "refused"
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "schema": "drama-long-text-tail-evidence/1",
+ "method": "Per-second RMS in dBFS over 16-bit PCM at 44.1 kHz; speech_until = last whole second above -50 dBFS; the tail is every second after it.",
+ "reference_1024_frame_replies": [
+  {
+   "item": "medium-05",
+   "sha256": "93ba6466b1ace398263999fa2c16d6c022bc9b146957773984f9d7b331e8ed8a",
+   "duration_s": 47.55,
+   "last_second_above_minus50_dBFS": 3,
+   "tail_median_dBFS": -95.1,
+   "tail_max_dBFS": -94.1
+  },
+  {
+   "item": "long-02",
+   "sha256": "c9e9bb72aaac1652283aacdec03c676f2b3547fc4e3c40d080722ec16c3023d5",
+   "duration_s": 47.55,
+   "last_second_above_minus50_dBFS": 6,
+   "tail_median_dBFS": -95.1,
+   "tail_max_dBFS": -94.5
+  },
+  {
+   "item": "long-04",
+   "sha256": "9e71d2fe0105d9c7b295450fec8956edc72f376ed900781fda548005e093c649",
+   "duration_s": 47.55,
+   "last_second_above_minus50_dBFS": 6,
+   "tail_median_dBFS": -95.1,
+   "tail_max_dBFS": -94.1
+  },
+  {
+   "item": "long-07",
+   "sha256": "067ba143944f3140bff1a5682eb750752ff09510b4ee75d02272e0618e4c15b1",
+   "duration_s": 47.55,
+   "last_second_above_minus50_dBFS": 5,
+   "tail_median_dBFS": -95.2,
+   "tail_max_dBFS": -94.4
+  },
+  {
+   "item": "medium-05",
+   "sha256": "bc363ba991e9ee698c4e436990ad914f9c2d050ba9b77a6a933d3e5417340116",
+   "duration_s": 47.55,
+   "last_second_above_minus50_dBFS": 3,
+   "tail_median_dBFS": -95.1,
+   "tail_max_dBFS": -86.1
+  },
+  {
+   "item": "long-07",
+   "sha256": "435ab284f6bec58be5f5c636f5b41d5fe82ed5ebf69dfe028d08f30b6f875284",
+   "duration_s": 47.55,
+   "last_second_above_minus50_dBFS": 5,
+   "tail_median_dBFS": -95.1,
+   "tail_max_dBFS": -94.4
+  }
+ ],
+ "reference_source": "the six reference 1024-frame whole replies of before/after benchmark 01 (same corpus and method as 02)",
+ "native_long05_clipped": {
+  "item": "long-05",
+  "sha256": "d6ac7ca2bf87b042034fb35eba73767026313d559bbe944ffaae9e7633b6a4f2",
+  "duration_s": 47.55,
+  "last_second_above_minus50_dBFS": 11,
+  "tail_median_dBFS": -95.1,
+  "tail_max_dBFS": -94.4,
+  "finish_reason_header": "length"
+ },
+ "finding": "All six reference 1024-frame replies show the same signature as native long-05: speech stops early (reference 3-6 s, native about 11 s), then near-silence at about -95 dBFS until the 1024-frame cap. Reaching the cap without an end of speech is not native-specific.",
+ "inference": "[INFERENCE] Both engines sample a trajectory that collapses to silence tokens without emitting end of speech; the cause in the model or the sampling is not established. Native returns this clipped audio as HTTP 200 with X-Finish-Reason: length; the reference returns it as a plain 200.",
+ "not_a_fix": "The text is still not fully spoken by either engine for these items."
+}

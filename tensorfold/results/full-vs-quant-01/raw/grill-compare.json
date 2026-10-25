@@ -1,0 +1,6630 @@
+{
+  "version": 1,
+  "kind": "media-comparison-v1",
+  "claim": "observed-envelope-direction-under-declared-bounds-not-output-quality",
+  "support": "experimental-extension-first-released-v0.9",
+  "axis": "changed-model",
+  "workload_sha256": "b3d2ca680f56d502b5faa2af267ebd029ce22554002229d033d5343b33cd6520",
+  "reference_identity": {
+    "status": "declared_match",
+    "reasons": [],
+    "scope": "Matching declarations do not verify server restoration, cache state, timing order or causal effect."
+  },
+  "acquisitions": [
+    {
+      "version": 1,
+      "kind": "media-inspection-v1",
+      "claim": "collector-observed-http-reply-time-and-framing-checked-audio-not-attested-execution-or-quality",
+      "support": "experimental-extension-first-released-v0.9",
+      "status": "complete",
+      "execution": "delegates-to-resident-service",
+      "slot": {
+        "id": "a",
+        "arm": "a"
+      },
+      "cells": [
+        {
+          "cell": "short-07",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 5557557,
+            "median": 5572046.5,
+            "mean": 5571550.666666667,
+            "max": 5582116
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 2477544,
+            "median": 2485963.5,
+            "mean": 2485833.6666666665,
+            "max": 2491910
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        },
+        {
+          "cell": "medium-01",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 9134901,
+            "median": 9157200.5,
+            "mean": 9153650.0,
+            "max": 9160185
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 2514306,
+            "median": 2523913.5,
+            "mean": 2522449.0,
+            "max": 2528057
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        },
+        {
+          "cell": "long-01",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 20795016,
+            "median": 20810606.5,
+            "mean": 20807575.833333332,
+            "max": 20812723
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 2597722,
+            "median": 2604874.0,
+            "mean": 2603840.5,
+            "max": 2606666
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        }
+      ],
+      "runs": [
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5547326,
+            "first_audio_us": 2473093,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:22:22 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2573863993103935,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5555054,
+            "first_audio_us": 2476482,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:22:27 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2591380688704428,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5557557,
+            "first_audio_us": 2477544,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:22:33 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2597054121557436,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5565557,
+            "first_audio_us": 2482359,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:22:39 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2615187346816745,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5568715,
+            "first_audio_us": 2487378,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:22:44 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2622345437487859,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5579981,
+            "first_audio_us": 2491262,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:22:50 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2647881551959284,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5575378,
+            "first_audio_us": 2484549,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:22:55 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2637448147475707,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5582116,
+            "first_audio_us": 2491910,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:23:01 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2652720856450361,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9122082,
+            "first_audio_us": 2512197,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:23:07 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9581836731885665,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9135734,
+            "first_audio_us": 2515649,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:23:16 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9596176795378155,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9134901,
+            "first_audio_us": 2514306,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:23:25 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9595301812013868,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9153488,
+            "first_audio_us": 2519744,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:23:34 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9614825600479655,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9158314,
+            "first_audio_us": 2524760,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:23:43 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9619894831831454,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9158925,
+            "first_audio_us": 2528057,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:23:53 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9620536626351956,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9160185,
+            "first_audio_us": 2524634,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:24:02 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9621860130600458,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9156087,
+            "first_audio_us": 2523193,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:24:11 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9617555590592237,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20809335,
+            "first_audio_us": 2606466,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:24:20 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7958999173400351,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20806706,
+            "first_audio_us": 2604404,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:24:41 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7957993653097714,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20812723,
+            "first_audio_us": 2605078,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:25:02 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7960294990359397,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20795016,
+            "first_audio_us": 2597722,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:25:23 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.795352254912745,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20804049,
+            "first_audio_us": 2604670,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:25:44 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7956977423564011,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20812454,
+            "first_audio_us": 2605458,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:26:04 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7960192105246651,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20809512,
+            "first_audio_us": 2603449,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:26:25 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7959066871039593,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "94683a96b0bbe7168d094fac8ae7598f8568fe8a1a5ed8c3d8181f9cb539357b",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20811701,
+            "first_audio_us": 2606666,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:26:46 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.795990410342547,
+          "frames_per_second_end_to_end": null
+        }
+      ],
+      "setup": null,
+      "cache_mutated_during_measurement": false,
+      "evidence_sha256": "d7a381f9d360fcf665c923f8a44792d54957324be772cc03421e579dabac255b"
+    },
+    {
+      "version": 1,
+      "kind": "media-inspection-v1",
+      "claim": "collector-observed-http-reply-time-and-framing-checked-audio-not-attested-execution-or-quality",
+      "support": "experimental-extension-first-released-v0.9",
+      "status": "complete",
+      "execution": "delegates-to-resident-service",
+      "slot": {
+        "id": "b",
+        "arm": "b"
+      },
+      "cells": [
+        {
+          "cell": "short-07",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 4328834,
+            "median": 4332995.5,
+            "mean": 4334441.833333333,
+            "max": 4341895
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 1890344,
+            "median": 1893438.0,
+            "mean": 1894590.1666666667,
+            "max": 1900465
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        },
+        {
+          "cell": "medium-01",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 8404207,
+            "median": 8409630.0,
+            "mean": 8409661.5,
+            "max": 8414112
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 1913704,
+            "median": 1918209.5,
+            "mean": 1917912.5,
+            "max": 1922585
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        },
+        {
+          "cell": "long-01",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 17410953,
+            "median": 17418533.0,
+            "mean": 17417128.333333332,
+            "max": 17420942
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 1981181,
+            "median": 1984456.0,
+            "mean": 1984597.5,
+            "max": 1988406
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        }
+      ],
+      "runs": [
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4326952,
+            "first_audio_us": 1895945,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:27 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.1945276939148257,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4322363,
+            "first_audio_us": 1890021,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:31 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.1932608234740685,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4328834,
+            "first_audio_us": 1891001,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:35 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.1950472515895925,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4328949,
+            "first_audio_us": 1890344,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:40 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.1950789992689752,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4333632,
+            "first_audio_us": 1895740,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:44 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.196371819986793,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4332359,
+            "first_audio_us": 1891136,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:48 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.1960203869793657,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4340982,
+            "first_audio_us": 1898855,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:53 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.1984009107995115,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 4341895,
+            "first_audio_us": 1900465,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:28:57 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "35ca067e9a65d0698edf278b2df22f656e78599d8aefa77e2c792bb90ae39bee",
+              "bytes": 319488,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 3622312
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.198652959767132,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8408274,
+            "first_audio_us": 1916553,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:29:02 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.8704667042324443,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8410051,
+            "first_audio_us": 1918044,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:29:10 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.87065066818669,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8414112,
+            "first_audio_us": 1922585,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:29:18 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.8710710832785254,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8409083,
+            "first_audio_us": 1918414,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:29:27 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.8705504559707588,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8410177,
+            "first_audio_us": 1918230,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:29:35 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.8706637123387637,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8406614,
+            "first_audio_us": 1916353,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:29:44 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.8702948527051242,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8404207,
+            "first_audio_us": 1913704,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:29:52 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.8700456679905101,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 8413776,
+            "first_audio_us": 1918189,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:30:01 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "f2393f6fbb6073ff6ef32e539647df5f5f2499ddb7b13beaf70dc7e243c5a97e",
+              "bytes": 851968,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9659501
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.8710362988729956,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17420636,
+            "first_audio_us": 1985043,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:30:09 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7608967509104112,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17413079,
+            "first_audio_us": 1981078,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:30:27 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7605666770401673,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17418275,
+            "first_audio_us": 1987129,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:30:44 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7607936273947772,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17420942,
+            "first_audio_us": 1985295,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:31:01 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.760910116346999,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17410953,
+            "first_audio_us": 1981181,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:31:19 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7604738178304097,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17418791,
+            "first_audio_us": 1983617,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:31:36 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7608161651898078,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17413473,
+            "first_audio_us": 1981957,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:31:54 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7605838861317216,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "ed24442b5438a479c776bb479f3316d9b16add48544865a40c2e98f58c565c6f",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 17420336,
+            "first_audio_us": 1988406,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:32:11 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "4b4407bbf4122073dd5528fa828843d24ac5bc3dfe21ad817f79e01e72f53a0e",
+              "bytes": 2019328,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 22894875
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7608836475412074,
+          "frames_per_second_end_to_end": null
+        }
+      ],
+      "setup": null,
+      "cache_mutated_during_measurement": false,
+      "evidence_sha256": "79d98f3236a7c8fc5c2071a1bfae502b0be1a7abec3fbf4f1bc94960de4887ab"
+    },
+    {
+      "version": 1,
+      "kind": "media-inspection-v1",
+      "claim": "collector-observed-http-reply-time-and-framing-checked-audio-not-attested-execution-or-quality",
+      "support": "experimental-extension-first-released-v0.9",
+      "status": "complete",
+      "execution": "delegates-to-resident-service",
+      "slot": {
+        "id": "a2",
+        "arm": "a2"
+      },
+      "cells": [
+        {
+          "cell": "short-07",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 5592745,
+            "median": 5606062.5,
+            "mean": 5605596.166666667,
+            "max": 5618625
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 2489567,
+            "median": 2498202.0,
+            "mean": 2498206.8333333335,
+            "max": 2504967
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        },
+        {
+          "cell": "medium-01",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 9175873,
+            "median": 9186948.5,
+            "mean": 9184813.166666666,
+            "max": 9189422
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 2519046,
+            "median": 2523782.5,
+            "mean": 2522776.0,
+            "max": 2526501
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        },
+        {
+          "cell": "long-01",
+          "warmup_runs": 2,
+          "measured_runs": 6,
+          "eligible": 6,
+          "ineligible_by_reason": {},
+          "end_to_end_us": {
+            "n": 6,
+            "min": 20883841,
+            "median": 20887728.0,
+            "mean": 20887980.666666668,
+            "max": 20894501
+          },
+          "first_audio_us": {
+            "n": 6,
+            "min": 2598319,
+            "median": 2601967.5,
+            "mean": 2602652.3333333335,
+            "max": 2607508
+          },
+          "finish_reason_unknown": 6,
+          "markers_by_status": {},
+          "generation_us": null,
+          "load_to_generation_us": null,
+          "determinism_by_seed": [
+            {
+              "seed": 1,
+              "n": 6,
+              "deterministic": true
+            }
+          ]
+        }
+      ],
+      "runs": [
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5586510,
+            "first_audio_us": 2490786,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:33:45 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.266268053042404,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5585945,
+            "first_audio_us": 2486198,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:33:51 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.26613998713901,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5592745,
+            "first_audio_us": 2489567,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:33:57 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2676813112860514,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5601713,
+            "first_audio_us": 2496822,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:02 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2697140458376202,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5605734,
+            "first_audio_us": 2498108,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:08 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2706254670722164,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5606391,
+            "first_audio_us": 2498296,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:14 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2707743861846583,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5608369,
+            "first_audio_us": 2501481,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:19 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2712227301791947,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "short-07",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 5618625,
+            "first_audio_us": 2504967,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:25 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "7a5b1b6a9548533551a56fe0921d0bcb13989b98215521ba98c6ddf588627398",
+              "bytes": 389120,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 4411791
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 1.2735474096574384,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9184247,
+            "first_audio_us": 2521712,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:30 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9647134860146042,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9178621,
+            "first_audio_us": 2520360,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:40 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9641225308636464,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9175873,
+            "first_audio_us": 2519046,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:49 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9638338808894494,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9181598,
+            "first_audio_us": 2523352,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:34:58 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9644352350023597,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9188089,
+            "first_audio_us": 2524213,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:35:07 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9651170497703773,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9189422,
+            "first_audio_us": 2524389,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:35:17 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9652570681166671,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9187793,
+            "first_audio_us": 2519155,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:35:26 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9650859579245394,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "medium-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 9186104,
+            "first_audio_us": 2526501,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:35:35 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "d275c315fd78e2b2198f5c40401398ad43572c86c66a7883bf257783b9ee8550",
+              "bytes": 839680,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 9520181
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.9649085453312285,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20896904,
+            "first_audio_us": 2607937,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:35:44 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7992491911088292,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "warmup",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20893965,
+            "first_audio_us": 2600106,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:36:05 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7991367824298847,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20894501,
+            "first_audio_us": 2606167,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:36:26 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7991572829579263,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20883841,
+            "first_audio_us": 2599985,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:36:47 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7987495672323232,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20888928,
+            "first_audio_us": 2607508,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:37:08 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7989441310124492,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20884188,
+            "first_audio_us": 2601635,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:37:29 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7987628390293948,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20889898,
+            "first_audio_us": 2602300,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:37:50 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7989812308486438,
+          "frames_per_second_end_to_end": null
+        },
+        {
+          "receipt_sha256": "3f3a7354aabd97085e12e4e96719ab32a261f7570cd0db87f9b5d725b79ffef5",
+          "cell": "long-01",
+          "phase": "measured",
+          "seed": 1,
+          "reply": {
+            "end_to_end_us": 20886528,
+            "first_audio_us": 2598319,
+            "http_status": 200,
+            "headers": [
+              [
+                "server",
+                "TensorFold"
+              ],
+              [
+                "date",
+                "Thu, 22 Oct 2026 12:38:11 GMT"
+              ],
+              [
+                "content-type",
+                "audio/pcm"
+              ],
+              [
+                "transfer-encoding",
+                "chunked"
+              ],
+              [
+                "x-sample-rate",
+                "44100"
+              ],
+              [
+                "x-channels",
+                "1"
+              ],
+              [
+                "x-bit-depth",
+                "16"
+              ],
+              [
+                "trailer",
+                "X-Finish-Reason"
+              ],
+              [
+                "x-cfg-gamma",
+                "1.5"
+              ]
+            ],
+            "finish_reason": null,
+            "body": {
+              "sha256": "e4a112b68974ce2c00e55b1215456f88234219da31531870457d459e62325109",
+              "bytes": 2306048,
+              "truncated": false
+            },
+            "failure": null,
+            "audio": {
+              "channels": 1,
+              "sample_rate": 44100,
+              "duration_us": 26145668
+            },
+            "wav_failure": null
+          },
+          "markers": null,
+          "eligible": true,
+          "outputs": [],
+          "reasons": [],
+          "details": [],
+          "cache_after": [],
+          "cache_mutated_during_measurement": false,
+          "realtime_factor": 0.7988523376033078,
+          "frames_per_second_end_to_end": null
+        }
+      ],
+      "setup": null,
+      "cache_mutated_during_measurement": false,
+      "evidence_sha256": "491c5115943912e92e4c20aab6ddfb5971e5ef0fad4b743bb998f529aeee6be5"
+    }
+  ],
+  "gates": [
+    {
+      "gate": {
+        "cell": "short-07",
+        "metric": "first_audio_us",
+        "max_adverse_bps": 500,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "PASS",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 2477544,
+          "denominator": 1
+        },
+        {
+          "numerator": 2504967,
+          "denominator": 1
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 1890344,
+          "denominator": 1
+        },
+        {
+          "numerator": 1900465,
+          "denominator": 1
+        }
+      ],
+      "adverse_bounds": [
+        -0.24536171534395468,
+        -0.2329238148747308
+      ],
+      "reference_summary": {
+        "cell": "short-07",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 5557557,
+          "median": 5587430.5,
+          "mean": 5588573.416666667,
+          "max": 5618625
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2477544,
+          "median": 2491586.0,
+          "mean": 2492020.25,
+          "max": 2504967
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 1.26673575803266,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "short-07",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 4328834,
+          "median": 4332995.5,
+          "mean": 4334441.833333333,
+          "max": 4341895
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1890344,
+          "median": 1893438.0,
+          "mean": 1894590.1666666667,
+          "max": 1900465
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 8210,
+          "median": 8210.0,
+          "mean": 8210.0,
+          "max": 8210
+        },
+        "realtime_factor": 1.1965953880652282,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "short-07",
+        "metric": "end_to_end_us",
+        "max_adverse_bps": 500,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "PASS",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 5557557,
+          "denominator": 1
+        },
+        {
+          "numerator": 5618625,
+          "denominator": 1
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 4328834,
+          "denominator": 1
+        },
+        {
+          "numerator": 4341895,
+          "denominator": 1
+        }
+      ],
+      "adverse_bounds": [
+        -0.22955634163162697,
+        -0.2187403565991316
+      ],
+      "reference_summary": {
+        "cell": "short-07",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 5557557,
+          "median": 5587430.5,
+          "mean": 5588573.416666667,
+          "max": 5618625
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2477544,
+          "median": 2491586.0,
+          "mean": 2492020.25,
+          "max": 2504967
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 1.26673575803266,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "short-07",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 4328834,
+          "median": 4332995.5,
+          "mean": 4334441.833333333,
+          "max": 4341895
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1890344,
+          "median": 1893438.0,
+          "mean": 1894590.1666666667,
+          "max": 1900465
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 8210,
+          "median": 8210.0,
+          "mean": 8210.0,
+          "max": 8210
+        },
+        "realtime_factor": 1.1965953880652282,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "short-07",
+        "metric": "duration_ratio",
+        "max_adverse_bps": 1000,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "REGRESSION",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 8823582,
+          "denominator": 8823582
+        },
+        {
+          "numerator": 8823582,
+          "denominator": 8823582
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 7244624,
+          "denominator": 8823582
+        },
+        {
+          "numerator": 7244624,
+          "denominator": 8823582
+        }
+      ],
+      "adverse_bounds": [
+        0.17894750680619276,
+        0.17894750680619276
+      ],
+      "reference_summary": {
+        "cell": "short-07",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 5557557,
+          "median": 5587430.5,
+          "mean": 5588573.416666667,
+          "max": 5618625
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2477544,
+          "median": 2491586.0,
+          "mean": 2492020.25,
+          "max": 2504967
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 1.26673575803266,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "short-07",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 4328834,
+          "median": 4332995.5,
+          "mean": 4334441.833333333,
+          "max": 4341895
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1890344,
+          "median": 1893438.0,
+          "mean": 1894590.1666666667,
+          "max": 1900465
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 8210,
+          "median": 8210.0,
+          "mean": 8210.0,
+          "max": 8210
+        },
+        "realtime_factor": 1.1965953880652282,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "medium-01",
+        "metric": "first_audio_us",
+        "max_adverse_bps": 500,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "PASS",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 2514306,
+          "denominator": 1
+        },
+        {
+          "numerator": 2528057,
+          "denominator": 1
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 1913704,
+          "denominator": 1
+        },
+        {
+          "numerator": 1922585,
+          "denominator": 1
+        }
+      ],
+      "adverse_bounds": [
+        -0.24301390356309216,
+        -0.23534168076598472
+      ],
+      "reference_summary": {
+        "cell": "medium-01",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 9134901,
+          "median": 9168029.0,
+          "mean": 9169231.583333334,
+          "max": 9189422
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2514306,
+          "median": 2523782.5,
+          "mean": 2522612.5,
+          "max": 2528057
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 0.9631362663517987,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "medium-01",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 8404207,
+          "median": 8409630.0,
+          "mean": 8409661.5,
+          "max": 8414112
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1913704,
+          "median": 1918209.5,
+          "mean": 1917912.5,
+          "max": 1922585
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 10146,
+          "median": 10146.0,
+          "mean": 10146.0,
+          "max": 10146
+        },
+        "realtime_factor": 0.8706103451927796,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "medium-01",
+        "metric": "end_to_end_us",
+        "max_adverse_bps": 500,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "PASS",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 9134901,
+          "denominator": 1
+        },
+        {
+          "numerator": 9189422,
+          "denominator": 1
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 8404207,
+          "denominator": 1
+        },
+        {
+          "numerator": 8414112,
+          "denominator": 1
+        }
+      ],
+      "adverse_bounds": [
+        -0.08544770280437664,
+        -0.07890496021795967
+      ],
+      "reference_summary": {
+        "cell": "medium-01",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 9134901,
+          "median": 9168029.0,
+          "mean": 9169231.583333334,
+          "max": 9189422
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2514306,
+          "median": 2523782.5,
+          "mean": 2522612.5,
+          "max": 2528057
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 0.9631362663517987,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "medium-01",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 8404207,
+          "median": 8409630.0,
+          "mean": 8409661.5,
+          "max": 8414112
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1913704,
+          "median": 1918209.5,
+          "mean": 1917912.5,
+          "max": 1922585
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 10146,
+          "median": 10146.0,
+          "mean": 10146.0,
+          "max": 10146
+        },
+        "realtime_factor": 0.8706103451927796,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "medium-01",
+        "metric": "duration_ratio",
+        "max_adverse_bps": 1000,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "PASS",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 19040362,
+          "denominator": 19040362
+        },
+        {
+          "numerator": 19040362,
+          "denominator": 19040362
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 19319002,
+          "denominator": 19040362
+        },
+        {
+          "numerator": 19319002,
+          "denominator": 19040362
+        }
+      ],
+      "adverse_bounds": [
+        0.014634175547712847,
+        0.014634175547712847
+      ],
+      "reference_summary": {
+        "cell": "medium-01",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 9134901,
+          "median": 9168029.0,
+          "mean": 9169231.583333334,
+          "max": 9189422
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2514306,
+          "median": 2523782.5,
+          "mean": 2522612.5,
+          "max": 2528057
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 0.9631362663517987,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "medium-01",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 8404207,
+          "median": 8409630.0,
+          "mean": 8409661.5,
+          "max": 8414112
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1913704,
+          "median": 1918209.5,
+          "mean": 1917912.5,
+          "max": 1922585
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 10146,
+          "median": 10146.0,
+          "mean": 10146.0,
+          "max": 10146
+        },
+        "realtime_factor": 0.8706103451927796,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "long-01",
+        "metric": "first_audio_us",
+        "max_adverse_bps": 500,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "PASS",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 2597722,
+          "denominator": 1
+        },
+        {
+          "numerator": 2607508,
+          "denominator": 1
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 1981181,
+          "denominator": 1
+        },
+        {
+          "numerator": 1988406,
+          "denominator": 1
+        }
+      ],
+      "adverse_bounds": [
+        -0.24020137234478278,
+        -0.23455781642531415
+      ],
+      "reference_summary": {
+        "cell": "long-01",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 20795016,
+          "median": 20848282.0,
+          "mean": 20847778.25,
+          "max": 20894501
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2597722,
+          "median": 2604059.5,
+          "mean": 2603246.4166666665,
+          "max": 2607508
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 0.7973702660800251,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "long-01",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 17410953,
+          "median": 17418533.0,
+          "mean": 17417128.333333332,
+          "max": 17420942
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1981181,
+          "median": 1984456.0,
+          "mean": 1984597.5,
+          "max": 1988406
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 8756,
+          "median": 8756.0,
+          "mean": 8756.0,
+          "max": 8756
+        },
+        "realtime_factor": 0.7607435434058204,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "long-01",
+        "metric": "end_to_end_us",
+        "max_adverse_bps": 500,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "PASS",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 20795016,
+          "denominator": 1
+        },
+        {
+          "numerator": 20894501,
+          "denominator": 1
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 17410953,
+          "denominator": 1
+        },
+        {
+          "numerator": 17420942,
+          "denominator": 1
+        }
+      ],
+      "adverse_bounds": [
+        -0.16672080371768627,
+        -0.16225397470239988
+      ],
+      "reference_summary": {
+        "cell": "long-01",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 20795016,
+          "median": 20848282.0,
+          "mean": 20847778.25,
+          "max": 20894501
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2597722,
+          "median": 2604059.5,
+          "mean": 2603246.4166666665,
+          "max": 2607508
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 0.7973702660800251,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "long-01",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 17410953,
+          "median": 17418533.0,
+          "mean": 17417128.333333332,
+          "max": 17420942
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1981181,
+          "median": 1984456.0,
+          "mean": 1984597.5,
+          "max": 1988406
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 8756,
+          "median": 8756.0,
+          "mean": 8756.0,
+          "max": 8756
+        },
+        "realtime_factor": 0.7607435434058204,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    },
+    {
+      "gate": {
+        "cell": "long-01",
+        "metric": "duration_ratio",
+        "max_adverse_bps": 1000,
+        "max_reference_spread_bps": 2000
+      },
+      "outcome": "REGRESSION",
+      "reason": null,
+      "reference": [
+        {
+          "numerator": 52291336,
+          "denominator": 52291336
+        },
+        {
+          "numerator": 52291336,
+          "denominator": 52291336
+        }
+      ],
+      "candidate": [
+        {
+          "numerator": 45789750,
+          "denominator": 52291336
+        },
+        {
+          "numerator": 45789750,
+          "denominator": 52291336
+        }
+      ],
+      "adverse_bounds": [
+        0.1243339049512906,
+        0.1243339049512906
+      ],
+      "reference_summary": {
+        "cell": "long-01",
+        "warmup_runs": 4,
+        "measured_runs": 12,
+        "eligible": 12,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 12,
+          "min": 20795016,
+          "median": 20848282.0,
+          "mean": 20847778.25,
+          "max": 20894501
+        },
+        "first_audio_us": {
+          "n": 12,
+          "min": 2597722,
+          "median": 2604059.5,
+          "mean": 2603246.4166666665,
+          "max": 2607508
+        },
+        "finish_reason_unknown": 12,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 12,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 12,
+          "min": 10000,
+          "median": 10000.0,
+          "mean": 10000.0,
+          "max": 10000
+        },
+        "realtime_factor": 0.7973702660800251,
+        "frames_per_second_end_to_end": null
+      },
+      "candidate_summary": {
+        "cell": "long-01",
+        "warmup_runs": 2,
+        "measured_runs": 6,
+        "eligible": 6,
+        "ineligible_by_reason": {},
+        "end_to_end_us": {
+          "n": 6,
+          "min": 17410953,
+          "median": 17418533.0,
+          "mean": 17417128.333333332,
+          "max": 17420942
+        },
+        "first_audio_us": {
+          "n": 6,
+          "min": 1981181,
+          "median": 1984456.0,
+          "mean": 1984597.5,
+          "max": 1988406
+        },
+        "finish_reason_unknown": 6,
+        "markers_by_status": {},
+        "generation_us": null,
+        "load_to_generation_us": null,
+        "determinism_by_seed": [
+          {
+            "seed": 1,
+            "n": 6,
+            "deterministic": true
+          }
+        ],
+        "seconds_per_image": null,
+        "images_per_second_end_to_end": null,
+        "images_per_second_generation": null,
+        "duration_ratio_bps": {
+          "n": 6,
+          "min": 8756,
+          "median": 8756.0,
+          "mean": 8756.0,
+          "max": 8756
+        },
+        "realtime_factor": 0.7607435434058204,
+        "frames_per_second_end_to_end": null
+      },
+      "cross_arm_hash_equality": [
+        {
+          "seed": 1,
+          "equal": false
+        }
+      ]
+    }
+  ],
+  "reasons": [
+    "changed_model_axis"
+  ],
+  "outcome": "INCONCLUSIVE"
+}

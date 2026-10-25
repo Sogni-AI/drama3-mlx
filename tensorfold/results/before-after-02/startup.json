@@ -1,0 +1,9 @@
+{
+ "schema": "drama-before-after-startup/1",
+ "measure": "cold start: process launch to the first /health 200, from each engine's recipe/pilot.py ready.json (cold_ready_s)",
+ "conditions": "one start per engine on the same GB10 host; the runtime directory and its compilation caches were reused, so these are warm-cache starts, not disk-cold ones",
+ "cold_ready_s": {
+  "reference": 254.07842499692924,
+  "native": 6.439548780093901
+ }
+}

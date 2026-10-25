@@ -1,0 +1,207 @@
+{
+ "schema": "drama-qualification-summary/1",
+ "scope": "Native TensorFold Drama 3 against the pinned sglang-omni reference ab095ef9, checkpoint fishaudio/drama-3 e0a9218a, on GB10. Neutralized from the maintainer ledger; numbers unchanged.",
+ "native_drama_qualified": false,
+ "before_after_benchmark_02": {
+  "host": "GB10 host",
+  "tables": "before-after-02/tables.json",
+  "rtf_p50": {
+   "reference": 0.939,
+   "native": 0.634
+  },
+  "whole_p50_s": {
+   "reference": 7.93,
+   "native": 4.89
+  },
+  "bucket_factors": {
+   "short": 1.35,
+   "medium": 1.62,
+   "long": 1.57
+  },
+  "cutoff_free_factor_p50": 1.708,
+  "first_audio_p50_s": {
+   "reference": 0.521,
+   "native": 0.141
+  },
+  "cold_ready_s": {
+   "reference": 254.1,
+   "native": 6.4
+  },
+  "frame_limit_replies": {
+   "reference": 6,
+   "native": 3
+  },
+  "failures": 0,
+  "note": "Native has the lower per-item median latency on every item except long-05 (generated to the cap). Audio lengths differ; RTF is the duration-normalized view. The reference failed the supplementary CUDA-free and MemFree admission check; the pilot guard admitted it. The cache and admission conditions differed, and their timing effect was not isolated."
+ },
+ "speed_optimization_2026_10_16": {
+  "scope": "Speed only. Every patch keeps audio byte-identical (the same float operations in the same order); gains from memory, launch and latency structure only. Every patch was independently reviewed.",
+  "host": "GB10 host (CUDA 13 libraries identical to the before/after host)",
+  "stages": "speed-stages.json",
+  "gate_method": "recipe/pilot.py; bench/corpus_capture.py --passes 2 (48 captures: 46 normal + 2 long-05); bench/compare_gate.py: normal audio bodies byte-identical to the pre-speed build, long-05 clipped bodies identical to the reviewed clipped capture; RTF over the final pass of 23 normal items; bench/stream_check.py 9/9",
+  "warm_rtf": {
+   "pre_speed_build": 1.0866567150770123,
+   "stage_05_integration": 0.6552404579748853,
+   "promoted_binary": 0.6362240122557923
+  },
+  "load_time_s": {
+   "pre_speed_build": 53.3,
+   "stage_05": 5.9,
+   "promoted_binary": 6.2
+  },
+  "streaming_moments_promoted_binary_s": {
+   "first_audio": 0.132,
+   "gap_free_playback_start": 0.207,
+   "complete_4_18_s_utterance": 2.857
+  }
+ },
+ "qualification_01": {
+  "host": "GB10 host",
+  "results_stage_05": {
+   "R1_codec_whole": "identical to the frozen pre-speed codec at 1/2/7/128/1024 frames: frame 1 33.086 dB still fails 40 dB (known limitation), the other lengths pass",
+   "R2_codec_stream": "streaming and frozen continuity pass; overall false (frame 1)",
+   "R3": "drama-qk PASS, drama-conv PASS",
+   "R4_backbone": "chunk 1/7/128 outputs hash-identical to the frozen pre-speed outputs: the no-row-dispatch rule holds; gates fail unchanged (hidden relL2 0.124 > 0.05, cosine 0.99233 < 0.999, min row 0.80064 < 0.995, KL 0.0243 > 0.01, top30 0.867 < 0.9)",
+   "R5_tower_full_context": "363/363 outputs identical to frozen; rows-7 streaming head9 top-1 600 vs 463 still fails (the reference logits tie)",
+   "R6a_tower_real_streaming": "PASS",
+   "R6c_tower_teacher_forced": "gate components pass at rows 1/7/128; one-row hidden/head9 now bit-exact, 196 bit-exact stages; the original native_chunk_vs_batch component was not evaluated",
+   "R7_serving_promoted_binary": "audio-identity gate identical; stream 9/9; /health memory active 40806970484 B, peak 40857363572 B"
+  },
+  "not_run": "R6b/R6d (conditional on R5/R1 differences; none). R8 superseded by before/after 02.",
+  "qualified": false,
+  "blocking": [
+   "codec frame 1 (known limitation, repair stopped)",
+   "backbone: fails the revised worst-row bar (0.8006 < 0.8713, pre-registered) and five unchanged gates (all-row cosine, relative L2, last-row cosine, top-30, KL)",
+   "tower rows-7 streaming head9 top-1 tie",
+   "long-05 no end of speech"
+  ]
+ },
+ "backbone_reference_self_control": {
+  "tool": "qualification/refself/refself.py",
+  "method": "The frozen backbone fixture path (182-row prefill through the real SGLang-Omni OmniScheduler, unpatched) with max_running_requests=2; the 182-row target co-batched with a 2/7/128-row companion before or after it, or two copies in one 364-row call. Co-batching is supported by default upstream (up to 16 requests per batch, sglang-omni config.py:19); this run, like the frozen fixture, used eager execution with CUDA graphs disabled, whereas default serving also uses graphs. Chunked prefill is rejected by the reference for Drama 3 and was not run. Thresholds and metrics imported unchanged from backbone-reference-check.py.",
+  "controls": "solo-182 first and last reproduce the frozen reference hidden, semantic and full-logit bytes exactly; guard completion clean",
+  "reference_vs_itself": {
+   "relative_l2": [
+    0.0385,
+    0.0449
+   ],
+   "all_rows_cosine": [
+    0.998997,
+    0.999259
+   ],
+   "min_row_cosine": [
+    0.8713,
+    0.9818
+   ],
+   "last_row_cosine": [
+    0.9982,
+    0.9993
+   ],
+   "semantic_kl": [
+    0.0023,
+    0.0049
+   ],
+   "top30": [
+    0.933,
+    0.967
+   ],
+   "views_failing": "8/8 fail hidden_min_row_cosine (>= 0.995); 3/8 also all-row cosine (>= 0.999: companion-128-before, companion-128-after, pair-0); 3/8 also last-row cosine (>= 0.999); relative L2 and semantic gates pass in every view"
+  },
+  "native_vs_reference": {
+   "relative_l2": 0.1244,
+   "min_row_cosine": 0.8006,
+   "semantic_kl": 0.0243,
+   "against_co_batched_views": "relative L2 0.114-0.127, KL 0.016-0.032"
+  },
+  "interpretation": "The reference fails the minimum-row-cosine gate against its frozen solo output in every tested co-batched view; some views also fail the all-row or last-row cosine gates. This component is unattainable by the reference under these tested co-batching schedules; the experiment does not prove that every possible implementation must fail it. Native is still outside the reference self-variance envelope on relative L2 (0.124 vs at most 0.045) and semantic KL (0.024 vs at most 0.0049), so the backbone failure is not explained by schedule variance alone."
+ },
+ "ba_projection_row_variance": {
+  "verdict": "Infeasible under the no-row-dispatch rule: the reference GDN in_proj_ba F.linear gives different bits for identical rows at different call shapes (cuBLAS gemvx at M=1, CUTLASS wmma at 2-15, nvjet split-K 16/8/4/3 variants above, position-dependent combine order in the 32x64 kernel). On 3,932,160 outputs per shape: M=1 vs 182 differ in 618, 2 vs 182 in 4,696, 1 vs 2 in 4,936. No single row-invariant arithmetic matches every reference shape; native canonical K16 already equals the reference at M=2 and 7.",
+  "production_changed": false
+ },
+ "backbone_worst_row_bar_revision": {
+  "status": "pre-registered 2026-10-16T02:12:59Z, then native re-scored",
+  "registered_at_utc": "2026-10-16T02:12:59.760971+00:00",
+  "decision": "The maintainer accepted that exact backbone parity is not required (infeasible under the no-row-dispatch rule) and asked for the 0.995 worst-row cosine bar to be revised from the reference's own self-variance, pre-registered before re-scoring native and not tuned to native.",
+  "gate": "hidden_min_row_cosine",
+  "old_value": 0.995,
+  "new_value": 0.8712518909203973,
+  "comparison": "candidate >= bar, binary64, no rounding or margin",
+  "views_used": [
+   "companion-2-before",
+   "companion-7-before",
+   "companion-128-before",
+   "companion-2-after",
+   "companion-7-after",
+   "companion-128-after",
+   "pair-0",
+   "pair-1"
+  ],
+  "proposer": "an independent reviewer, blinded: native data not consulted",
+  "reproduction": "qualification/worst-row-bar.py; the CPU reproduction matched all eight view minima, rows and input hashes: bar 0.8712518909203973",
+  "limitations": "one 182-token fixture; eager execution without CUDA graphs; eight two-request co-batched views (three share identical hidden bytes); single run, no repeat-variance estimate; gate still evaluated against the solo frozen reference; a bar of this size permits a substantial isolated row discrepancy",
+  "unchanged_bars": "hidden all-row cosine >= 0.999, last-row cosine >= 0.999, relative L2 <= 0.05, semantic KL <= 0.01, top-30 >= 0.9, top-1 equal, semantic cosine/relL2, codec 40 dB / RMSE / max-abs / prefixes, tower gates: all unchanged",
+  "rescore": {
+   "tool": "qualification/rescore-native.py",
+   "native_inputs": "stage-05 backbone oracle outputs (chunks 1/7/128 byte-identical)",
+   "native_min_row_cosine": 0.8006441939169684,
+   "native_min_row": 178,
+   "revised_bar": 0.8712518909203973,
+   "revised_gate_passed": false,
+   "failing_gates": [
+    "hidden_min_cosine_all_rows (0.99233 < 0.999)",
+    "hidden_max_relative_l2_all_rows (0.1244 > 0.05)",
+    "hidden_min_row_cosine (0.8006 < 0.8713)",
+    "hidden_min_last_row_cosine (0.99670 < 0.999)",
+    "semantic_min_top30_overlap (0.867 < 0.9)",
+    "semantic_max_kl_reference_to_native (0.0243 > 0.01)"
+   ],
+   "passing_gates": [
+    "semantic_top1_equal",
+    "semantic_min_cosine",
+    "semantic_max_relative_l2"
+   ],
+   "conclusion": "Native fails the revised worst-row bar as well as five unchanged backbone gates; backbone sign-off is not reached. Codec frame 1 (33.1 dB vs 40) and the tower rows-7 top-1 gate also remain failing."
+  }
+ },
+ "long_text_clipped_replies": {
+  "behaviour": "A reply reaching max_frames (1024) without end of speech returns its clipped audio with HTTP 200 instead of HTTP 500. Whole replies carry X-Finish-Reason: stop|length; streams declare Trailer: X-Finish-Reason and only a clipped stream ends with X-Finish-Reason: length.",
+  "evidence": "long-text-tail.json",
+  "finding": "All six reference 1024-frame replies in before/after 01 (medium-05 x2, long-02, long-04, long-07 x2) show the same signature as native long-05: speech stops early (reference 3-6 s, native about 11 s), then about -95 dBFS until the cap. The reference returns them as plain 200.",
+  "not_fixed": "long-05 still never emits end of speech under native seeded sampling; the text is not fully spoken in either engine for capped items. Cause not established."
+ },
+ "listening_ab_01": {
+  "rater": "the maintainer",
+  "protocol": "Blind paired preference: per pair, engine order randomized (secrets.randbelow); the rater got texts and purposes without the mapping; the key was revealed only after the answers.",
+  "native": "TensorFold native aa211423 (promoted speed stage 05)",
+  "reference": "sglang-omni ab095ef9",
+  "sources": "pairs 01, 02, 04, 05: warm round-1 replies of before/after 02; pair 03: one generation of the backbone fixture prompt under recipe/pilot.py, one engine at a time",
+  "pairs": {
+   "01": {
+    "item": "short-03",
+    "preferred_engine": "native"
+   },
+   "02": {
+    "item": "medium-04",
+    "preferred_engine": "reference"
+   },
+   "03": {
+    "item": "backbone fixture prompt (lighthouse)",
+    "preferred_engine": "native",
+    "rater_note": "preferred by a lot; both replies stop at the 47.55 s / 1024-frame cap"
+   },
+   "04": {
+    "item": "long-03",
+    "preferred_engine": "native"
+   },
+   "05": {
+    "item": "long-05",
+    "preferred_engine": "native",
+    "rater_note": "both go silent for a while; the reference resumes speech after the silence, native never does, matching the open long-05 no-end-of-speech issue. Not blind: the rater knew native's behaviour on this item."
+   }
+  },
+  "result": "native preferred 4/5 (01, 03, 04, 05); reference preferred 1/5 (02, medium-04)",
+  "limitations": "one rater, five pairs, one take per engine per text (both engines sample, so takes differ beyond numerics); pair 05 not blind; no pre-registered listening bar; not a formal MOS.",
+  "status": "It does not change any numerical gate: codec frame 1, the backbone gates (including the revised worst-row bar) and the tower rows-7 top-1 still fail, and long-05 still never ends speech."
+ }
+}

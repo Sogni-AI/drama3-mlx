@@ -1,0 +1,179 @@
+{
+ "schema": "drama-backbone-attention-tiles/1",
+ "scope": "Native TensorFold Drama 3 backbone before and after engine patch 0040 (full attention runs the reference's 64-key softmax tiles), against the pinned sglang-omni reference ab095ef9, checkpoint fishaudio/drama-3 e0a9218a, on our GB10. Neutralized from the oracle output; numbers unchanged.",
+ "method": "The native backbone oracle on the GPU against the frozen reference outputs: final hidden states and semantic logits for the 182-token text fixture and a 449-row voice-reference prompt, and the full attention operator alone on the reference's own layer inputs.",
+ "bars": {
+  "hidden_cosine_min": 0.999,
+  "hidden_relative_l2_max": 0.05,
+  "hidden_min_row_cosine_min": 0.8712518909203973,
+  "hidden_last_row_cosine_min": 0.999,
+  "semantic_kl_reference_to_native_max": 0.01,
+  "semantic_top30_overlap_min": 0.9,
+  "semantic_top1_equal": true,
+  "semantic_cosine_min": 0.999,
+  "semantic_relative_l2_max": 0.03
+ },
+ "reference_self_variance": {
+  "relative_l2_max": 0.0449,
+  "semantic_kl_max": 0.0049,
+  "min_row_cosine_bar": 0.8712518909203973
+ },
+ "text_fixture_182_tokens": {
+  "before": {
+   "hidden": {
+    "cosine": 0.9923304196806327,
+    "relative_l2": 0.12441650560257042,
+    "min_row_cosine": 0.8006441939169684,
+    "min_row": 178,
+    "last_row_cosine": 0.9967019979571512,
+    "bit_equal_fraction": 0.06244902558379121
+   },
+   "semantic": {
+    "kl_reference_to_native": 0.024300908092647986,
+    "top30_overlap": 0.8666666666666667,
+    "top1_equal": true,
+    "cosine": 0.999658791372091,
+    "relative_l2": 0.02635228752044957
+   }
+  },
+  "after": {
+   "hidden": {
+    "cosine": 0.9986030583746287,
+    "relative_l2": 0.052842040046250684,
+    "min_row_cosine": 0.9169158571918543,
+    "min_row": 104,
+    "last_row_cosine": 0.9980860901817729,
+    "bit_equal_fraction": 0.06583211710164835
+   },
+   "semantic": {
+    "kl_reference_to_native": 0.006235144598758881,
+    "top30_overlap": 0.9333333333333333,
+    "top1_equal": true,
+    "cosine": 0.9999100561273242,
+    "relative_l2": 0.023231011694543748
+   }
+  }
+ },
+ "voice_prompt_449_rows": {
+  "before": {
+   "hidden": {
+    "cosine": 0.9984750803361081,
+    "relative_l2": 0.05520772519094129,
+    "min_row_cosine": 0.9647515388172703,
+    "min_row": 55,
+    "last_row_cosine": 0.9984893258905431,
+    "bit_equal_fraction": 0.040285921840200446
+   },
+   "text_rows": {
+    "min_row_cosine": 0.9647515388172703,
+    "min_row": 55,
+    "median_row_cosine": 0.9993155895780899
+   },
+   "audio_rows": {
+    "min_row_cosine": 0.9796912293154627,
+    "min_row": 99,
+    "median_row_cosine": 0.9991896390218944
+   },
+   "semantic": {
+    "kl_reference_to_native": 0.006670844174051691,
+    "top30_overlap": 0.9666666666666667,
+    "top1_equal": true,
+    "cosine": 0.9998130951546256,
+    "relative_l2": 0.019587319182837126
+   }
+  },
+  "after": {
+   "hidden": {
+    "cosine": 0.9984424045276798,
+    "relative_l2": 0.0558248207669647,
+    "min_row_cosine": 0.9706255593423991,
+    "min_row": 439,
+    "last_row_cosine": 0.9982073691562438,
+    "bit_equal_fraction": 0.03918103598273942
+   },
+   "text_rows": {
+    "min_row_cosine": 0.9706255593423991,
+    "min_row": 439,
+    "median_row_cosine": 0.9993276534817144
+   },
+   "audio_rows": {
+    "min_row_cosine": 0.978999770736215,
+    "min_row": 369,
+    "median_row_cosine": 0.9990967848787153
+   },
+   "semantic": {
+    "kl_reference_to_native": 0.00867949376245874,
+    "top30_overlap": 0.9666666666666667,
+    "top1_equal": true,
+    "cosine": 0.9997838742779953,
+    "relative_l2": 0.020790028055218356
+   }
+  }
+ },
+ "attention_operator_on_reference_input": {
+  "layer_3": {
+   "before": {
+    "cosine": 0.999999903925146,
+    "relative_l2": 0.00043892141048433434,
+    "min_row_cosine": 0.9999989375948334,
+    "min_row": 119,
+    "last_row_cosine": 0.9999999355697042,
+    "bit_equal_fraction": 0.7043913118131868
+   },
+   "after": {
+    "cosine": 0.9999999985705103,
+    "relative_l2": 5.3469460496907465e-05,
+    "min_row_cosine": 0.9999999686685214,
+    "min_row": 145,
+    "last_row_cosine": 0.9999999973669331,
+    "bit_equal_fraction": 0.9805787474244505
+   }
+  },
+  "layer_39": {
+   "before": {
+    "cosine": 0.9999979091931535,
+    "relative_l2": 0.002047787019621178,
+    "min_row_cosine": 0.9999924913345811,
+    "min_row": 102,
+    "last_row_cosine": 0.9999991701852948,
+    "bit_equal_fraction": 0.5750558035714286
+   },
+   "after": {
+    "cosine": 0.9999999713176562,
+    "relative_l2": 0.00023950959677619538,
+    "min_row_cosine": 0.9999972605040974,
+    "min_row": 31,
+    "last_row_cosine": 0.9999999389155096,
+    "bit_equal_fraction": 0.9622225918612637
+   }
+  }
+ },
+ "controls": {
+  "gpu_steps_ok": true,
+  "after_trace_binary_is_prepared": true,
+  "after_trace_matches_untraced_run": true,
+  "before_attention_bit_identical": true,
+  "first_norm_bit_exact_vs_reference": true,
+  "replay_evidence_valid": true,
+  "voice_chunk_and_reset_bit_exact": true,
+  "moe_operator_replay_bit_identical_to_before": true,
+  "evidence_valid": true
+ },
+ "serving": {
+  "host": "our GB10, our corpus",
+  "warm_rtf_48_request_capture": {
+   "previous_engine_same_session": {
+    "min": 0.642,
+    "max": 0.65
+   },
+   "patch_0040": 0.682
+  },
+  "silence_finishes_in_test_replies": {
+   "replies": 40,
+   "with_expression_cues": 20,
+   "before": 2,
+   "after": 0,
+   "note": "The same texts in one test voice, served with --long-form and --max-frames; replies that ended with X-Finish-Reason: silence. Both silences were in replies with cues. The after build also has patches 0041-0043, which do not change whole replies. A small sample."
+  }
+ }
+}

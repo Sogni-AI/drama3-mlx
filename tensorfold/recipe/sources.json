@@ -1,0 +1,20 @@
+{
+  "reference_runtime": {
+    "repository": "https://github.com/sgl-project/sglang-omni.git",
+    "revision": "ab095ef9e779e56af33b6ed2c863645c9903372d"
+  },
+  "checkpoint": {
+    "repository": "fishaudio/drama-3",
+    "revision": "e0a9218aa48888270f06ef1ed9ea67622c0e17d2",
+    "weight_and_codec_bytes": 41474674072,
+    "license": "Fish Audio Community License 1.0 (2026-10-13)"
+  },
+  "nvfp4_checkpoint": {
+    "repository": "plotarmordev/drama-3-NVFP4-Pruned",
+    "revision": "494db08481db952f834b2241bce63fb3dfa72554",
+    "weight_and_codec_bytes": 22294649076,
+    "license": "Fish Audio Community License 1.0 (2026-10-13)"
+  },
+  "voice": "default, without reference audio",
+  "native_drama_qualified": false
+}

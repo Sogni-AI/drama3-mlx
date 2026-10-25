@@ -1,0 +1,712 @@
+{
+  "scope": "Native macOS NVFP4 correctness/support qualification, not a performance benchmark, quality comparison or production deployment",
+  "platform": {
+    "os": "macOS Apple silicon",
+    "observed_gpu": "Apple M5 Ultra",
+    "observed_gpu_family": "applegpu_g17",
+    "ram_gib": 256,
+    "ram_basis": "retained operator inventory; not a capacity qualification"
+  },
+  "compiler": {
+    "version": "Zig 0.17.0",
+    "cpu_target": "apple_m1",
+    "jobs": 2,
+    "archive_sha256": "b607e9b9234790a008116ae5bdb71c6243b84b9fb42a53a9e70fde41c06c536a"
+  },
+  "checkpoint": {
+    "repository": "plotarmordev/drama-3-NVFP4-Pruned",
+    "revision": "494db08481db952f834b2241bce63fb3dfa72554",
+    "verified_files": 15,
+    "conversion_or_modification": false
+  },
+  "engine": {
+    "version": "tensorfold-native 1.1.4",
+    "base": "3d219d2156d4c25dcfb74370c8703cd89e58aa49",
+    "upstream_pr": "https://github.com/ashhart/TensorFold/pull/1268",
+    "native_build_head": "283f624643334b6d1670db01cf4ef61992aff250",
+    "head_after_test_only_correction": "986477cc879f050f1555cc4e1c5b1d25f06c78de",
+    "head_note": "The two build heads above are historical qualification heads. Publication-only mail metadata preserves their source; a final CLI-table grouping patch changes capability-list order only and was built/help-checked without replaying GPU qualification.",
+    "qualified_source_head": "c59b0954129c6ee4e9c9eaa9ebc2fdea3c542f37",
+    "upstream_source_head": "6585530054e273aa1a1554549585489f2497cb41",
+    "published_patched_head": "e5e86adb16498b3c172db3a45fafd273c0679fe2",
+    "published_source_tree": "b143c8a51fb9e53d5e0db384207e32ee877b8594",
+    "publication_tree_matches_final_source": true,
+    "native_sha256": "dfb2577c2ad3c543334e9fe8bb3ac7080dd0f7db282455213e8e4dddc0d928be",
+    "publication_native_sha256": "cd8b3162567dfd98e4305593e8677ee40a340a4ffdb885cee3334db302ef7d1f",
+    "binary_note": "native_sha256 identifies the live-qualified binary; publication_native_sha256 identifies the later CLI-grouping build, exercised for version/help only.",
+    "generator_sha256": "1f5167026a043712e69139077ac014bff237aed8240a7bab5f2256797d167140",
+    "voice_writer_sha256": "d6a2be4eed888c1b77cb3dafeed65947a52ed3ffabbae4bf643e20c4c4f0bb9b",
+    "patches": [
+      {
+        "file": "0001-drama3-metal-nvfp4-cfg.patch",
+        "sha256": "f282318f0e8dae43b19d1fa93ec05691696a0352eaeac41f9ffc334690d8b388",
+        "qualified_mail_sha256": "bafcaaf9156e2971e386547f952addf3e6ea8cd1b667ab91a33e05f55b8abcad"
+      },
+      {
+        "file": "0002-shared-gate-stress-regression.patch",
+        "sha256": "0a68a3b66da1991f1a04980cb6958e4acc8856a88efdbe1fe10adc6df588cfc8",
+        "qualified_mail_sha256": "4e4a86b3ccf789a9f634959a348c3622db4bb38ecc29da27f39295a76a36c15d"
+      },
+      {
+        "file": "0003-shared-cli-extension-point.patch",
+        "sha256": "794a5b6008487ec705cadb098eb1c15737da743aee0855b610510506a0ce38db",
+        "scope": "CLI capability-list ordering only; flag values/parsing, kernels, arithmetic and tolerances unchanged"
+      }
+    ]
+  },
+  "build_verification": {
+    "public_build_entrypoint": "scripts/build-engine.sh --weights nvfp4 BUILD_DIR",
+    "initial_clean_build": "patch checksum verified; clean apply; native, drama3-generate and drama3-voice built successfully",
+    "test_only_followup": "second patch applied cleanly with the same git-am options; corrected contract runner built; unchanged production native binary retained, not rebuilt/replayed",
+    "publication_metadata_proof": "First two checksummed mails applied in a fresh checkout with a Git tree equal to the qualified implementation plus test-only correction. The final CLI-only third patch was applied to a separate checkout of that retained two-patch head; its tree equals final upstream source. Original proof owners exited0, reaped/group absent.",
+    "final_cli_build": "Final source65855300 native build, version1.1.4 and serve help passed. Original owner exit0/reaped/group absent, no signals or settlement errors; no model/GPU check replayed.",
+    "integration_scope": "All four Notes-stack merge-tree checks are clean after grouping CFG flags beside voice selection. Reported CUDA conflicts are identical to conflicts against the original base; other PR-pair merges are not claimed clean."
+  },
+  "cpu_verification": {
+    "weight_selection_tests": 8,
+    "cfg_host_runner_passed": 20,
+    "metal_format_guidance_runner_passed": 6,
+    "independent_nvfp4_reference_tests": 2,
+    "new_nonlinear_stress_regression": 1,
+    "kernel_contract_host_tests": 84,
+    "metal_host_compile_and_tests": "3 passed,2 skipped",
+    "cuda_host_compile": "passed; no CUDA device execution",
+    "server_initial": "737 passed,3 skipped,1 incidental busy-reply-count assertion failure; JSON tests5passed",
+    "server_focused_followup": "16 runner cases passed after removing only incidental count assertion, retaining timeout/redraw assertions; broad suite not replayed",
+    "lean": "zero new violations on initial feature tree; two inherited violations retained",
+    "private_verifier_smoke": "original-child natural/graceful settlement and HTTP framing/negative/absolute-deadline checks passed; synthetic responses are not model proof"
+  },
+  "metal_contract": {
+    "initial_summary": "SUMMARY 14 kernels: 13 pass gates 1-4, 1 fail, 0 known findings; 0 controls: 0 red as planted, 0 missed; 0 limit problems; gates 2138 ms, limits 6587 ms",
+    "initial_failure": "shared-gate stress saturated the sigmoid, so FP16 accumulation could match the BF16 output; the precision-discrimination gate correctly refused it",
+    "correction": "test inputs centered the exact FP32 dot at1; independent CPU test proves both reduced accumulators differ after sigmoid/BF16 in all three orders. No production kernel or tolerance change.",
+    "focused_summary": "SUMMARY 1 kernels: 1 pass gates 1-4, 0 fail, 0 known findings; 0 controls: 0 red as planted, 0 missed; 0 limit problems; gates 159 ms, limits 0 ms",
+    "coverage": "13 initial successful variants and all runtime resource limits retained; only corrected failed variant rerun. This is not a second full14-variant pass or full multi-family suite."
+  },
+  "live": {
+    "settings": {
+      "context": 8192,
+      "parallel": 1,
+      "drafts": false,
+      "prompt_cache_gib": 0,
+      "keep_warm": 0,
+      "sampling": "fixed model speech policy; no sampling overrides",
+      "reference_provenance": "retained attested synthetic catalogs; no natural-person voice"
+    },
+    "counts": {
+      "total": 28,
+      "complete_pcm": 15,
+      "early_stream_cancellation": 1,
+      "expected_http_400": 12,
+      "failed_checks": 0
+    },
+    "phases": [
+      {
+        "phase": "paired",
+        "passed": true,
+        "request_count": 8,
+        "checks": {
+          "a_repeat_exact": true,
+          "a_after_b_exact": true,
+          "a_stream_whole_exact": true,
+          "early_cancellation": true,
+          "a_after_cancellation_exact": true,
+          "request_count_exact": true
+        },
+        "hashes": {
+          "default": "04d31906e89b75d9545ce0358e16c734e4b1e86ce2e389c6da0a0f32768b651f",
+          "synthetic-a": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+          "synthetic-b": "3e0a49f287e6796570862dd1f810d82013d22409d5ce167cf525ca682b272c4a"
+        },
+        "requests": [
+          {
+            "label": "default",
+            "status": 200,
+            "passed": true,
+            "bytes": 331776,
+            "sha256": "04d31906e89b75d9545ce0358e16c734e4b1e86ce2e389c6da0a0f32768b651f",
+            "frames": 81.0,
+            "audio_duration_s": 3.7616326530612243,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a-repeat",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "b",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "3e0a49f287e6796570862dd1f810d82013d22409d5ce167cf525ca682b272c4a",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a-after-b",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a-stream",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-sample-rate": "44100",
+              "x-channels": "1",
+              "x-bit-depth": "16",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a-cancel",
+            "status": 200,
+            "passed": true,
+            "bytes": 4096,
+            "sha256": "fb1a96188111e39464eba33fbf96426bcc72f919d6756f1481c82dbacb2bb890",
+            "frames": 1.0,
+            "audio_duration_s": 0.046439909297052155,
+            "finish_reason": null,
+            "complete": false,
+            "cancelled": true,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-sample-rate": "44100",
+              "x-channels": "1",
+              "x-bit-depth": "16",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a-after-cancel",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          }
+        ],
+        "settlement": {
+          "exit_code": 0,
+          "reaped": true,
+          "settled": true,
+          "escalated": false,
+          "settlement_errors": []
+        },
+        "stop": "planned SIGTERM to original native child"
+      },
+      {
+        "phase": "separate",
+        "passed": true,
+        "request_count": 4,
+        "checks": {
+          "paired_hashes_available": true,
+          "paired_separate_exact_default": true,
+          "paired_separate_exact_synthetic-a": true,
+          "paired_separate_exact_synthetic-b": true,
+          "a_stream_whole_exact": true,
+          "request_count_exact": true
+        },
+        "hashes": {
+          "default": "04d31906e89b75d9545ce0358e16c734e4b1e86ce2e389c6da0a0f32768b651f",
+          "synthetic-a": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+          "synthetic-b": "3e0a49f287e6796570862dd1f810d82013d22409d5ce167cf525ca682b272c4a"
+        },
+        "requests": [
+          {
+            "label": "default",
+            "status": 200,
+            "passed": true,
+            "bytes": 331776,
+            "sha256": "04d31906e89b75d9545ce0358e16c734e4b1e86ce2e389c6da0a0f32768b651f",
+            "frames": 81.0,
+            "audio_duration_s": 3.7616326530612243,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "b",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "3e0a49f287e6796570862dd1f810d82013d22409d5ce167cf525ca682b272c4a",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1.5"
+            }
+          },
+          {
+            "label": "a-stream",
+            "status": 200,
+            "passed": true,
+            "bytes": 327680,
+            "sha256": "c8769b5ffac317dde8c3a338ce81a6311fa3a6588779b865f5873b661105b837",
+            "frames": 80.0,
+            "audio_duration_s": 3.7151927437641725,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-sample-rate": "44100",
+              "x-channels": "1",
+              "x-bit-depth": "16",
+              "x-cfg-gamma": "1.5"
+            }
+          }
+        ],
+        "settlement": {
+          "exit_code": 0,
+          "reaped": true,
+          "settled": true,
+          "escalated": false,
+          "settlement_errors": []
+        },
+        "stop": "planned SIGTERM to original native child"
+      },
+      {
+        "phase": "request",
+        "passed": true,
+        "request_count": 16,
+        "checks": {
+          "gamma_1_repeat_exact": true,
+          "gamma_2_repeat_exact": true,
+          "request_count_exact": true
+        },
+        "hashes": {
+          "synthetic-a": {
+            "gamma-1": "a44e67300b185e27e96fc8a2e668c7d33d96b24dd394c56e2b202fbae3e8ea72",
+            "gamma-2": "78453aaf336934f307d0306f1f253cc6f342973d223a3cc647e15230d6f155d4"
+          }
+        },
+        "requests": [
+          {
+            "label": "gamma-1",
+            "status": 200,
+            "passed": true,
+            "bytes": 307200,
+            "sha256": "a44e67300b185e27e96fc8a2e668c7d33d96b24dd394c56e2b202fbae3e8ea72",
+            "frames": 75.0,
+            "audio_duration_s": 3.4829931972789114,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1"
+            }
+          },
+          {
+            "label": "gamma-1-repeat",
+            "status": 200,
+            "passed": true,
+            "bytes": 307200,
+            "sha256": "a44e67300b185e27e96fc8a2e668c7d33d96b24dd394c56e2b202fbae3e8ea72",
+            "frames": 75.0,
+            "audio_duration_s": 3.4829931972789114,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "1"
+            }
+          },
+          {
+            "label": "gamma-2",
+            "status": 200,
+            "passed": true,
+            "bytes": 315392,
+            "sha256": "78453aaf336934f307d0306f1f253cc6f342973d223a3cc647e15230d6f155d4",
+            "frames": 77.0,
+            "audio_duration_s": 3.575873015873016,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "2"
+            }
+          },
+          {
+            "label": "gamma-2-repeat",
+            "status": 200,
+            "passed": true,
+            "bytes": 315392,
+            "sha256": "78453aaf336934f307d0306f1f253cc6f342973d223a3cc647e15230d6f155d4",
+            "frames": 77.0,
+            "audio_duration_s": 3.575873015873016,
+            "finish_reason": "stop",
+            "complete": true,
+            "cancelled": false,
+            "response_headers": {
+              "content-type": "audio/pcm",
+              "x-finish-reason": "stop",
+              "x-cfg-gamma": "2"
+            }
+          },
+          {
+            "label": "bad-gamma-0",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "X-Cfg-Gamma must be a number from 1 (unguided) to 5",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "bad-gamma-1",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "X-Cfg-Gamma must be a number from 1 (unguided) to 5",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "bad-gamma-2",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "X-Cfg-Gamma must be a number from 1 (unguided) to 5",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "bad-gamma-3",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "X-Cfg-Gamma must be a number from 1 (unguided) to 5",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "bad-gamma-4",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "X-Cfg-Gamma must be a number from 1 (unguided) to 5",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "unsupported-temperature",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "temperature is not supported by this model",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "unsupported-top_p",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "top_p is not supported by this model",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "unsupported-top_k",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "top_k is not supported by this model",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "unsupported-repetition_penalty",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "repetition_penalty is not supported by this model",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "unsupported-seed",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "seed is not supported by this model",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "unsupported-stage_params",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "stage_params is not supported by this model",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          },
+          {
+            "label": "unsupported-min_p",
+            "status": 400,
+            "passed": true,
+            "finish_reason": null,
+            "complete": true,
+            "cancelled": false,
+            "pcm_bytes": 0,
+            "error_response": {
+              "error": {
+                "message": "unknown speech request field: min_p",
+                "type": "invalid_request_error"
+              }
+            },
+            "response_headers": {
+              "content-type": "application/json"
+            }
+          }
+        ],
+        "settlement": {
+          "exit_code": 0,
+          "reaped": true,
+          "settled": true,
+          "escalated": false,
+          "settlement_errors": []
+        },
+        "stop": "planned SIGTERM to original native child"
+      }
+    ]
+  },
+  "settlement": {
+    "operator_owners": "both original children reaped and groups absent, no signals or settlement errors",
+    "live_owner": "exit0/reaped/group absent, no signals or settlement errors",
+    "native_servers": 3,
+    "native_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "planned_stops_only": true,
+    "guard_failures": 0,
+    "cooperative_holds_released": true,
+    "production_changes": false
+  },
+  "limitations": [
+    "Tested on M5 Ultra only; M1-M4 runtime and smaller-memory Macs unqualified.",
+    "No CUDA execution or cross-backend PCM comparison.",
+    "No WER, speaker-quality, perceptual-equivalence or speed claim.",
+    "No full multi-family/rotary Metal suite or offline M1/M2 compiler receipts.",
+    "Public Mac launcher selection/verification has CPU coverage; live engine ran directly under the existing cooperative guard to avoid nested flock ownership.",
+    "Early close and exact follow-up PCM are observed; engine-side cancellation was not independently instrumented.",
+    "HTTP400 precedes PCM but does not independently prove absence of engine submission.",
+    "No whole-host GPU-idleness/exclusivity claim; no peak process/device-memory capacity measurement.",
+    "Full-model and CUDA pins remain unchanged; completed earlier experiments were not rerun."
+  ],
+  "retained_preparation_failures": [
+    "Initial Zig integration/contract compilation errors were corrected; only failed or newly changed targets were rerun.",
+    "Initial broad server test retained the incidental scheduler-count failure; focused consumer-visible deadline checks passed after removal.",
+    "Initial underpowered GPU stress fixture remains recorded above; it was not relabeled as a passing run."
+  ]
+}

@@ -1,0 +1,155 @@
+{
+ "schema": "drama-native-voice-encoder/1",
+ "scope": "tensorfold-native voice encode (engine patches 0051-0052) against the pinned reference encoder (sglang-omni FishReferenceEncodeHook, bfloat16 autocast), on our GB10, our test voices. Neutralized from the encoder parity run and the clone evaluation; numbers unchanged. No audio, transcripts or voice files are published.",
+ "code_parity": {
+  "method": "The same clip through both encoders, one fresh process per clip; the share of codes that differ, per codebook. The reference gave identical codes on two runs of the same clip.",
+  "clips": [
+   {
+    "clip": "model-invented test voice 3, 15.7 s",
+    "frames": 339,
+    "semantic_differ_pct": 2.95,
+    "residual_differ_pct": [
+     3.2,
+     6.5,
+     6.5,
+     8.3,
+     7.7,
+     10.6,
+     10.3,
+     14.2,
+     12.1
+    ],
+    "frames_with_any_mismatch": 78
+   },
+   {
+    "clip": "model-invented render, 53.3 s",
+    "frames": 1149,
+    "semantic_differ_pct": 2.7,
+    "residual_differ_pct": [
+     3.7,
+     5.1,
+     7.4,
+     7.5,
+     8.1,
+     9.8,
+     11.3,
+     12.8,
+     13.3
+    ],
+    "frames_with_any_mismatch": 249
+   },
+   {
+    "clip": "model-invented render, 49.1 s",
+    "frames": 1058,
+    "semantic_differ_pct": 2.46,
+    "residual_differ_pct": [
+     3.0,
+     5.7,
+     6.2,
+     5.8,
+     7.0,
+     10.3,
+     11.0,
+     11.6,
+     12.1
+    ],
+    "frames_with_any_mismatch": 213
+   }
+  ]
+ },
+ "clone_quality": {
+  "method": "Each voice encoded by both encoders from the same clip, then one reply to the same text rendered from each voice file (one take per side, an engine before patch 0040). Speaker similarity is the ECAPA cosine (speechbrain/spkrec-ecapa-voxceleb) of the reply to its own clip; WER is Whisper's.",
+  "pairs": [
+   {
+    "voice": "model-invented test voice 3",
+    "similarity": {
+     "reference": 0.9097,
+     "native": 0.9158
+    },
+    "wer_pct": {
+     "reference": 3.05,
+     "native": 0.76
+    },
+    "reply_vs_reply_similarity": 0.9712
+   },
+   {
+    "voice": "model-invented test voice 1",
+    "similarity": {
+     "reference": 0.9241,
+     "native": 0.9195
+    },
+    "wer_pct": {
+     "reference": 2.29,
+     "native": 2.29
+    },
+    "reply_vs_reply_similarity": 0.9538
+   },
+   {
+    "voice": "model-invented test voice 2",
+    "similarity": {
+     "reference": 0.8464,
+     "native": 0.8503
+    },
+    "wer_pct": {
+     "reference": 2.29,
+     "native": 2.29
+    },
+    "reply_vs_reply_similarity": 0.9046
+   }
+  ],
+  "similarity_change_range": [
+   -0.0046,
+   0.0061
+  ],
+  "take_noise": {
+   "method": "Six earlier takes of model-invented test voice 3 on the same text: the take noise of one model-invented voice.",
+   "similarity_range": [
+    0.9028,
+    0.9255
+   ],
+   "similarity_spread": 0.023,
+   "reply_vs_reply_median": 0.9695,
+   "reply_vs_reply_min": 0.9576
+  },
+  "not_compared": "A third model-invented voice: its reference-encoded reply collapsed into silence after 6.55 s, so its scores are not comparable.",
+  "limits": "One take per side, and the sampling seed comes from the prompt rows, which the codes change, so a difference cannot be credited to the codes alone. Take noise was measured on one voice only; model-invented test voice 2 scores 0.9046 reply against reply, under that voice's take minimum."
+ },
+ "resources": {
+  "method": "The same three clips as code_parity, one encode each on our GB10 under its GPU lock. Native peak is the engine's tracked device buffers, without the driver's context memory; reference peak is torch's.",
+  "clip_s": [
+   15.7,
+   53.3,
+   49.1
+  ],
+  "native_peak_device_memory": [
+   "685 MB",
+   "1.33 GB",
+   "1.26 GB"
+  ],
+  "native_max_rss_mb": {
+   "min": 584,
+   "max": 594
+  },
+  "native_encode_s": [
+   0.105,
+   0.379,
+   0.344
+  ],
+  "native_cli_wall_s": [
+   4.37,
+   4.66,
+   4.51
+  ],
+  "native_cli_wall_note": "tensorfold-native voice encode end to end, codec.pth load and hashing included",
+  "reference_peak_device_memory": [
+   "2.59 GB",
+   "4.72 GB",
+   "4.48 GB"
+  ],
+  "reference_encode_s": [
+   1.43,
+   1.54,
+   1.51
+  ]
+ }
+}
