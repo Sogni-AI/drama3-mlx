@@ -25,6 +25,8 @@ import socket
 import subprocess
 import time
 
+import weight_selection
+
 GIB = 1024**3
 HEADROOM = 30 * GIB
 STOP_MARGIN = 4 * GIB
@@ -132,10 +134,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--backend', choices=('native', 'sglang-omni'), default='native')
-    parser.add_argument('--native-bin', type=Path, help='Patched tensorfold-native executable')
+    parser.add_argument('--weights', choices=tuple(weight_selection.WEIGHTS),
+                        help='Download (first run), verify and serve pinned weights; nvfp4 adds '
+                             '--cfg-gamma 1.5 --cfg-batched unless guidance follows --')
+    parser.add_argument('--native-bin', type=Path,
+                        help='Patched executable (default with --weights: its engine in build/)')
     parser.add_argument('--runtime-dir', type=Path, required=True,
                         help='Isolated runtime and cache directory')
-    parser.add_argument('--checkpoint', type=Path, required=True)
+    parser.add_argument('--checkpoint', type=Path,
+                        help='Checkpoint directory (with --weights: verified against the selected pins)')
     parser.add_argument('--gpu-lock', type=Path, required=True,
                         help='Existing lock file that every GPU workload on this host takes')
     parser.add_argument('--evidence-dir', type=Path, required=True)
@@ -154,9 +161,11 @@ def main() -> int:
     args = parser.parse_args()
     if not args.gpu_lock.is_file():
         parser.error('The operator-specified shared GPU lock must already exist')
+    if args.weights is None and args.checkpoint is None:
+        parser.error('Pass --weights nvfp4 or --weights full, or --checkpoint DIR')
 
     root = args.runtime_dir.resolve()
-    checkpoint = args.checkpoint.resolve()
+    checkpoint = weight_selection.checkpoint_path(args.weights, args.checkpoint)
     evidence = args.evidence_dir.resolve()
 
     with args.gpu_lock.open('r+') as lock:
@@ -212,16 +221,15 @@ def main() -> int:
             socket.inet_pton(socket.AF_INET, args.host)
             if args.backend != 'native':
                 raise ValueError('sglang-omni needs the CUDA reference stack; this launcher is native-only')
-            if args.native_bin is None:
-                raise ValueError('The native backend requires --native-bin')
             if args.min_available_gib is not None and args.min_available_gib < ABORT_AVAILABLE / GIB:
                 raise ValueError('Admission override cannot be below the 34 GiB abort threshold')
             for value in (args.reserve_gib, args.min_available_gib):
                 if value is not None and not math.isfinite(value * GIB):
                     raise ValueError('GiB argument is too large')
-            executable = args.native_bin.resolve()
+            executable = weight_selection.native_path(args.weights, args.native_bin)
             if not executable.is_file() or not os.access(executable, os.X_OK):
                 raise ValueError(f'Missing executable server: {executable}')
+            provenance = weight_selection.prepare_checkpoint(args.weights, args.checkpoint)
             backbone = sum(p.stat().st_size for p in checkpoint.glob('*.safetensors'))
             if backbone <= 0:
                 raise ValueError('No backbone safetensors found')
@@ -240,10 +248,11 @@ def main() -> int:
             for name in ('hf-cache', 'runtime-cache'):
                 (root / name).mkdir(exist_ok=True)
 
+            serve_args = weight_selection.serve_arguments(args.weights, args.serve_args)
             server_command = [str(executable), 'serve', str(checkpoint), '--host', args.host,
                               '--port', str(args.port), '--name', 'fishaudio/drama-3',
                               '--context', '8192', '--parallel', '1', '--no-drafts',
-                              '--prompt-cache-gib', '0', '--keep-warm', '0', *args.serve_args]
+                              '--prompt-cache-gib', '0', '--keep-warm', '0', *serve_args]
             environment = {
                 'HOME': str(Path.home()),
                 'PATH': f'{root / "venv/bin"}:/usr/bin:/bin:/usr/sbin:/sbin',
@@ -254,7 +263,7 @@ def main() -> int:
                 'XDG_CACHE_HOME': str(root / 'runtime-cache'),
                 'TENSORFOLD_MEMORY_RESERVE_GIB': f'{args.reserve_gib:g}',
             }
-            initial = {'backend': args.backend, 'weights_bytes': weights,
+            initial = {**provenance, 'backend': args.backend, 'weights_bytes': weights,
                        'initial_memavailable_bytes': available,
                        'required_memavailable_bytes': int(floor),
                        'headroom_floor_bytes': HEADROOM, 'abort_threshold_bytes': ABORT_AVAILABLE,

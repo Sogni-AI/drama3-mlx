@@ -4,11 +4,9 @@ from __future__ import annotations
 
 import argparse
 import fcntl
-import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import signal
 import socket
 import subprocess
@@ -17,56 +15,13 @@ import time
 import urllib.error
 import urllib.request
 
+import weight_selection
+
 GIB = 1024**3
 HEADROOM = 30 * GIB
 STOP_MARGIN = 4 * GIB
 CGROUP_CAP = 54 * GIB
 CUDA_HOME = Path(os.environ.get('CUDA_HOME', '/usr/local/cuda'))
-RECIPE = Path(__file__).resolve().parent
-REPO = RECIPE.parent
-# What --weights chooses: the pinned checkpoint (a sources.json entry) and its local directory and pins, the engine
-# build scripts/build-engine.sh makes for it, and the serve flags it was measured with (results/full-vs-quant-01).
-WEIGHTS = {
-    'full': {'source': 'checkpoint', 'dir': 'drama-3', 'pins': 'checkpoint.sha256', 'build': 'tensorfold',
-             'serve': ()},
-    'nvfp4': {'source': 'nvfp4_checkpoint', 'dir': 'drama-3-NVFP4-Pruned', 'pins': 'nvfp4.sha256',
-              'build': 'tensorfold-nvfp4', 'serve': ('--cfg-gamma', '1.5', '--cfg-batched')},
-}
-# A serve flag after -- that sets guidance replaces the measured guidance flags as a whole.
-GUIDANCE_FLAGS = ('--cfg-gamma', '--cfg-allow-request-gamma', '--cfg-batched')
-
-
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open('rb') as file:
-        for block in iter(lambda: file.read(1 << 24), b''):
-            digest.update(block)
-    return digest.hexdigest()
-
-
-def fetch_checkpoint(choice: str) -> Path:
-    """The pinned checkpoint for --weights CHOICE: downloaded on first use, checked against its pins on every start."""
-    spec = WEIGHTS[choice]
-    source = json.loads((RECIPE / 'sources.json').read_text())[spec['source']]
-    target = REPO / spec['dir']
-    pins = RECIPE / 'checksums' / spec['pins']
-    entries = [line.split(None, 1) for line in pins.read_text().splitlines() if line.strip()]
-    if not target.exists():
-        hf = shutil.which('hf')
-        if hf is None:
-            raise SystemExit('pilot: the hf command is missing; install it with: python3 -m pip install -U huggingface_hub')
-        print(f'Downloading {source["repository"]} at {source["revision"][:8]} into {target}', flush=True)
-        subprocess.run([hf, 'download', source['repository'], '--revision', source['revision'],
-                        '--local-dir', str(target)], check=True)
-    print(f'Checking {target} against {pins.relative_to(REPO)}', flush=True)
-    started = time.monotonic()
-    bad = [name for digest, name in entries if not (target / name).is_file() or sha256(target / name) != digest]
-    if bad:
-        raise SystemExit(f'pilot: {target} does not match {pins}: {", ".join(bad)} missing or changed; no model was '
-                         f'started. Repair it with: hf download {source["repository"]} --revision '
-                         f'{source["revision"]} --local-dir {target}, or delete it and run again')
-    print(f'{target} matches {pins.relative_to(REPO)} ({time.monotonic() - started:.0f} s)', flush=True)
-    return target
 
 
 def memory_available() -> int:
@@ -78,7 +33,7 @@ def memory_available() -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--weights', choices=tuple(WEIGHTS),
+    parser.add_argument('--weights', choices=tuple(weight_selection.WEIGHTS),
                         help='Download (first run), verify and serve these pinned weights with the engine '
                              'scripts/build-engine.sh --weights builds for them; nvfp4 also applies its measured '
                              'guidance, --cfg-gamma 1.5 --cfg-batched, unless a guidance flag follows --')
@@ -90,7 +45,7 @@ def main() -> int:
     parser.add_argument('--runtime-dir', type=Path, required=True,
                         help='Isolated runtime and cache directory')
     parser.add_argument('--checkpoint', type=Path,
-                        help='Checkpoint directory, verified beforehand (default with --weights: its download)')
+                        help='Checkpoint directory (with --weights: verified against the selected pins)')
     parser.add_argument('--gpu-lock', type=Path, required=True,
                         help='Existing lock file that every GPU workload on this host takes; never a second lock')
     parser.add_argument('--evidence-dir', type=Path, required=True)
@@ -106,16 +61,13 @@ def main() -> int:
     if args.weights == 'nvfp4' and args.backend != 'native':
         parser.error('Only the native backend serves the NVFP4 weights')
     root = args.runtime_dir.resolve()
-    checkpoint = (args.checkpoint or REPO / WEIGHTS[args.weights]['dir']).resolve()
+    checkpoint = weight_selection.checkpoint_path(args.weights, args.checkpoint)
     evidence = args.evidence_dir.resolve()
     if args.backend == 'native':
         if args.native_bin is None and args.weights is None:
             parser.error('The native backend requires --native-bin, or --weights')
-        native_bin = args.native_bin or REPO / 'build' / WEIGHTS[args.weights]['build'] / 'zig-out/native/bin/tensorfold-native'
-        executable = native_bin.resolve()
-        serve_args = list(args.serve_args)
-        if args.weights and not any(a.split('=', 1)[0] in GUIDANCE_FLAGS for a in serve_args):
-            serve_args[:0] = WEIGHTS[args.weights]['serve']
+        executable = weight_selection.native_path(args.weights, args.native_bin)
+        serve_args = weight_selection.serve_arguments(args.weights, args.serve_args)
         working_directory = root
         server_command = [str(executable), 'serve', str(checkpoint), '--host', '127.0.0.1',
                           '--port', str(args.port), '--name', 'fishaudio/drama-3',
@@ -147,8 +99,10 @@ def main() -> int:
         backend_environment.append('LD_LIBRARY_PATH=' + ':'.join(map(str, directories)))
     if not args.gpu_lock.is_file():
         parser.error('The operator-specified shared GPU lock must already exist')
-    if args.checkpoint is None:
-        fetch_checkpoint(args.weights)
+    try:
+        provenance = weight_selection.prepare_checkpoint(args.weights, args.checkpoint)
+    except (OSError, ValueError, subprocess.CalledProcessError) as exc:
+        parser.error(str(exc))
     evidence.mkdir(parents=True, exist_ok=False)
     weights = sum(p.stat().st_size for p in checkpoint.glob('*.safetensors'))
     weights += (checkpoint / 'codec.pth').stat().st_size
@@ -194,7 +148,7 @@ def main() -> int:
                    f'FLASHINFER_WORKSPACE_BASE={root / "runtime-cache/flashinfer"}',
                    *backend_environment,
                    *server_command]
-        initial = {'backend': args.backend, 'weights_bytes': weights, 'initial_memavailable_bytes': available,
+        initial = {**provenance, 'backend': args.backend, 'weights_bytes': weights, 'initial_memavailable_bytes': available,
                    'required_memavailable_bytes': required, 'cgroup_memory_max_bytes': CGROUP_CAP,
                    'headroom_floor_bytes': HEADROOM, 'abort_threshold_bytes': HEADROOM + STOP_MARGIN,
                    'unit': unit, 'server_command': server_command, 'launch_command': command,

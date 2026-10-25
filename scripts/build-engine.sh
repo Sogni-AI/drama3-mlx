@@ -5,8 +5,9 @@
 #
 #   --weights full    (the default) upstream TensorFold at engine/UPSTREAM with the opt-in patches in
 #                     engine/patches: the native server and drama3-generate, in build/tensorfold
-#   --weights nvfp4   the engine at engine/nvfp4/UPSTREAM, which serves the NVFP4 pruned weights
-#                     (plotarmordev/drama-3-NVFP4-Pruned), unpatched: the native server, in build/tensorfold-nvfp4
+#   --weights nvfp4   CUDA: engine/nvfp4/UPSTREAM, unpatched native server.
+#                     Metal: engine/nvfp4/macos/UPSTREAM plus its patches, native server and voice tools.
+#                     Both use plotarmordev/drama-3-NVFP4-Pruned, in build/tensorfold-nvfp4.
 #
 # Environment:
 #   ZIG          Zig 0.17.0 executable (default: zig on PATH)
@@ -14,13 +15,14 @@
 #   JOBS         parallel build jobs (default: Zig's choice)
 #
 # Every run checks out the pinned commit and re-applies the whole series, so the result does not depend on what an
-# earlier run left behind. Output: BUILD_DIR/zig-out/native/bin/tensorfold-native, and with the full weights also
-# BUILD_DIR/zig-out/bin/drama3-generate.
+# earlier run left behind. Output: BUILD_DIR/zig-out/native/bin/tensorfold-native, plus the selected voice tools
+# under BUILD_DIR/zig-out/bin.
 set -euo pipefail
 
 repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 zig=${ZIG:-zig}
 nvcc=${NVCC:-nvcc}
+platform=$(uname -s)
 
 die() {
   echo "build-engine: $*" >&2
@@ -37,9 +39,22 @@ elif [[ ${1:-} == --weights=* ]]; then
   shift
 fi
 (($# <= 1)) || die "usage: scripts/build-engine.sh [--weights full|nvfp4] [BUILD_DIR]"
+patch_dir=
 case $weights in
-  full) pin=$repo/engine/UPSTREAM build=${1:-$repo/build/tensorfold} targets=(native drama3-generate) ;;
-  nvfp4) pin=$repo/engine/nvfp4/UPSTREAM build=${1:-$repo/build/tensorfold-nvfp4} targets=(native) ;;
+  full)
+    pin=$repo/engine/UPSTREAM build=${1:-$repo/build/tensorfold}
+    patch_dir=$repo/engine/patches
+    targets=(native drama3-generate)
+    ;;
+  nvfp4)
+    pin=$repo/engine/nvfp4/UPSTREAM build=${1:-$repo/build/tensorfold-nvfp4}
+    targets=(native)
+    if [[ $platform == Darwin ]]; then
+      pin=$repo/engine/nvfp4/macos/UPSTREAM
+      patch_dir=$repo/engine/nvfp4/macos/patches
+      targets+=(drama3-generate drama3-voice)
+    fi
+    ;;
   *) die "--weights must be full or nvfp4, not '$weights'" ;;
 esac
 
@@ -49,19 +64,27 @@ esac
 
 shopt -s nullglob
 patches=()
-if [[ $weights == full ]]; then
-  patches=("$repo"/engine/patches/*.patch)
-  ((${#patches[@]})) || die "engine/patches has no *.patch files"
+if [[ -n $patch_dir ]]; then
+  patches=("$patch_dir"/*.patch)
+  ((${#patches[@]})) || die "$patch_dir has no *.patch files"
+  if command -v sha256sum >/dev/null; then
+    (cd "$patch_dir" && sha256sum -c SHA256SUMS) || die "patch checksum verification failed"
+  else
+    (cd "$patch_dir" && shasum -a 256 -c SHA256SUMS) || die "patch checksum verification failed"
+  fi
 fi
 
 command -v git >/dev/null || die "git not found"
 zig=$(command -v "$zig") || die "Zig not found; set ZIG"
-# macOS builds the Metal engine; the CUDA option is not declared there, so do not pass it.
-if [[ $(uname -s) == Darwin ]]; then
-  nvcc_args=()
+# macOS builds the Metal engine without requiring a CUDA compiler.
+if [[ $platform == Darwin ]]; then
+  build_args=()
+  if [[ $weights == nvfp4 ]]; then
+    build_args=(-Dcpu=apple_m1)
+  fi
 else
   nvcc=$(command -v "$nvcc") || die "nvcc not found; set NVCC"
-  nvcc_args=(-Dnvcc="$nvcc")
+  build_args=(-Dnvcc="$nvcc")
 fi
 
 if [[ -e $build ]]; then
@@ -88,13 +111,13 @@ have=$("$zig" version)
 [[ $have == "$want" ]] || die "Zig $have found; the engine pins $want"
 
 cd "$build"
-"$zig" build "${targets[@]}" ${nvcc_args[@]+"${nvcc_args[@]}"} --summary all ${JOBS:+-j"$JOBS"}
+"$zig" build "${targets[@]}" ${build_args[@]+"${build_args[@]}"} --summary all ${JOBS:+-j"$JOBS"}
 
 echo "engine ($weights weights): $TENSORFOLD_COMMIT + ${#patches[@]} patches = $(git rev-parse HEAD)"
 artifacts=(zig-out/native/bin/tensorfold-native)
-if [[ $weights == full ]]; then
-  artifacts+=(zig-out/bin/drama3-generate)
-fi
+for target in "${targets[@]:1}"; do
+  artifacts+=("zig-out/bin/$target")
+done
 if command -v sha256sum >/dev/null; then
   sha256sum "${artifacts[@]}"
 else

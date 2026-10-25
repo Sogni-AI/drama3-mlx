@@ -22,12 +22,12 @@
 > [Fish Audio Drama 3](https://huggingface.co/fishaudio/drama-3) under the Fish Audio Community License v1.0
 > ([License](#license)). `--weights full` serves the full model, the alternative.
 
-**Fish Audio's Drama 3 text-to-speech on an NVIDIA GB10, on TensorFold's native Zig/CUDA engine.**
+**Fish Audio's Drama 3 text-to-speech on NVIDIA GB10 (native Zig/CUDA) or Apple silicon (native Zig/Metal).**
 
 [TensorFold](https://github.com/ashhart/TensorFold) runs Drama 3 natively since v1.1.0. This repository pins
-upstream TensorFold and adds a small series of opt-in patches for the full model; for the NVFP4 weights it pins
-the TensorFold engine they were measured on. It builds the engine and starts a local speech server with an
-OpenAI-style `/v1/audio/speech` route, whole or streamed.
+upstream TensorFold and adds a small series of opt-in patches for the full model. NVFP4 retains its
+measured CUDA engine pin and uses a separate upstream pin plus Metal patches on Mac. It builds the engine
+and starts a local speech server with an OpenAI-style `/v1/audio/speech` route, whole or streamed.
 
 **Built with Fish Audio.** The model weights are not in this repository; the launcher downloads them from
 [Hugging Face](https://huggingface.co/plotarmordev/drama-3-NVFP4-Pruned) under Fish Audio's own
@@ -40,9 +40,9 @@ OpenAI-style `/v1/audio/speech` route, whole or streamed.
 
 ## Quickstart
 
-Apple silicon: use the [full-model macOS/Metal instructions](recipe/README-macos.md). The NVFP4
-comparison is on GB10; it does not qualify that engine on Mac. The Linux requirements and
-cgroup cap below do not apply to the Mac launcher.
+Apple silicon: use the [macOS/Metal instructions](recipe/README-macos.md) for `--weights nvfp4`
+or `--weights full`. The GB10 measurements above do not qualify Mac speed or quality.
+The Linux requirements and cgroup cap below do not apply to the Mac launcher.
 
 You need Linux with user systemd, CUDA 13, [Zig 0.17.0](https://ziglang.org/download/), the `hf` command
 (`python3 -m pip install -U huggingface_hub`) and 88 GiB of free memory at load (the server is capped at 54 GiB).
@@ -64,10 +64,11 @@ For the full model, write `--weights full` in both commands.
 The first start downloads the weights at the revision pinned in [`recipe/sources.json`](recipe/sources.json),
 into `drama-3-NVFP4-Pruned/` or `drama-3/`. Every start checks them against [`recipe/checksums`](recipe/checksums)
 and refuses missing or changed files; for the 21 GiB NVFP4 weights that takes about 11 seconds on a GB10.
-With `--weights nvfp4`, `scripts/build-engine.sh` builds the engine pinned in
-[`engine/nvfp4/UPSTREAM`](engine/nvfp4/UPSTREAM) and the launcher serves with guidance γ 1.5 and batched guidance,
-as measured; a `--cfg-gamma` of your own after `--` replaces both. With `--weights full` it checks out the commit
-pinned in [`engine/UPSTREAM`](engine/UPSTREAM) and applies [`engine/patches`](engine/patches) in order.
+On Linux, `--weights nvfp4` builds [`engine/nvfp4/UPSTREAM`](engine/nvfp4/UPSTREAM) and serves with
+guidance γ 1.5 and batched guidance, as measured; a `--cfg-gamma` of your own after `--` replaces both.
+On Mac it builds [`engine/nvfp4/macos/UPSTREAM`](engine/nvfp4/macos/UPSTREAM) plus its patch series.
+Metal's `--cfg-batched` pairs independent states in one command buffer, not a vectorized GEMM.
+`--weights full` retains [`engine/UPSTREAM`](engine/UPSTREAM) and [`engine/patches`](engine/patches).
 
 When it prints `DRAMA_PILOT_READY`, synthesize from another terminal. The second command streams and plays as
 it arrives:
@@ -122,9 +123,10 @@ the license's Section III(c), which needs a separate license from Fish Audio.
 `POST /v1/audio/speech` takes `model` (`fishaudio/drama-3`), `input` (at most 4096 characters), `voice`
 (`default`, or a name loaded with `--voices`), `response_format` (`wav` or `pcm`) and `stream` (`true` needs
 `pcm`). Request-supplied references and other synthesis modifiers are refused. `GET /v1/voices` lists the voices.
-With `--weights nvfp4`, `--voices` takes the `drama3-voice` files its encoder writes, a request may also send its
-own `references` as codec codes (audio is refused), and every reply carries the server's γ in an `X-Cfg-Gamma`
-header, though only a request with a voice is drawn with guidance.
+The Linux CUDA NVFP4 engine accepts its encoder's `drama3-voice` catalogs and request `references`
+as codec codes (not audio). The Mac NVFP4 engine instead uses attested `drama3-http-voice/1`
+catalogs and refuses request-supplied references; see the [Mac voice commands](recipe/README-macos.md#attested-reference-voices).
+Guidance-enabled replies carry the configured γ in `X-Cfg-Gamma`; builtin voices remain unguided.
 
 - **Whole reply:** `Content-Length` framing and an `X-Finish-Reason` header: `stop`, `length` or, with the silence
   guard on, `silence`.

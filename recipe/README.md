@@ -3,6 +3,10 @@
 `pilot.py` starts one Drama 3 server, native or reference, as a transient `systemd --user` unit, and stops it
 cleanly. It needs Linux, user systemd and Python 3 (standard library only).
 
+On Apple silicon use [`pilot_macos.py`](README-macos.md), with the same explicit `--weights`
+selection and checkpoint manifests. It uses native Metal and owned process groups, not systemd.
+Its NVFP4 engine pin is separate from CUDA; the full-model pin remains unchanged.
+
 ```sh
 python3 recipe/pilot.py --weights nvfp4 \
   --runtime-dir "$RUNTIME_DIR" \
@@ -17,7 +21,10 @@ revision in `sources.json`, into `drama-3-NVFP4-Pruned/` or `drama-3/` at the re
 hashes every pinned file and refuses, before it takes the GPU lock, if one is missing or changed. With `nvfp4` it adds
 `--cfg-gamma 1.5 --cfg-batched`, the guidance the quant was measured with, unless a `--cfg-gamma`,
 `--cfg-allow-request-gamma` or `--cfg-batched` of your own follows `--`. `--checkpoint` and `--native-bin` override
-the directory and the executable; without `--weights`, pass both, and nothing is downloaded or added.
+the directory and executable, but a selected `--weights` manifest is still checked against an overridden
+checkpoint. Only an absent default checkpoint is downloaded; explicit paths and existing incomplete directories
+are refused rather than repaired. Without `--weights`, pass both paths; nothing is downloaded or added,
+and no pinned-checkpoint verification is claimed.
 
 For the SGLang-Omni reference, replace `--native-bin …` with `--backend sglang-omni`. The reference also needs
 `venv/` (with `sgl-omni` installed) and an `sglang-omni/` checkout at the revision in `sources.json`, both inside
